@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479514306887",
+    "project_id": "izonemusicplayer",
+    "storage_bucket": "izonemusicplayer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479514306887:android:dca9c53e44c0e09e238462",
+        "android_client_info": {
+          "package_name": "com.Izone.musicplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479514306887-rr8sb2jcdlso5ce1m7ncsps894epglog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCphplY1cPzTJRXc2LrutQZjG65YZeZtKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479514306887-rr8sb2jcdlso5ce1m7ncsps894epglog.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
