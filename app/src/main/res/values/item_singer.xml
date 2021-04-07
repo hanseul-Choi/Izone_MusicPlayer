@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="singer">
+        <item>IZONE</item>
+        <item>여자친구</item>
+        <item>BTS</item>
+    </string-array>
+</resources>

@@ -1,8 +1,9 @@
 package com.Izone.musicplayer
 
 //Model
-data class AlbumList(
+data class AlbumList (
     var title: String = " ",
-    var description: String = " ",
-    var album_url: String = " "
+    var audio: String = " ",
+    var image: String = " ",
+    var singer: String = " "
 )
