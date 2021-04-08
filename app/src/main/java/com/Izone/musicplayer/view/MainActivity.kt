@@ -1,7 +1,8 @@
-package com.Izone.musicplayer
+package com.Izone.musicplayer.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.Izone.musicplayer.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

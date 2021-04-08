@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    //databinding
+    id 'kotlin-kapt'
 }
 
 apply plugin: 'com.google.gms.google-services'
@@ -31,6 +33,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    //databinding
+    dataBinding{
+        enabled = true
     }
 }
 
