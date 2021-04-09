@@ -31,23 +31,20 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 when(p2) {
                     0 -> {
-                        Log.d("check", "check in 0")
+                        Log.d("check", "check in " + items[p2])
                     }
                     1 -> {
-                        Log.d("check", "check in 1")
+                        Log.d("check", "check in " + items[p2])
                     }
                     else -> {
                         Log.d("check", "check in else")
                     }
                 }
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
             }
-
         }
 
-
+        //recyclerview set
     }
 }
