@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
+<layout>
     <data>
         <variable
             name="singerListViewModel"
-            type="com.Izone.musicplayer.viewmodel.SingerListViewModel" />
+            type="com.izone.musicplayer.viewmodel.SingerListViewModel" />
     </data>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
-
-    <Spinner
-        android:id="@+id/am_s_singerList"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="15dp"
-        android:gravity="left"/>
+        android:layout_height="match_parent"
+        tools:context=".view.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/am_rv_albumList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/am_s_singerList"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        <Spinner
+            android:id="@+id/am_s_singerList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="left"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/am_rv_albumList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/am_s_singerList" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

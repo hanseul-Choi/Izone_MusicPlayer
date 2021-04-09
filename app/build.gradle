@@ -1,20 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    //databinding
     id 'kotlin-kapt'
 }
 
-apply plugin: 'com.google.gms.google-services'
-
 android {
-    compileSdkVersion 30
+    compileSdkVersion 28
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.Izone.musicplayer"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -35,9 +32,9 @@ android {
         jvmTarget = '1.8'
     }
 
-    //databinding
-    dataBinding{
-        enabled = true
+    buildFeatures {
+        dataBinding true
+        viewBinding true
     }
 }
 
@@ -59,4 +56,11 @@ dependencies {
     //firebase
     implementation platform('com.google.firebase:firebase-bom:26.8.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+
+    //data binding
+    kapt 'com.android.databinding:compiler:4.1.3'
 }

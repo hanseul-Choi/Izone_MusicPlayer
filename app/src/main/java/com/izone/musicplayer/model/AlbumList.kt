@@ -1,4 +1,4 @@
-package com.Izone.musicplayer.model
+package com.izone.musicplayer.model
 
 //Model
 data class AlbumList (

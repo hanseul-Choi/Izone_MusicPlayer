@@ -1,4 +1,4 @@
-package com.Izone.musicplayer
+package com.izone.musicplayer
 
 import org.junit.Test
 
