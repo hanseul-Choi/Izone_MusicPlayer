@@ -10,8 +10,6 @@ import androidx.databinding.DataBindingUtil
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ActivityMainBinding
 
-//import com.Izone.musicplayer.databinding.ActivityMainBinding
-
 class MainActivity : AppCompatActivity() {
 
     //data binding
@@ -19,11 +17,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
 
+        initDataBinding()
+        initSpinnerSet()
+        //recyclerview set
+    }
+
+    fun initDataBinding() {
         //binding
         aMBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+        aMBinding.lifecycleOwner = this
+        //aMBinding.singerListViewModel= viewModel
+    }
+    
+    fun initSpinnerSet() {
         //spinner set
         val items = resources.getStringArray(R.array.singer)
         aMBinding.amSSingerList.adapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, items)
@@ -44,7 +51,5 @@ class MainActivity : AppCompatActivity() {
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
-
-        //recyclerview set
     }
 }
