@@ -26,9 +26,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/am_rv_albumList"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/am_s_singerList" />
+            app:layout_constraintTop_toBottomOf="@id/am_s_singerList"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
