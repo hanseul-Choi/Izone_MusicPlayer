@@ -12,4 +12,14 @@ interface MusicApi {
     fun getIzone(
 
     ): Call<List<MusicItems>>
+
+    @GET("music/bts.json")
+    fun getBts(
+
+    ): Call<List<MusicItems>>
+
+    @GET("music/ohmygirl.json")
+    fun getOhmygirl(
+
+    ): Call<List<MusicItems>>
 }

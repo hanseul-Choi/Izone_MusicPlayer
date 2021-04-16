@@ -5,5 +5,7 @@ import com.izone.musicplayer.network.MusicService
 class MusicRepository {
     private val musicClient = MusicService.client
 
-    fun getRepositories() = musicClient?.getIzone()
+    fun getIzoneRepository() = musicClient?.getIzone()
+    fun getBtsRepository() = musicClient?.getBts()
+    fun getOhmygirlRepository() = musicClient?.getOhmygirl()
 }

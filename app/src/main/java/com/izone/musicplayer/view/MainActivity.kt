@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
         initDataBinding()
         initSpinnerSet()
         initViewModel()
-
-        viewModel.requestMusicRepositories()
         //recyclerview set
     }
 
@@ -83,13 +81,16 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 when(p2) {
                     0 -> {
-
+                        //izone
+                        viewModel.requestIzoneRepositories()
                     }
                     1 -> {
-                        Log.d("check", "check in " + items[p2])
+                        //bts
+                        viewModel.requestBtsRepositories()
                     }
-                    else -> {
-                        Log.d("check", "check in else")
+                    2 -> {
+                        //ohmygirl
+                        viewModel.requestOhmygirlRepositories()
                     }
                 }
             }

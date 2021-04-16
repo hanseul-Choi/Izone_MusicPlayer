@@ -13,14 +13,47 @@ class MusicViewModel(private val musicRepository: MusicRepository) : ViewModel()
     private val _musicRepositories = MutableLiveData<List<MusicItems>>()
     val musicRepositories = _musicRepositories
 
-    fun requestMusicRepositories() {
-        musicRepository.getRepositories()?.enqueue(object : Callback<List<MusicItems>> {
+    fun requestIzoneRepositories() {
+        musicRepository.getIzoneRepository()?.enqueue(object : Callback<List<MusicItems>> {
             override fun onResponse(
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
                 var value = response?.body()
+                _musicRepositories.postValue(value)
+            }
 
+            override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun requestBtsRepositories() {
+        musicRepository.getBtsRepository()?.enqueue(object : Callback<List<MusicItems>> {
+            override fun onResponse(
+                call: Call<List<MusicItems>>,
+                response: Response<List<MusicItems>>
+            ) {
+                var value = response?.body()
+                _musicRepositories.postValue(value)
+            }
+
+            override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun requestOhmygirlRepositories() {
+        musicRepository.getOhmygirlRepository()?.enqueue(object : Callback<List<MusicItems>> {
+            override fun onResponse(
+                call: Call<List<MusicItems>>,
+                response: Response<List<MusicItems>>
+            ) {
+                var value = response?.body()
                 _musicRepositories.postValue(value)
             }
 
