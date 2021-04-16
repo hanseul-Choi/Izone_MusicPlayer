@@ -1,5 +1,6 @@
 package com.izone.musicplayer.recyclerview
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -30,19 +31,24 @@ class MusicRepositoryAdapter(private var repositories: List<MusicItems>) : Recyc
         holder.bind(repositories[position])
     }
 
-    //customize
+    //update
     fun update(updated: List<MusicItems>) {
-        CoroutineScope(Dispatchers.Main).launch {
-            val diffResult = async(Dispatchers.IO) {
-                getDiffResult(updated)
-            }
-            repositories = updated
-            diffResult.await().dispatchUpdatesTo(this@MusicRepositoryAdapter)
-        }
+        val diff = MusicRepositoryDiffCallback(repositories, updated)
+        val diffResult = DiffUtil.calculateDiff(diff)
+        repositories = updated
+        diffResult.dispatchUpdatesTo(this)
+
+//        CoroutineScope(Dispatchers.Main).launch {
+//            val diffResult = async(Dispatchers.IO) {
+//                getDiffResult(updated)
+//            }
+//            repositories = updated
+//            diffResult.await().dispatchUpdatesTo(this@MusicRepositoryAdapter)
+//        }
     }
 
-    private fun getDiffResult(updated: List<MusicItems>): DiffUtil.DiffResult {
-        val diffCallback = MusicRepositoryDiffCallback(repositories, updated)
-        return DiffUtil.calculateDiff(diffCallback)
-    }
+//    private fun getDiffResult(updated: List<MusicItems>): DiffUtil.DiffResult {
+//        val diffCallback = MusicRepositoryDiffCallback(repositories, updated)
+//        return DiffUtil.calculateDiff(diffCallback)
+//    }
 }

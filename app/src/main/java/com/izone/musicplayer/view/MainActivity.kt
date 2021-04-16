@@ -83,14 +83,15 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
                         //izone
                         viewModel.requestIzoneRepositories()
+
                     }
                     1 -> {
-                        //bts
-                        viewModel.requestBtsRepositories()
+                        //omg
+                        viewModel.requestOhmygirlRepositories()
                     }
                     2 -> {
-                        //ohmygirl
-                        viewModel.requestOhmygirlRepositories()
+                        //bts
+                        viewModel.requestBtsRepositories()
                     }
                 }
             }
