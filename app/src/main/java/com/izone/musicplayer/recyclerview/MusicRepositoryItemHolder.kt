@@ -5,9 +5,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.izone.musicplayer.R
 import com.izone.musicplayer.model.MusicItems
-import com.izone.musicplayer.model.MusicModel
 
 class MusicRepositoryItemHolder(view: View, listener: MusicRepositoryAdapter.OnMusicClickListener?) : RecyclerView.ViewHolder(view) {
     private val iv_album: ImageView = view.findViewById(R.id.ia_iv_album)
@@ -21,8 +22,13 @@ class MusicRepositoryItemHolder(view: View, listener: MusicRepositoryAdapter.OnM
     }
 
     fun bind(model: MusicItems) {
+
         model.run {
-            Glide.with(itemView).load(album).into(iv_album)
+            var storage: FirebaseStorage = FirebaseStorage.getInstance("gs://musicplayer-e17d2.appspot.com/")
+            var storageRef: StorageReference = storage.getReference()
+            storageRef.child(album).downloadUrl.addOnSuccessListener {
+                Glide.with(itemView).load(it).into(iv_album)
+            }
             tv_title.text = title
             tv_singer.text = singer
         }

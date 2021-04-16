@@ -17,6 +17,12 @@
             android:gravity="left"
             app:layout_constraintTop_toTopOf="parent"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#45808080"
+            app:layout_constraintBottom_toBottomOf="@+id/am_s_singerList"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/am_rv_albumList"
             android:layout_width="wrap_content"
