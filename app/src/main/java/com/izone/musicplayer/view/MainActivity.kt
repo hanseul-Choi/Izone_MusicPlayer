@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             mMusicRepositoryAdapter = MusicRepositoryAdapter(repos).apply {
                 listener = object : MusicRepositoryAdapter.OnMusicClickListener {
                     override fun onItemClick(position: Int) {
-                        Log.d("check", "click the ${repos[position].title}")
+                        fragmentViewModel.setPosition(position)
                         aMBinding.amVSetmini.setHeight(300)
                     }
                 }

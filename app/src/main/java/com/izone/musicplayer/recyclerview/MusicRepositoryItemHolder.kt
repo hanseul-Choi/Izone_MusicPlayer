@@ -14,6 +14,7 @@ class MusicRepositoryItemHolder(view: View, listener: MusicRepositoryAdapter.OnM
     private val iv_album: ImageView = view.findViewById(R.id.ia_iv_album)
     private val tv_title: TextView = view.findViewById(R.id.ia_tv_title)
     private val tv_singer: TextView = view.findViewById(R.id.ia_tv_sub_title)
+    private val fireBaseUri = "gs://musicplayer-e17d2.appspot.com/"
 
     init {
         view.setOnClickListener {
@@ -24,7 +25,7 @@ class MusicRepositoryItemHolder(view: View, listener: MusicRepositoryAdapter.OnM
     fun bind(model: MusicItems) {
 
         model.run {
-            var storage: FirebaseStorage = FirebaseStorage.getInstance("gs://musicplayer-e17d2.appspot.com/")
+            var storage: FirebaseStorage = FirebaseStorage.getInstance(fireBaseUri)
             var storageRef: StorageReference = storage.getReference()
             storageRef.child(album).downloadUrl.addOnSuccessListener {
                 Glide.with(itemView).load(it).into(iv_album)
