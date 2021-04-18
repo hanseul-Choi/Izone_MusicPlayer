@@ -6,12 +6,13 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.LinearLayout
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ActivityMainBinding
+import com.izone.musicplayer.fragment.FragmentViewModel
+import com.izone.musicplayer.fragment.MiniPlayerFragment
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 import com.izone.musicplayer.repository.MusicRepository
@@ -24,8 +25,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var aMBinding: ActivityMainBinding
 
     //viewModel & Adpater
-    private lateinit var viewModel: MusicViewModel
-    private lateinit var viewModelFactory: MusicViewModelFactory
+    private val viewModelFactory: MusicViewModelFactory = MusicViewModelFactory(MusicRepository())
+    private val viewModel: MusicViewModel by viewModels {viewModelFactory}
+    private val fragmentViewModel: FragmentViewModel by viewModels()
     private lateinit var mMusicRepositoryAdapter: MusicRepositoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,23 +35,20 @@ class MainActivity : AppCompatActivity() {
 
         initDataBinding()
         initSpinnerSet()
-        initViewModel()
-        //recyclerview set
+        setFragment()
+        viewModelListener()
     }
 
     fun initDataBinding() {
         //binding
         aMBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         aMBinding.lifecycleOwner = this
-        //aMBinding.singerListViewModel= viewModel
     }
 
-    fun initViewModel() {
-        viewModelFactory = MusicViewModelFactory(MusicRepository())
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MusicViewModel::class.java)
-
+    fun viewModelListener() {
         viewModel.musicRepositories.observe(this) {
             updateRepositories(it)
+            fragmentViewModel.setRepositories(it)
         }
     }
 
@@ -61,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 listener = object : MusicRepositoryAdapter.OnMusicClickListener {
                     override fun onItemClick(position: Int) {
                         Log.d("check", "click the ${repos[position].title}")
+                        aMBinding.amVSetmini.setHeight(300)
                     }
                 }
             }
@@ -83,7 +83,6 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
                         //izone
                         viewModel.requestIzoneRepositories()
-
                     }
                     1 -> {
                         //omg
@@ -97,6 +96,19 @@ class MainActivity : AppCompatActivity() {
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
+        }
+    }
+
+    fun setFragment() {
+        supportFragmentManager.beginTransaction().add(R.id.am_fl_miniplayer, MiniPlayerFragment()).commit()
+    }
+
+    //extension
+    fun View.setHeight(value: Int) {
+        val lp = layoutParams
+        lp?.let {
+            lp.height = value
+            layoutParams = lp
         }
     }
 }

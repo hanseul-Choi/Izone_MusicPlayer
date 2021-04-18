@@ -19,14 +19,13 @@ class MusicViewModel(private val musicRepository: MusicRepository) : ViewModel()
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
-                var value = response?.body()
+                var value = response.body()
                 _musicRepositories.postValue(value)
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
     }
 
@@ -36,14 +35,13 @@ class MusicViewModel(private val musicRepository: MusicRepository) : ViewModel()
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
-                var value = response?.body()
+                var value = response.body()
                 _musicRepositories.postValue(value)
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
     }
 
@@ -53,14 +51,13 @@ class MusicViewModel(private val musicRepository: MusicRepository) : ViewModel()
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
-                var value = response?.body()
+                var value = response.body()
                 _musicRepositories.postValue(value)
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
     }
 }

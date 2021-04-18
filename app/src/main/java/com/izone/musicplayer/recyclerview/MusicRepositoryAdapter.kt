@@ -1,16 +1,11 @@
 package com.izone.musicplayer.recyclerview
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.izone.musicplayer.R
 import com.izone.musicplayer.model.MusicItems
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 
 class MusicRepositoryAdapter(private var repositories: List<MusicItems>) : RecyclerView.Adapter<MusicRepositoryItemHolder>() {
     interface OnMusicClickListener {
@@ -37,18 +32,6 @@ class MusicRepositoryAdapter(private var repositories: List<MusicItems>) : Recyc
         val diffResult = DiffUtil.calculateDiff(diff)
         repositories = updated
         diffResult.dispatchUpdatesTo(this)
-
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val diffResult = async(Dispatchers.IO) {
-//                getDiffResult(updated)
-//            }
-//            repositories = updated
-//            diffResult.await().dispatchUpdatesTo(this@MusicRepositoryAdapter)
-//        }
     }
 
-//    private fun getDiffResult(updated: List<MusicItems>): DiffUtil.DiffResult {
-//        val diffCallback = MusicRepositoryDiffCallback(repositories, updated)
-//        return DiffUtil.calculateDiff(diffCallback)
-//    }
 }
