@@ -33,5 +33,4 @@ class MusicRepositoryAdapter(private var repositories: List<MusicItems>) : Recyc
         repositories = updated
         diffResult.dispatchUpdatesTo(this)
     }
-
 }

@@ -24,7 +24,6 @@ class MusicViewModel(private val musicRepository: MusicRepository) : ViewModel()
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
-                TODO("Not yet implemented")
             }
         })
     }
@@ -40,7 +39,6 @@ class MusicViewModel(private val musicRepository: MusicRepository) : ViewModel()
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
-                TODO("Not yet implemented")
             }
         })
     }
@@ -56,7 +54,6 @@ class MusicViewModel(private val musicRepository: MusicRepository) : ViewModel()
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
-                TODO("Not yet implemented")
             }
         })
     }

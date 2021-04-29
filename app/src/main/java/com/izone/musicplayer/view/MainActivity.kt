@@ -11,8 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ActivityMainBinding
-import com.izone.musicplayer.fragment.FragmentViewModel
-import com.izone.musicplayer.fragment.MiniPlayerFragment
+import com.izone.musicplayer.viewmodel.FragmentViewModel
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 import com.izone.musicplayer.repository.MusicRepository
@@ -35,8 +34,8 @@ class MainActivity : AppCompatActivity() {
 
         initDataBinding()
         initSpinnerSet()
-        setFragment()
         viewModelListener()
+        setFragment()
     }
 
     fun initDataBinding() {
@@ -48,19 +47,21 @@ class MainActivity : AppCompatActivity() {
     fun viewModelListener() {
         viewModel.musicRepositories.observe(this) {
             updateRepositories(it)
-            fragmentViewModel.setRepositories(it)
         }
     }
 
     fun updateRepositories(repos: List<MusicItems>) {
-        if(::mMusicRepositoryAdapter.isInitialized) {
+        if(::mMusicRepositoryAdapter.isInitialized && fragmentViewModel.musicListRepositories!!.value?.get(0)?.singer == repos[0].singer) { //초기화되었고, list가 저장된 것과 같다면
             mMusicRepositoryAdapter.update(repos)
         } else {
             mMusicRepositoryAdapter = MusicRepositoryAdapter(repos).apply {
                 listener = object : MusicRepositoryAdapter.OnMusicClickListener {
                     override fun onItemClick(position: Int) {
+                        if(repos[0].singer != fragmentViewModel.musicListRepositories!!.value?.get(0)?.singer) {//list가 저장된 것과 다르다면
+                            fragmentViewModel.setRepositories(repos)
+                            aMBinding.amVSetmini.setHeight(300)
+                        }
                         fragmentViewModel.setPosition(position)
-                        aMBinding.amVSetmini.setHeight(300)
                     }
                 }
             }
