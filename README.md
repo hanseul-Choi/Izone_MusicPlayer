@@ -6,7 +6,7 @@ Model, View, ViewModel로 구성된 안드로이드 아키텍쳐 패턴이다. M
 View : 사용자에게 보여주는 UI부분을 담당 <br>
 ViewModel : View에서 사용하는 data처리 및 관리 <br>
 Model : DB저장소 접근 데이터 틀 <br>
-<br>
+
 ### MVVM특징
 - view와 viewmodel은 n:m 관계로 적용이 가능하다.
 - 재사용성이 용이하다.
