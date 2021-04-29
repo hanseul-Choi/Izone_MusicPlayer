@@ -25,45 +25,45 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveD
 다음은 제작한 프로젝트의 구조도이며, MVVM구조를 이해하기 위해 그린 그림이다. 
 <br>
 ### Network
-![Network구조도](./img/Network구조도.PNG)
+![Network구조도](./img/Network구조도.PNG){: width="100" height="100"}
 <br><br>
 ### Spinner
-![Spinner구조도](./img/Spinner구조.PNG)
+![Spinner구조도](./img/Spinner구조.PNG){: width="100" height="100"}
 <br><br>
 ### RecyclerView
-![RecyclerView구조도](./img/Recyclerview구조도.PNG)
+![RecyclerView구조도](./img/Recyclerview구조도.PNG){: width="100" height="100"}
 <br><br>
 ### Fragment
-![Fragment구조도](./img/Fragment구조도.PNG)
+![Fragment구조도](./img/Fragment구조도.PNG){: width="100" height="100"}
 <br><br>
 
 ## 기능
 다음은 music player의 기능이다.
 <br><br>
 ### Music List 
-![List](./img/KakaoTalk_20210429_231518818.jpg)
+![List](./img/KakaoTalk_20210429_231518818.jpg){: width="100" height="100"}
 <br>
 앱 초기화면으로 음악 리스트가 나열된다.<br>
 <br><br>
-![List](./img/KakaoTalk_20210429_231518620.jpg)
+![List](./img/KakaoTalk_20210429_231518620.jpg){: width="100" height="100"}
 <br>
 draggable 가능<br>
 <br><br>
 ### Spinner 
-![List](./img/KakaoTalk_20210429_231518454.jpg)
+![List](./img/KakaoTalk_20210429_231518454.jpg){: width="100" height="100"}
 <br>
 spinner 선택시 음악 list가 바뀐다.<br>
 <br><br>
-![List](./img/KakaoTalk_20210429_231518297.jpg)
+![List](./img/KakaoTalk_20210429_231518297.jpg){: width="100" height="100"}
 <br>
 다음은 리스트가 변경된 모습이다.<br>
 <br><br>
-![List](./img/KakaoTalk_20210429_231518134.jpg)
+![List](./img/KakaoTalk_20210429_231518134.jpg){: width="100" height="100"}
 <br>
 다음은 리스트가 변경된 모습이다.<br>
 <br><br>
 ### 하단 플레이어
-![List](./img/KakaoTalk_20210429_231517979.jpg)
+![List](./img/KakaoTalk_20210429_231517979.jpg){: width="100" height="100"}
 <br>
 하단 플레이어로 album image, title, singer와 음악 멈춤 및 다음 노래 기능이 존재한다.<br>
 <br><br>
