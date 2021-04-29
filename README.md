@@ -28,13 +28,13 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveD
 <img src = "./img/Network구조도.PNG" width="90%" height="90%">
 <br><br>
 ### Spinner
-![Spinner구조도](./img/Spinner구조.PNG){: width="100" height="100"}
+<img src = "./img/Spinner구조.PNG" width="90%" height="90%">
 <br><br>
 ### RecyclerView
-![RecyclerView구조도](./img/Recyclerview구조도.PNG){: width="100" height="100"}
+<img src = "./img/RecyclerView구조도.PNG" width="90%" height="90%">
 <br><br>
 ### Fragment
-![Fragment구조도](./img/Fragment구조도.PNG){:width="100" height="100"}
+<img src = "./img/Fragment구조도.PNG" width="90%" height="90%">
 <br><br>
 
 ## 기능
