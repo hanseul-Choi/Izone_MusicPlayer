@@ -34,7 +34,7 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveD
 ![RecyclerView구조도](./img/Recyclerview구조도.PNG){: width="100" height="100"}
 <br><br>
 ### Fragment
-![Fragment구조도](./img/Fragment구조도.PNG){: width="100" height="100"}
+![Fragment구조도](./img/Fragment구조도.PNG){:width="100" height="100"}
 <br><br>
 
 ## 기능
