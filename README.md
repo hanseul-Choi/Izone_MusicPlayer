@@ -25,7 +25,7 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveD
 다음은 제작한 프로젝트의 구조도이며, MVVM구조를 이해하기 위해 그린 그림이다. 
 <br>
 ### Network
-<img src="./img/Network구조.PNG" width="100" height="100">
+<img src="https://github.com/hanseul-Choi/Izone_MusicPlayer/edit/main/img/Network구조.PNG" width="100" height="100">
 <br><br>
 ### Spinner
 ![Spinner구조도](./img/Spinner구조.PNG){: width="100" height="100"}
