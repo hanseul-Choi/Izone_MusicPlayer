@@ -49,32 +49,32 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveD
 <br><br>
 ### Music List 
 
-<img src = "./img/KakaoTalk_20210429_231518818.jpg" width="60%" height="60%">
-<br>
+<img src = "./img/KakaoTalk_20210429_231518818.jpg" width="40%" height="40%">
+
 앱 초기화면으로 음악 리스트가 나열된다.<br>
 <br>
-<img src = "./img/KakaoTalk_20210429_231518620.jpg" width="60%" height="60%">
-<br>
+<img src = "./img/KakaoTalk_20210429_231518620.jpg" width="40%" height="40%">
+
 draggable 가능<br>
 <br><br>
 ### Spinner 
 
-<img src = "./img/KakaoTalk_20210429_231518454.jpg" width="60%" height="60%">
-<br>
+<img src = "./img/KakaoTalk_20210429_231518454.jpg" width="40%" height="40%">
+
 spinner 선택시 음악 list가 바뀐다.<br>
 <br>
-<img src = "./img/KakaoTalk_20210429_231518297.jpg" width="60%" height="60%">
-<br>
+<img src = "./img/KakaoTalk_20210429_231518297.jpg" width="40%" height="40%">
+
 다음은 리스트가 변경된 모습이다.<br>
 <br>
-<img src = "./img/KakaoTalk_20210429_231518134.jpg" width="60%" height="60%">
-<br>
+<img src = "./img/KakaoTalk_20210429_231518134.jpg" width="40%" height="40%">
+
 다음은 리스트가 변경된 모습이다.<br>
 <br><br>
 ### 하단 플레이어
 
-<img src = "./img/KakaoTalk_20210429_231517979.jpg" width="60%" height="60%">
-<br>
+<img src = "./img/KakaoTalk_20210429_231517979.jpg" width="40%" height="40%">
+
 하단 플레이어로 album image, title, singer와 음악 멈춤 및 다음 노래 기능이 존재한다.<br>
 <br><br>
 
