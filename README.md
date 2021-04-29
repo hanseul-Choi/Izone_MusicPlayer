@@ -41,24 +41,30 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveD
 다음은 music player의 기능이다.
 <br><br>
 ### Music List 
-![List](./img/KakaoTalk_20210429_231518818.jpg)<br>
+![List](./img/KakaoTalk_20210429_231518818.jpg)
+<br>
 앱 초기화면으로 음악 리스트가 나열된다.<br>
 <br><br>
-![List](./img/KakaoTalk_20210429_231518620.jpg)<br>
+![List](./img/KakaoTalk_20210429_231518620.jpg)
+<br>
 draggable 가능<br>
 <br><br>
 ### Spinner 
-![List](./img/KakaoTalk_20210429_231518454.jpg)<br>
+![List](./img/KakaoTalk_20210429_231518454.jpg)
+<br>
 spinner 선택시 음악 list가 바뀐다.<br>
 <br><br>
-![List](./img/KakaoTalk_20210429_231518297.jpg)<br>
+![List](./img/KakaoTalk_20210429_231518297.jpg)
+<br>
 다음은 리스트가 변경된 모습이다.<br>
 <br><br>
-![List](./img/KakaoTalk_20210429_231518134.jpg)<br>
+![List](./img/KakaoTalk_20210429_231518134.jpg)
+<br>
 다음은 리스트가 변경된 모습이다.<br>
 <br><br>
 ### 하단 플레이어
-![List](./img/KakaoTalk_20210429_231517979.jpg)<br>
+![List](./img/KakaoTalk_20210429_231517979.jpg)
+<br>
 하단 플레이어로 album image, title, singer와 음악 멈춤 및 다음 노래 기능이 존재한다.<br>
 <br><br>
 
