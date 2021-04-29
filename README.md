@@ -84,3 +84,7 @@ spinner 선택시 음악 list가 바뀐다.<br>
 <br><br><br>
 _Contact me :_ &nbsp; 
 [![Gmail Badge](https://img.shields.io/badge/Gmail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:hschoi5542@gmail.com)](mailto:hschoi5542@gmail.com)
+
+<br>
+## ps
+해당 프로젝트에는 API key가 내포되어 있어 보안상의 문제가 염려되어 채용절차가 끝난 후 비공개로 전환할 예정입니다. 참고 부탁드립니다.
