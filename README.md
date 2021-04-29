@@ -78,7 +78,7 @@ spinner 선택시 음악 list가 바뀐다.<br>
 <br><br>
 
 ### 추가 기능
-- 모든 음악은 끝나면 다음 노래로 자동으로 넘어간다. -> coroutine을 통해 mediaplayer의 state를 듣기 때문이다.
+- 모든 음악은 끝나면 다음 노래로 자동으로 넘어간다. -> coroutine을 통해 mediaplayer의 state를 들어 노래가 끝나면 자동으로 다음 노래로 넘긴다.
 - 마지막 음악에서 다음 노래로 넘어가는 경우 첫 음악으로 돌아간다.
 - 음악을 듣다가 spinner로 가수 목록을 변경해도 전 가수의 노래list가 loop된다. 
 <br><br><br>
