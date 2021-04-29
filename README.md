@@ -4,9 +4,9 @@
 
 ## MVVM
 Model, View, ViewModel로 구성된 안드로이드 아키텍쳐 패턴이다. MVC와 MVP의 의존성 및 유지보수성을 개선하기 위해 등장하였다.<br>
-View : 사용자에게 보여주는 UI부분을 담당
-ViewModel : View에서 사용하는 data처리 및 관리
-Model : DB저장소 접근 데이터 틀
+View : 사용자에게 보여주는 UI부분을 담당 <br>
+ViewModel : View에서 사용하는 data처리 및 관리 <br>
+Model : DB저장소 접근 데이터 틀 <br>
 <br>
 ### MVVM특징
 - view와 viewmodel은 n:m 관계로 적용이 가능하다.
@@ -17,8 +17,8 @@ Model : DB저장소 접근 데이터 틀
 ## MiniPlayer
 본 프로젝트는 Kotlin과 MVVM구조, retrofit, RecyclerView 등 다양한 안드로이드 기술들을 이해하기 위해 진행한 프로젝트입니다. 
 <br>
-DataSet : 구글링 및 구매
-Tool & FrameWork : Android Studio, Firebase Console
+DataSet : 구글링 및 구매 <br>
+Tool & FrameWork : Android Studio, Firebase Console <br>
 Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveData, Glide
 <br><br>
 
