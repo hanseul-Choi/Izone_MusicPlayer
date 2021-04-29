@@ -65,7 +65,6 @@ spinner 선택시 음악 list가 바뀐다.<br>
 <br>
 <img src = "./img/KakaoTalk_20210429_231518297.jpg" width="40%" height="40%">
 
-다음은 리스트가 변경된 모습이다.<br>
 <br>
 <img src = "./img/KakaoTalk_20210429_231518134.jpg" width="40%" height="40%">
 
