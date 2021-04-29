@@ -40,27 +40,27 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveD
 
 ## 기능
 다음은 music player의 기능이다.
-<br>
+<br><br>
 ### Music List 
 ![List](./img/KakaoTalk_20210429_231518818.jpg)
-앱 초기화면으로 음악 리스트가 나열된다.
+앱 초기화면으로 음악 리스트가 나열된다.<br>
 <br>
 ![List](./img/KakaoTalk_20210429_231518620.jpg)
-draggable 가능
+draggable 가능<br>
 <br>
 ### Spinner 
 ![List](./img/KakaoTalk_20210429_231518454.jpg)
-spinner 선택시 음악 list가 바뀐다.
+spinner 선택시 음악 list가 바뀐다.<br>
 <br>
 ![List](./img/KakaoTalk_20210429_231518297.jpg)
-다음은 리스트가 변경된 모습이다.
+다음은 리스트가 변경된 모습이다.<br>
 <br>
 ![List](./img/KakaoTalk_20210429_231518134.jpg)
-다음은 리스트가 변경된 모습이다.
+다음은 리스트가 변경된 모습이다.<br>
 <br>
 ### 하단 플레이어
 ![List](./img/KakaoTalk_20210429_231517979.jpg)
-하단 플레이어로 album image, title, singer와 음악 멈춤 및 다음 노래 기능이 존재한다.
+하단 플레이어로 album image, title, singer와 음악 멈춤 및 다음 노래 기능이 존재한다.<br>
 <br>
 
 ### 추가 기능
