@@ -57,7 +57,7 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveD
 <br>
 <img src = "./img/KakaoTalk_20210429_231518620.jpg" width="40%" height="40%">
 
-draggable 가능<br>
+Scrolling 가능<br>
 <br><br>
 ### Spinner 
 
