@@ -13,6 +13,7 @@ Model : DB저장소 접근 데이터 틀 <br>
 - 효과적인 역할 분담과 테스트 용이성이 증가한다.
 
 <br>
+
 ## MiniPlayer
 본 프로젝트는 Kotlin과 MVVM구조, retrofit, RecyclerView 등 다양한 안드로이드 기술들을 이해하기 위해 진행한 프로젝트입니다. 
 <br>
