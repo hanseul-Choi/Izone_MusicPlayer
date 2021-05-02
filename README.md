@@ -14,7 +14,7 @@
 1. [Miniplayer - MiniPlayer](#MiniPlayer---MiniPlayer)
 2. [Miniplayer - 구조도](#MiniPlayer---구조도)
 3. [Miniplayer - 기능](#MiniPlayer---기능)
-<br>
+<br><br>
 
 # 기술
 
@@ -52,7 +52,7 @@ Model : DB저장소 접근 데이터 틀 <br>
 또한, 성능상으로도 retrofit이 AsyncTask보다 3~10배 가량 더 좋다. <br>
 Retrofit은 Callback과 Okhttp를 이용한 라이브러리이다.
 
-<br><br>
+<br><br><br>
 
 # 프로젝트
 
