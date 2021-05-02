@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     //viewModel & Adpater
     private val viewModelFactory: MusicViewModelFactory = MusicViewModelFactory(MusicRepository())
-    private val viewModel: MusicViewModel by viewModels {viewModelFactory}
+    private val viewModel: MusicViewModel by viewModels { viewModelFactory }
     private val fragmentViewModel: FragmentViewModel by viewModels()
     private lateinit var mMusicRepositoryAdapter: MusicRepositoryAdapter
 
@@ -51,13 +51,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun updateRepositories(repos: List<MusicItems>) {
-        if(::mMusicRepositoryAdapter.isInitialized && fragmentViewModel.musicListRepositories!!.value?.get(0)?.singer == repos[0].singer) { //초기화되었고, list가 저장된 것과 같다면
+        if (::mMusicRepositoryAdapter.isInitialized && fragmentViewModel.musicListRepositories!!.value?.get(
+                0
+            )?.singer == repos[0].singer
+        ) { //초기화되었고, list가 저장된 것과 같다면
             mMusicRepositoryAdapter.update(repos)
         } else {
             mMusicRepositoryAdapter = MusicRepositoryAdapter(repos).apply {
                 listener = object : MusicRepositoryAdapter.OnMusicClickListener {
                     override fun onItemClick(position: Int) {
-                        if(repos[0].singer != fragmentViewModel.musicListRepositories!!.value?.get(0)?.singer) {//list가 저장된 것과 다르다면
+                        if (repos[0].singer != fragmentViewModel.musicListRepositories!!.value?.get(
+                                0
+                            )?.singer
+                        ) {//list가 저장된 것과 다르다면
                             fragmentViewModel.setRepositories(repos)
                             aMBinding.amVSetmini.setHeight(300)
                         }
@@ -77,31 +83,35 @@ class MainActivity : AppCompatActivity() {
     fun initSpinnerSet() {
         //spinner set
         val items = resources.getStringArray(R.array.singer)
-        aMBinding.amSSingerList.adapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, items)
-        aMBinding.amSSingerList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                when(p2) {
-                    0 -> {
-                        //izone
-                        viewModel.requestIzoneRepositories()
-                    }
-                    1 -> {
-                        //omg
-                        viewModel.requestOhmygirlRepositories()
-                    }
-                    2 -> {
-                        //bts
-                        viewModel.requestBtsRepositories()
+        aMBinding.amSSingerList.adapter =
+            ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, items)
+        aMBinding.amSSingerList.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    when (p2) {
+                        0 -> {
+                            //izone
+                            viewModel.requestIzoneRepositories()
+                        }
+                        1 -> {
+                            //omg
+                            viewModel.requestOhmygirlRepositories()
+                        }
+                        2 -> {
+                            //bts
+                            viewModel.requestBtsRepositories()
+                        }
                     }
                 }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
             }
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-        }
     }
 
     fun setFragment() {
-        supportFragmentManager.beginTransaction().add(R.id.am_fl_miniplayer, MiniPlayerFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.am_fl_miniplayer, MiniPlayerFragment())
+            .commit()
     }
 
     //extension
