@@ -10,6 +10,8 @@
 
 <br>
 
+# 기술
+
 프로젝트 
 1. [Miniplayer - MiniPlayer](#MiniPlayer---MiniPlayer)
 2. [Miniplayer - 구조도](#MiniPlayer---구조도)
@@ -51,6 +53,8 @@ Model : DB저장소 접근 데이터 틀 <br>
 Retrofit은 Callback과 Okhttp를 이용한 라이브러리이다.
 
 <br>
+
+# 프로젝트
 
 ## MiniPlayer - MiniPlayer
 본 프로젝트는 Kotlin과 MVVM구조, retrofit, RecyclerView 등 다양한 안드로이드 기술들을 이해하기 위해 진행한 프로젝트입니다. 
