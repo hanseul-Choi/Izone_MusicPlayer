@@ -1,6 +1,10 @@
 # Toy Project - MiniPlayer
  _MVVM 구조 이해를 위한 개인 프로젝트_
 <br><br>
+
+## 목차
+1. [MVVM](#MVVM)
+
 ## MVVM
 Model, View, ViewModel로 구성된 안드로이드 아키텍쳐 패턴이다. MVC와 MVP의 의존성 및 유지보수성을 개선하기 위해 등장하였다.<br><br>
 View : 사용자에게 보여주는 UI부분을 담당 <br>
