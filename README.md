@@ -8,9 +8,9 @@
 2. [Kotlin?](#Kotlin)
 
 프로젝트 <br>
-1. [Miniplayer-개발이유](#MiniPlayer-:-개발이유)
-2. [Miniplayer-구조도](#MiniPlayer-:-구조도)
-3. [Miniplayer-기능](#MiniPlayer-:-기능)
+1. [Miniplayer-개발이유](#MiniPlayer(개발이유))
+2. [Miniplayer-구조도](#MiniPlayer(구조도))
+3. [Miniplayer-기능](#MiniPlayer---기능)
 
 ## MVVM
 Model, View, ViewModel로 구성된 안드로이드 아키텍쳐 패턴이다. MVC와 MVP의 의존성 및 유지보수성을 개선하기 위해 등장하였다.<br><br>
@@ -38,7 +38,7 @@ Model : DB저장소 접근 데이터 틀 <br>
  
 <br>
 
-## MiniPlayer : 개발이유
+## MiniPlayer(개발이유)
 본 프로젝트는 Kotlin과 MVVM구조, retrofit, RecyclerView 등 다양한 안드로이드 기술들을 이해하기 위해 진행한 프로젝트입니다. 
 
 <br>
@@ -47,7 +47,7 @@ Tool & FrameWork : Android Studio, Firebase Console <br>
 Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveData, Glide
 <br><br>
 
-## MiniPlayer : 구조도
+## MiniPlayer(구조도)
 다음은 제작한 프로젝트의 구조도이며, MVVM구조를 이해하기 위해 그린 그림이다. 
 <br>
 ### Network
@@ -70,7 +70,7 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveD
 <img src = "./img/Fragment구조도.PNG" width="90%" height="90%">
 <br><br>
 
-## MiniPlayer : 기능
+## MiniPlayer - 기능
 다음은 music player의 기능이다.
 <br><br>
 ### Music List 
