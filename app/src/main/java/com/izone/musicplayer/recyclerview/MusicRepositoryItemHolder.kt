@@ -23,7 +23,6 @@ class MusicRepositoryItemHolder(view: View, listener: MusicRepositoryAdapter.OnM
     }
 
     fun bind(model: MusicItems) {
-
         model.run {
             var storage: FirebaseStorage = FirebaseStorage.getInstance(fireBaseUri)
             var storageRef: StorageReference = storage.getReference()
