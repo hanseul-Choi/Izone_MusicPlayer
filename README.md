@@ -6,7 +6,6 @@
 기술 <br>
 1. [MVVM](#MVVM)
 2. [Kotlin?](#Kotlin)
-프로젝트 <br>
 3. [Miniplayer - 개발이유](#MiniPlayer-:-개발이유)
 4. [Miniplayer - 구조도](#MiniPlayer-:-구조도)
 5. [Miniplayer - 기능](#MiniPlayer-:-기능)
