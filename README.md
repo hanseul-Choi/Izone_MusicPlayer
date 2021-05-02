@@ -10,13 +10,13 @@
 
 <br>
 
-# 기술
-
 프로젝트 
 1. [Miniplayer - MiniPlayer](#MiniPlayer---MiniPlayer)
 2. [Miniplayer - 구조도](#MiniPlayer---구조도)
 3. [Miniplayer - 기능](#MiniPlayer---기능)
 <br>
+
+# 기술
 
 ## MVVM
 Model, View, ViewModel로 구성된 안드로이드 아키텍쳐 패턴이다. MVC와 MVP의 의존성 및 유지보수성을 개선하기 위해 등장하였다.<br><br>
