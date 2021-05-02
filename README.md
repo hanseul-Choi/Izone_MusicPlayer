@@ -3,12 +3,12 @@
 <br><br>
 
 ## 목차
-기술 <br>
+기술 
 1. [MVVM](#MVVM)
 2. [Kotlin](#Kotlin)
 3. [Retrofit](#Retrofit)
 
-프로젝트 <br>
+프로젝트 
 1. [Miniplayer - MiniPlayer](#MiniPlayer---MiniPlayer)
 2. [Miniplayer - 구조도](#MiniPlayer---구조도)
 3. [Miniplayer - 기능](#MiniPlayer---기능)
