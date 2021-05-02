@@ -32,7 +32,7 @@ class FragmentViewModel : ViewModel() {
     }
 
     fun setPosition(pos: Int) {
-        if(pos >= musicListRepositories.value!!.size) {
+        if (pos >= musicListRepositories.value!!.size) {
             _musicPosition.postValue(0)
         } else {
             _musicPosition.postValue(pos)
@@ -66,13 +66,13 @@ class FragmentViewModel : ViewModel() {
     fun ProcessUpdate() {
         mediaScope.launch {
             async(Dispatchers.IO) {
-                while(mediaPlayer.isPlaying) {
+                while (mediaPlayer.isPlaying) {
                     var curpos = mediaPlayer.currentPosition
                     var duration = mediaPlayer.duration
 
                     Log.d("curpos", "curpos : $curpos , duration : $duration")
 
-                    if(curpos >= duration - 10 && curpos != 0 && duration != 0) {
+                    if (curpos >= duration - 10 && curpos != 0 && duration != 0) {
                         Log.d("pos value", "pos value is ${musicPosition.value!!.plus(1)}")
                         setPosition(musicPosition.value!!.plus(1))
                         break
