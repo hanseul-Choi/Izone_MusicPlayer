@@ -8,7 +8,7 @@
 2. [Kotlin?](#Kotlin)
 
 프로젝트 <br>
-1. [Miniplayer - MiniPlayer?](#MiniPlayer---MiniPlayer?)
+1. [Miniplayer - MiniPlayer](#MiniPlayer---MiniPlayer)
 2. [Miniplayer - 구조도](#MiniPlayer---구조도)
 3. [Miniplayer - 기능](#MiniPlayer---기능)
 
@@ -38,7 +38,7 @@ Model : DB저장소 접근 데이터 틀 <br>
  
 <br>
 
-## MiniPlayer - MiniPlayer?
+## MiniPlayer - MiniPlayer
 본 프로젝트는 Kotlin과 MVVM구조, retrofit, RecyclerView 등 다양한 안드로이드 기술들을 이해하기 위해 진행한 프로젝트입니다. 
 
 <br>
