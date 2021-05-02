@@ -72,7 +72,7 @@ class FragmentViewModel : ViewModel() {
 
                     Log.d("curpos", "curpos : $curpos , duration : $duration")
 
-                    if (curpos >= duration - 10 && curpos != 0 && duration != 0) {
+                    if (curpos >= duration - 20 && curpos != 0 && duration != 0) {
                         Log.d("pos value", "pos value is ${musicPosition.value!!.plus(1)}")
                         setPosition(musicPosition.value!!.plus(1))
                         break
