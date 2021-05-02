@@ -14,7 +14,8 @@
 1. [Miniplayer - MiniPlayer](#MiniPlayer---MiniPlayer)
 2. [Miniplayer - 구조도](#MiniPlayer---구조도)
 3. [Miniplayer - 기능](#MiniPlayer---기능)
-<br><br>
+
+<br>
 
 # 기술
 
