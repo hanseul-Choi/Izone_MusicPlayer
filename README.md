@@ -5,7 +5,8 @@
 ## 목차
 기술 <br>
 1. [MVVM](#MVVM)
-2. [Kotlin?](#Kotlin)
+2. [Kotlin](#Kotlin)
+3. [Retrofit](#Retrofit)
 
 프로젝트 <br>
 1. [Miniplayer - MiniPlayer](#MiniPlayer---MiniPlayer)
