@@ -8,8 +8,8 @@
 2. [Kotlin?](#Kotlin)
 
 프로젝트 <br>
-1. [Miniplayer-개발이유](#MiniPlayer(개발이유))
-2. [Miniplayer-구조도](#MiniPlayer(구조도))
+1. [Miniplayer-개발이유](#MiniPlayer---개발이유)
+2. [Miniplayer-구조도](#MiniPlayer---구조도)
 3. [Miniplayer-기능](#MiniPlayer---기능)
 
 ## MVVM
@@ -38,7 +38,7 @@ Model : DB저장소 접근 데이터 틀 <br>
  
 <br>
 
-## MiniPlayer(개발이유)
+## MiniPlayer - 개발이유
 본 프로젝트는 Kotlin과 MVVM구조, retrofit, RecyclerView 등 다양한 안드로이드 기술들을 이해하기 위해 진행한 프로젝트입니다. 
 
 <br>
@@ -47,7 +47,7 @@ Tool & FrameWork : Android Studio, Firebase Console <br>
 Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveData, Glide
 <br><br>
 
-## MiniPlayer(구조도)
+## MiniPlayer - 구조도
 다음은 제작한 프로젝트의 구조도이며, MVVM구조를 이해하기 위해 그린 그림이다. 
 <br>
 ### Network
