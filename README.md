@@ -6,9 +6,11 @@
 기술 <br>
 1. [MVVM](#MVVM)
 2. [Kotlin?](#Kotlin)
-3. [Miniplayer - 개발이유](#MiniPlayer-:-개발이유)
-4. [Miniplayer - 구조도](#MiniPlayer-:-구조도)
-5. [Miniplayer - 기능](#MiniPlayer-:-기능)
+
+프로젝트 <br>
+1. [Miniplayer-개발이유](#MiniPlayer-:-개발이유)
+2. [Miniplayer-구조도](#MiniPlayer-:-구조도)
+3. [Miniplayer-기능](#MiniPlayer-:-기능)
 
 ## MVVM
 Model, View, ViewModel로 구성된 안드로이드 아키텍쳐 패턴이다. MVC와 MVP의 의존성 및 유지보수성을 개선하기 위해 등장하였다.<br><br>
