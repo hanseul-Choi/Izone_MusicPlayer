@@ -8,7 +8,7 @@
 2. [Kotlin?](#Kotlin)
 
 프로젝트 <br>
-1. [Miniplayer-개발이유](#MiniPlayer-:-개발이유)
+1. [Miniplayer-개발이유](#MiniPlayer : 개발이유)
 2. [Miniplayer-구조도](#MiniPlayer-:-구조도)
 3. [Miniplayer-기능](#MiniPlayer-:-기능)
 
