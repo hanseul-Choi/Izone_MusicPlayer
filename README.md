@@ -39,6 +39,16 @@ Model : DB저장소 접근 데이터 틀 <br>
  
 <br>
 
+## Retrofit
+서버로부터 데이터를 받아오는 작업으로 Networking 기능을 쉽게 사용하는 라이브러리이다.
+
+### Retrofit을 왜 사용하는가
+예전에는 Okhttp라이브러리와 AsyncTask를 통해 구현하였느나, AsyncTask가 deprecated되어 사용할 수 없게 된다. <br>
+또한, 성능상으로도 retrofit이 AsyncTask보다 3~10배 가량 더 좋다. <br>
+Retrofit은 Callback과 Okhttp를 이용한 라이브러리이다.
+
+<br>
+
 ## MiniPlayer - MiniPlayer
 본 프로젝트는 Kotlin과 MVVM구조, retrofit, RecyclerView 등 다양한 안드로이드 기술들을 이해하기 위해 진행한 프로젝트입니다. 
 
