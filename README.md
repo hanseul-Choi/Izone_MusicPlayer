@@ -151,3 +151,7 @@ _Contact me :_ &nbsp;
 <br>
 
 해당 프로젝트에는 API key가 내포되어 있어 보안상의 문제가 염려되어 채용절차가 끝난 후 비공개로 전환할 예정입니다. 참고 부탁드립니다.
+
+<br>
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fhanseul-Choi%2FIzone_MusicPlayer&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
