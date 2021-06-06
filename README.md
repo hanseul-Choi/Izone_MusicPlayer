@@ -51,7 +51,7 @@ Model : DB저장소 접근 데이터 틀 <br>
 
 ### Retrofit을 왜 사용하는가
 예전에는 Okhttp라이브러리와 AsyncTask를 통해 구현하였느나, AsyncTask가 deprecated되어 사용할 수 없게 된다. <br>
-또한, 성능상으로도 retrofit이 AsyncTask보다 3~10배 가량 더 좋다. <br>
+또한, retrofit은 성능상으로도 retrofit이 AsyncTask보다 3~10배 가량 더 좋다. <br>
 Retrofit은 Callback과 Okhttp를 이용한 라이브러리이다.
 
 <br>
@@ -149,9 +149,6 @@ _Contact me :_ &nbsp;
 [![Gmail Badge](https://img.shields.io/badge/Gmail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:hschoi5542@gmail.com)](mailto:hschoi5542@gmail.com)
 
 <br>
-
-해당 프로젝트에는 API key가 내포되어 있어 보안상의 문제가 염려되어 채용절차가 끝난 후 비공개로 전환할 예정입니다. 참고 부탁드립니다.
-
 <br>
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fhanseul-Choi%2FIzone_MusicPlayer&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
