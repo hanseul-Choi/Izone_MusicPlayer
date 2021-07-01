@@ -73,6 +73,8 @@ Non-blocking : 요청한 작업을 즉시 마칠 수 없다면 return하는 작�
 * 동기 비동기와의 차이점은 blocking/Non-blocking은 return을 언제하느냐의 관심사이고, 동기/비동기는 작업 완료 여부를 누가 보는지가 관심사이다. (작업 완료를 신경쓰지 않는다면 비동기)
 * 비슷한 개념으로 착각했었는데 면접관님께서 지적해주셨습니다. 감사합니다.
 
+<br>
+
 ### Thread vs Coroutine
 Thread : 자체적인 Stack 메모리를 가지며 JVM Stack 영역에 적재된다. <br>
 단위 = Thread <br>
