@@ -87,6 +87,17 @@ data class는 getter와 setter를 제공해주며 또한, 일반 클래스와 �
 let은 호출했던 객체를 다음 블럭의 인자로 전달하고 그 블록 함수의 결과를 반환한다. <br>
 let은 불필요한 변수 선언을 방지해준다. (변수의 범위를 제한, null이 아닌 코드를 실행하는 경우) <br>
 
+```
+getItem().let { item ->
+ // select의 파라미터를 이 블록으로 제한
+ shop.select(item)
+} 
+
+// message객체를 null이 아닌 경우에 
+message?.let {
+ Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+}
+```
 
 ## Retrofit
 서버로부터 데이터를 받아오는 작업으로 Networking 기능을 쉽게 사용하는 라이브러리이다.
