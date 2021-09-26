@@ -7,7 +7,9 @@
 1. [MVVM](#MVVM)
 2. [Kotlin](#Kotlin)
 3. [Retrofit](#Retrofit)
-
+4. RecyclerView
+5. DataBinding with MVVM
+6. LiveData
 
 <br>
 
