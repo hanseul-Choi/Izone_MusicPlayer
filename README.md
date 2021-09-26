@@ -53,7 +53,9 @@ AAC ViewModel은 구글에서 만들었으며, 앱의 configuration에 대응하
 즉, MVVM ViewModel과 달리 목적이 앱의 configuration에 대응하기 위한 목적을 띄고있다. <br>
 그렇다면? AAC ViewModel로 MVVM ViewModel을 만들어낼 수 없을까? 답은 "가능하다"이다. <br>
 실제로 많은 블로그에서 예시로 AAC ViewModel을 이용해 MVVM패턴을 만들어내고 있다.  <br>
-오히려 AAC ViewModel을 통해 만들게 되면, configuration에 대응도 되고 view의 라이프사이클에 맞추어 데이터 관리 기능도 추가가되는 좋은 효과를 불러올 수 있다. <br><br>
+오히려 AAC ViewModel을 통해 만들게 되면, configuration에 대응도 되고 view의 라이프사이클에 맞추어 데이터 관리 기능도 추가가되는 좋은 효과를 불러올 수 있다. <br>
+// AAC ViewModel lifecycle사진
+<br><br>
 하지만! 위에서 언급했듯이 MVVM패턴에서 View와 ViewModel은 1:m의 관계를 가지고 있다. 즉, 여러개의 ViewModel이 나올 수 있다. <br>
 그러나, AAC의 ViewModel은 실제로 Activity에 싱글톤으로 생성되어 1:1관계만을 가질 수 밖에 없게 된다. <br>
 결국, MVVM ViewModel에 AAC ViewModel을 적용할 수 있으나 View와 ViewModel이 1:1의 관계만을 갖게되며, 이는 Microsoft에서 제시한 MVVM 패턴의 목적과 맞지 않다고 볼 수 있다.
@@ -71,6 +73,20 @@ AAC ViewModel은 구글에서 만들었으며, 앱의 configuration에 대응하
 - 함수형 프로그래밍이다. = 함수의 유기적인 연결로 프로그래밍한다.      
  
 <br>
+
+### Data Class
+data class는 getter와 setter를 제공해주며 또한, 일반 클래스와 다르게 equals(), hashCode(), toString(), copy() 등을 제공해주고 있다. <br>
+많은 사람들이 헷갈려하고 있는 것이 일반 클래스에는 getter와 setter가 없다고 생각하는데 실제로 디컴파일해보면 getter와 setter메소드를 제공해주는 것을 확인할 수 있다. <br>
+그렇다면 data class는 왜 사용하는 것일까? 위에서 언급했듯이 equals와 hashcode 그리고 copy를 활용할 수 있기 때문에 해당 메소드들을 필요로 한다면 그 상황에 맞추어 사용하는 것이 좋다고 생각한다. <br>
+
+### Scope Function
+범위 지정 함수는 특정 객체에 있는 함수를 연속해서 사용하거나 함수로 전달하기 위해 사용하는 함수이다. <br>
+총 6가지로써 사용이 가능하다.
+
+#### let
+let은 호출했던 객체를 다음 블럭의 인자로 전달하고 그 블록 함수의 결과를 반환한다. <br>
+let은 불필요한 변수 선언을 방지해준다. (변수의 범위를 제한, null이 아닌 코드를 실행하는 경우) <br>
+
 
 ## Retrofit
 서버로부터 데이터를 받아오는 작업으로 Networking 기능을 쉽게 사용하는 라이브러리이다.
