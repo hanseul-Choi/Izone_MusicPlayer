@@ -40,7 +40,7 @@ Model : DB저장소 접근 데이터 틀 <br>
 그러나, AAC의 ViewModel과 MVVM ViewModel은 전혀 다르다. <br>
 
 ### MVVM ViewModel
-MVVM에서의 ViewModel역할은 View와 Model사이의 데이터를 관리하는 역할을 하고 있다. <br>
+MVVM에서의 ViewModel역할은 View와 Model사이의 데이터를 관리하는 역할이다. <br>
 MVVM에서의 View는 화면에 표현되는 레이아웃을 관리하는 역할을 하며, ViewModel은 View와 연결한 데이터와 명령을 구성하고 이에 대한 변경을 View에게 알려주는 역할을 한다. <br>
 // Microsoft의 View와 ViewModel의 관계도 <br>
 결국, ViewModel은 Model은 알지만 View는 모르고, View는 ViewModel은 알지만 Model은 모르고 있다. <br>
@@ -86,7 +86,7 @@ Retrofit은 Callback과 Okhttp를 이용한 라이브러리이다.
 # 프로젝트
 
 ## MiniPlayer - MiniPlayer
-본 프로젝트는 Kotlin과 MVVM구조, retrofit, RecyclerView 등 다양한 안드로이드 기술들을 이해하기 위해 진행한 프로젝트입니다. 
+본 프로젝트는 처음으로 Kotlin을 이용하여 만든 Android app이며 구글에서 밀고 있는 Jetpack 라이브러리를 활용해보기위한 경험과 앱의 유지보수성을 높이기 위한 아키텍처 패턴인 MVVM을 적용하기 위한 프로젝트이다. 학습의 목적으로 다양한 기술들의 경험과 현재 유행하는 아키텍처 패턴을 경험함으로써 신기술에 대응하고 길게 사용할 수 있는 앱을 만드는 것을 목적으로 한다.
 
 <br>
 DataSet : 구글링 및 구매 <br>
