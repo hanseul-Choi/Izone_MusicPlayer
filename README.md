@@ -158,7 +158,7 @@ data class는 getter와 setter를 제공해주며 또한, 일반 클래스와 �
 
 #### let
 let은 호출했던 객체를 다음 블럭의 인자로 전달하고 그 블록 함수의 결과를 반환한다. <br>
-let은 불필요한 변수 선언을 방지해준다. (변수의 범위를 제한, null이 아닌 코드를 실행하는 경우) <br>
+또한, 불필요한 변수 선언을 방지해주는 역할을 해준다. (변수의 범위를 제한, null이 아닌 코드를 실행하는 경우) <br>
 
 ```
 getItem().let { item ->
@@ -171,6 +171,28 @@ message?.let {
  Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
 }
 ```
+
+#### also
+also는 수신 객체를 전혀 사용하지 않거나 속성을 변경하지 않는 경우에 사용된다. <br>
+또한, 수신 객체를 반환하고 있기 때문에 자기자신이 필요한 초기화에서도 사용된다. <br>
+
+```
+message.also { //message객체를 변화하지않고 사용
+ isMessage(it)
+ print(it)
+}
+```
+
+#### Scope Function 케이스별 선택
+- Null이 아닌 객체에서 람다함수 실행 : **let**
+- 로컬 범위에서 변수로 표현식 소개 : **let**
+- 객체 구성 : **apply**
+- 객체 구성 및 결과 계산 : **run**
+- 식이 필요한 실행 문 : non-extension **run**
+- 추가 효과 : **also**
+- 객체에 대한 그룹화 함수 호출 : **with**
+
+출처 : [코틀린 scope function 비교 및 상황별 함수 선택](https://ykkdev.tistory.com/4)
 
 ## Retrofit
 서버로부터 데이터를 받아오는 작업으로 Networking 기능을 쉽게 사용하는 라이브러리이다.
