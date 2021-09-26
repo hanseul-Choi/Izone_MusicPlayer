@@ -59,18 +59,16 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide
 
 ### Music List 
 
-<img src = "./img/main.PNG" width="40%" height="40%">
+<img src = "./img/main.PNG" width="80%" height="80%"> |<img src = "./img/scrolling.PNG" width="80%" height="80%">
+--- | --- | 
 
-앱 초기화면으로 음악 리스트가 나열된다.<br>
-<br>
-<img src = "./img/scrolling.PNG" width="40%" height="40%">
+앱 초기화면으로 음악 리스트가 나열된다.
 
-Scrolling 가능<br>
 <br><br>
 
 ### Spinner 
 
-<img src = "./img/spinner.PNG" width="70%" height="70%"> |<img src = "./img/spinner_change.PNG" width="70%" height="70%">
+<img src = "./img/spinner.PNG" width="80%" height="80%"> |<img src = "./img/spinner_change.PNG" width="80%" height="80%">
 --- | --- | 
 
 spinner 선택시 음악 list가 바뀐다.
