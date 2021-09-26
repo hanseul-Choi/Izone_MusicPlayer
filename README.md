@@ -45,9 +45,20 @@ MVVM에서의 View는 화면에 표현되는 레이아웃을 관리하는 역할
 // Microsoft의 View와 ViewModel의 관계도 <br>
 결국, ViewModel은 Model은 알지만 View는 모르고, View는 ViewModel은 알지만 Model은 모르고 있다. <br>
 이런 코드는 결국 서로간의 의존 형태를 지속하기 때문에 Microsoft에서는 DataBinding을 필수로 두고 있다. <br>
-DataBinding은 View와 ViewModel간의 데이터와 명령을 연결해주는 매개체로 서로의 존재를 모르더라도 상호작용을 도와주는 역할을 하고 있다. 
+DataBinding은 View와 ViewModel간의 데이터와 명령을 연결해주는 매개체로 서로의 존재를 모르더라도 상호작용을 도와주는 역할을 하고 있다. <br>
+이런 매개체 역할이 의존성을 낮추게 도와주고 있다.
+<br>
 
 ### AAC ViewModel
+AAC ViewModel은 구글에서 만들었으며, 앱의 configuration에 대응하여 View의 데이터를 보관하고 있고 View의 lifecycle을 알고 있다. <br>
+즉, MVVM ViewModel과 달리 목적이 앱의 configuration에 대응하기 위한 목적을 띄고있다. <br>
+그렇다면? AAC ViewModel로 MVVM ViewModel을 만들어낼 수 없을까? 답은 "가능하다"이다. <br>
+실제로 많은 블로그에서 예시로 AAC ViewModel을 이용해 MVVM패턴을 만들어내고 있다.  <br>
+오히려 AAC ViewModel을 통해 만들게 되면, configuration에 대응도 되고 view의 라이프사이클에 맞추어 데이터 관리 기능도 추가가되는 좋은 효과를 불러올 수 있다. <br>
+하지만! 위에서 언급했듯이 MVVM패턴에서 View와 ViewModel은 1:m의 관계를 가지고 있다. 즉, 여러개의 ViewModel이 나올 수 있다. <br>
+그러나, AAC의 ViewModel은 실제로 Activity에 싱글톤으로 생성되어 1:1관계만을 가질 수 밖에 없게 된다. <br>
+결국, MVVM ViewModel에 AAC ViewModel을 적용할 수 있으나 View와 ViewModel이 1:1의 관계만을 갖게되며, 이는 Microsoft에서 제시한 MVVM 패턴의 목적과 맞지 않다고 볼 수 있다.
+<br>
 
 ## Kotlin
 - 정적 타입 언어이면서 자료형 추론이 가능하다.
