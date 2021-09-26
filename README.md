@@ -70,12 +70,12 @@ Scrolling 가능<br>
 ### Spinner 
 
 <img src = "./img/spinner.PNG" width="40%" height="40%">
-
-spinner 선택시 음악 list가 바뀐다.<br>
-<br>
 <img src = "./img/spinner_change.PNG" width="40%" height="40%">
 
+spinner 선택시 음악 list가 바뀐다.
+
 <br><br>
+
 ### 하단 플레이어
 
 <img src = "./img/miniplayer.PNG" width="40%" height="40%">
