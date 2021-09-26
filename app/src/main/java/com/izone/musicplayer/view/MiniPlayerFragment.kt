@@ -1,7 +1,6 @@
 package com.izone.musicplayer.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,17 +13,16 @@ import com.google.firebase.storage.StorageReference
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.FragmentMiniplayerBinding
 import com.izone.musicplayer.model.MusicItems
-import com.izone.musicplayer.viewmodel.FragmentViewModel
-import java.lang.Exception
+import com.izone.musicplayer.viewmodel.MainViewModel
 
 class MiniPlayerFragment : Fragment() {
 
     lateinit var fMbinding: FragmentMiniplayerBinding
-    private val fragmentViewModel: FragmentViewModel by activityViewModels()
     private var fireBase_BaseUri = "gs://musicplayer-e17d2.appspot.com/"
 
     lateinit var list: List<MusicItems>
     private var pos = 0
+    private val viewModel : MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,16 +37,15 @@ class MiniPlayerFragment : Fragment() {
         return fMbinding.root
     }
 
-    fun setFragmentViewModelListener() {
-        fragmentViewModel.musicListRepositories.observe(requireActivity()) {
+    private fun setFragmentViewModelListener() {
+        viewModel.musicList.observe(requireActivity()) {
             list = it.toMutableList()
         }
 
-        fragmentViewModel.musicPosition.observe(viewLifecycleOwner) {
+        viewModel.musicPosition.observe(viewLifecycleOwner) {
             pos = it
 
             //position을 건들였을 때는 무조건 play 상태
-
             fMbinding.fmIvPlay.visibility = View.INVISIBLE
             fMbinding.fmIvStop.visibility = View.VISIBLE
 
@@ -65,28 +62,28 @@ class MiniPlayerFragment : Fragment() {
 
             //set music
             storageRef.child(list[pos].music).downloadUrl.addOnSuccessListener { uri ->
-                fragmentViewModel.setMusic(uri.toString())
+                viewModel.setMusic(uri.toString())
             }
         }
     }
 
-    fun setButtonClickListener() {
+    private fun setButtonClickListener() {
         fMbinding.fmIvPlay.setOnClickListener {
             fMbinding.fmIvPlay.visibility = View.INVISIBLE
             fMbinding.fmIvStop.visibility = View.VISIBLE
 
-            fragmentViewModel.playMusic()
+            viewModel.playMusic()
         }
 
         fMbinding.fmIvStop.setOnClickListener {
             fMbinding.fmIvPlay.visibility = View.VISIBLE
             fMbinding.fmIvStop.visibility = View.INVISIBLE
 
-            fragmentViewModel.stopMusic()
+            viewModel.stopMusic()
         }
 
         fMbinding.fmIvNext.setOnClickListener {
-            fragmentViewModel.setPosition(pos+1)
+            viewModel.setPosition(pos+1)
         }
     }
 }

@@ -1,23 +1,23 @@
 package com.izone.musicplayer.recyclerview
 
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.izone.musicplayer.R
+import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
 
-class MusicRepositoryItemHolder(view: View, listener: MusicRepositoryAdapter.OnMusicClickListener?) : RecyclerView.ViewHolder(view) {
-    private val iv_album: ImageView = view.findViewById(R.id.ia_iv_album)
-    private val tv_title: TextView = view.findViewById(R.id.ia_tv_title)
-    private val tv_singer: TextView = view.findViewById(R.id.ia_tv_sub_title)
+class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickListener?, itemAlbumBinding: ItemAlbumBinding) :
+    RecyclerView.ViewHolder(itemAlbumBinding.root) {
+
+    private val iaBinding: ItemAlbumBinding = itemAlbumBinding
+
     private val fireBaseUri = "gs://musicplayer-e17d2.appspot.com/"
 
     init {
-        view.setOnClickListener {
+        iaBinding.root.setOnClickListener {
+            Log.d("test","adapterposition : $adapterPosition")
             listener?.onItemClick(adapterPosition)
         }
     }
@@ -25,12 +25,14 @@ class MusicRepositoryItemHolder(view: View, listener: MusicRepositoryAdapter.OnM
     fun bind(model: MusicItems) {
         model.run {
             var storage: FirebaseStorage = FirebaseStorage.getInstance(fireBaseUri)
-            var storageRef: StorageReference = storage.getReference()
+            var storageRef: StorageReference = storage.reference
+
             storageRef.child(album).downloadUrl.addOnSuccessListener {
-                Glide.with(itemView).load(it).into(iv_album)
+                Glide.with(itemView).load(it).into(iaBinding.iaIvAlbum)
             }
-            tv_title.text = title
-            tv_singer.text = singer
+
+            iaBinding.iaTvTitle.text = title
+            iaBinding.iaTvSubTitle.text = singer
         }
     }
 }

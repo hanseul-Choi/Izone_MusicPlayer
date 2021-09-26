@@ -2,9 +2,8 @@ package com.izone.musicplayer.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.izone.musicplayer.R
+import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
 
 class MusicRepositoryAdapter(private var repositories: List<MusicItems>) : RecyclerView.Adapter<MusicRepositoryItemHolder>() {
@@ -14,23 +13,18 @@ class MusicRepositoryAdapter(private var repositories: List<MusicItems>) : Recyc
 
     var listener: OnMusicClickListener? = null
 
+    fun setItemListener(itemListener: OnMusicClickListener) {
+        listener = itemListener
+    }
+
     override fun getItemCount(): Int = repositories.size
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicRepositoryItemHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_album, parent, false)
+        val binding = ItemAlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return MusicRepositoryItemHolder(view, listener)
+        return MusicRepositoryItemHolder(listener, binding)
     }
 
     override fun onBindViewHolder(holder: MusicRepositoryItemHolder, position: Int) {
         holder.bind(repositories[position])
-    }
-
-    //update
-    fun update(updated: List<MusicItems>) {
-        val diff = MusicRepositoryDiffCallback(repositories, updated)
-        val diffResult = DiffUtil.calculateDiff(diff)
-        repositories = updated
-        diffResult.dispatchUpdatesTo(this)
     }
 }
