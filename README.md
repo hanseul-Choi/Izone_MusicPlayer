@@ -37,7 +37,17 @@ Model : DB저장소 접근 데이터 틀 <br>
 
 ## AAC ViewModel vs MVVM ViewModel
 많은 사람들이 착각하는 것이 AAC ViewModel과 MVVM ViewModel이 같다고 생각하는 것이다. <br>
-MVVM ViewModel은 View와 Model사이의 데이터를 관리하는 역할을 하고있다.
+그러나, AAC의 ViewModel과 MVVM ViewModel은 전혀 다르다. <br>
+
+### MVVM ViewModel
+MVVM에서의 ViewModel역할은 View와 Model사이의 데이터를 관리하는 역할을 하고 있다. <br>
+MVVM에서의 View는 화면에 표현되는 레이아웃을 관리하는 역할을 하며, ViewModel은 View와 연결한 데이터와 명령을 구성하고 이에 대한 변경을 View에게 알려주는 역할을 한다. <br>
+// Microsoft의 View와 ViewModel의 관계도 <br>
+결국, ViewModel은 Model은 알지만 View는 모르고, View는 ViewModel은 알지만 Model은 모르고 있다. <br>
+이런 코드는 결국 서로간의 의존 형태를 지속하기 때문에 Microsoft에서는 DataBinding을 필수로 두고 있다. <br>
+DataBinding은 View와 ViewModel간의 데이터와 명령을 연결해주는 매개체로 서로의 존재를 모르더라도 상호작용을 도와주는 역할을 하고 있다. 
+
+### AAC ViewModel
 
 ## Kotlin
 - 정적 타입 언어이면서 자료형 추론이 가능하다.
