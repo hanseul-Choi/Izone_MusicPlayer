@@ -7,7 +7,6 @@
 1. [MVVM](#MVVM)
 2. [Kotlin](#Kotlin)
 3. [Retrofit](#Retrofit)
-4. [Coroutine](#Coroutine)
 
 
 <br>
@@ -54,34 +53,6 @@ Model : DB저장소 접근 데이터 틀 <br>
 예전에는 Okhttp라이브러리와 AsyncTask를 통해 구현하였느나, AsyncTask가 deprecated되어 사용할 수 없게 된다. <br>
 또한, retrofit은 성능상으로도 retrofit이 AsyncTask보다 3~10배 가량 더 좋다. <br>
 Retrofit은 Callback과 Okhttp를 이용한 라이브러리이다.
-
-<br>
-
-## Coroutine
-동시성 프로그래밍으로 context Switching시 overhead가 작은 일종의 경량 스레드이다. (스레드 안의 작업의 단위)
-
-### 동기 vs 비동기
-동기 : 요청을 보낸후 반환값을 얻기 전까지 대기한다. = Synchronous <br>
-비동기 : 요청을 보내고 대기시간동안 다른 일을 수행한다. = Asynchronous , Coroutine은 비동기
-
-<br>
-
-### blocking vs Non-blocking
-blocking : 요청한 작업을 마칠 때까지 계속 대기하는 작업. return 값을 받을 때까지 진행한다. <br>
-Non-blocking : 요청한 작업을 즉시 마칠 수 없다면 return하는 작업 
-<br>
-* 동기 비동기와의 차이점은 blocking/Non-blocking은 return을 언제하느냐의 관심사이고, 동기/비동기는 작업 완료 여부를 누가 보는지가 관심사이다. (작업 완료를 신경쓰지 않는다면 비동기)
-* 비슷한 개념으로 착각했었는데 면접관님께서 지적해주셨습니다. 감사합니다.
-
-<br>
-
-### Thread vs Coroutine
-Thread : 자체적인 Stack 메모리를 가지며 JVM Stack 영역에 적재된다. <br>
-단위 = Thread <br>
-Coroutine : 다수의 작업에 Object를 할당하며, JVM Heap 영역에 적재된다. Context Switching시점을 개발자가 정한다. <br>
-단위 = Object <br>
-
-=> 코루틴은 스레드를 잘게 잘라 사용하는 개념이다.
 
 <br><br><br>
 
