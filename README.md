@@ -25,9 +25,9 @@
 본 프로젝트는 처음으로 Kotlin을 이용하여 만든 Android app이며 구글에서 밀고 있는 Jetpack 라이브러리를 활용해보기위한 경험과 앱의 유지보수성을 높이기 위한 아키텍처 패턴인 MVVM을 적용하기 위한 프로젝트이다. 학습의 목적으로 다양한 기술들의 경험과 현재 유행하는 아키텍처 패턴을 경험함으로써 신기술에 대응하고 길게 사용할 수 있는 앱을 만드는 것을 목적으로 한다.
 
 <br>
-DataSet : 구글링 및 구매 <br>
-Tool & FrameWork : Android Studio, Firebase Console <br>
-Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide
+*DataSet : 구글링 및 구매* <br>
+*Tool & FrameWork : Android Studio, Firebase Console* <br>
+*Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide*
 <br><br>
 
 ## MiniPlayer - 구조도
