@@ -93,7 +93,7 @@ Coroutine : 다수의 작업에 Object를 할당하며, JVM Heap 영역에 적�
 <br>
 DataSet : 구글링 및 구매 <br>
 Tool & FrameWork : Android Studio, Firebase Console <br>
-Technology : Kotlin, MVVM, Retrofit, RecyclerView, Coroutine, DataBinding, LiveData, Glide
+Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide
 <br><br>
 
 ## MiniPlayer - 구조도
