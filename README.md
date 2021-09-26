@@ -35,6 +35,10 @@ Model : DB저장소 접근 데이터 틀 <br>
 
 <br>
 
+## AAC ViewModel vs MVVM ViewModel
+많은 사람들이 착각하는 것이 AAC ViewModel과 MVVM ViewModel이 같다고 생각하는 것이다. <br>
+MVVM ViewModel은 View와 Model사이의 데이터를 관리하는 역할을 하고있다.
+
 ## Kotlin
 - 정적 타입 언어이면서 자료형 추론이 가능하다.
 - 코틀린 컴파일러가 컴파일시 자바 바이트 코드를 생성한다. = 자바와 호환성이 좋다.
