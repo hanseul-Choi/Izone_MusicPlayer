@@ -179,6 +179,51 @@ message.also { //message객체를 변화하지않고 사용
 }
 ```
 
+#### run
+run은 익명함수의 형태와 객체에서 호출하는 형태를 제공하고 있다. 또한, block안의 함수들을 호출하고 그 결과를 반환환다.
+
+```
+val sum = run {
+ val a = 10
+ val b = 20
+ 
+ a + b
+}
+```
+<br>
+또한, run은 안전한 호출이 가능하여 null일 수 있는 객체의 속성이나 함수의 연속적 접근이 매우 유용하다.
+```
+saveInstanceState?.run {
+ val test1 = getInt("test1")
+ val test2 = getString("test2")
+ 
+ //...
+}
+```
+#### with
+인자로 받은 객체를 블록의 리시버로 전달한다. <br>
+안전한 호출이 안되기 때문에 널 값이 아니어야만 사용이 가능하고 결과가 필요 없을 때 사용한다.
+```
+val testCode: Test = getTest()
+with(testCode) {
+ // test1과 test2는 TEST객체의 멤버변수
+ print(test1)
+ print(test2)
+}
+```
+
+#### apply
+apply함수는 호출한 객체를 바로 다음 블럭 리시버로 전달한다. <br>
+내부에서 수신 객체의 함수를 사용하지 않고 자기 자신을 다시 반환하려고 할 때 사용한다.
+
+```
+// 대표 예제 - 객체 초기화
+val person = Person().apply {
+ name = "choi"
+ age = 26
+}
+```
+ 
 #### Scope Function 케이스별 선택
 - Null이 아닌 객체에서 람다함수 실행 : **let**
 - 로컬 범위에서 변수로 표현식 소개 : **let**
@@ -194,9 +239,10 @@ message.also { //message객체를 변화하지않고 사용
 서버로부터 데이터를 받아오는 작업으로 Networking 기능을 쉽게 사용하는 라이브러리이다.
 
 ### Retrofit을 왜 사용하는가
-예전에는 Okhttp라이브러리와 AsyncTask를 통해 구현하였느나, AsyncTask가 deprecated되어 사용할 수 없게 된다. <br>
-또한, retrofit은 성능상으로도 retrofit이 AsyncTask보다 3~10배 가량 더 좋다. <br>
-Retrofit은 Callback과 Okhttp를 이용한 라이브러리이다.
+예전에는 Okhttp라이브러리와 AsyncTask를 통해 구현하였느나, AsyncTask가 deprecated되어 사용할 수 없게 된다. <brㄱ>
+Retrofit은 AsyncTask대신 Callback을 이용하여 Network연결을 도와주었다. <br>
+따라서, Network 연결 부분을 자동으로 관리해주는 retrofit이 Android App에서 자주 사용되고 있다.<br>
+또한, retrofit은 성능상으로도 AsyncTask를 사용한 것보다 3~10배 가량 더 좋다. <br>
 
 <br><br><br>
 _Contact me :_ &nbsp; 
