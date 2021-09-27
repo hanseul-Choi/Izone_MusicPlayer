@@ -190,8 +190,11 @@ val sum = run {
  a + b
 }
 ```
+
 <br>
+
 또한, run은 안전한 호출이 가능하여 null일 수 있는 객체의 속성이나 함수의 연속적 접근이 매우 유용하다.
+
 ```
 saveInstanceState?.run {
  val test1 = getInt("test1")
@@ -200,9 +203,11 @@ saveInstanceState?.run {
  //...
 }
 ```
+
 #### with
 인자로 받은 객체를 블록의 리시버로 전달한다. <br>
 안전한 호출이 안되기 때문에 널 값이 아니어야만 사용이 가능하고 결과가 필요 없을 때 사용한다.
+
 ```
 val testCode: Test = getTest()
 with(testCode) {
@@ -223,7 +228,7 @@ val person = Person().apply {
  age = 26
 }
 ```
- 
+
 #### Scope Function 케이스별 선택
 - Null이 아닌 객체에서 람다함수 실행 : **let**
 - 로컬 범위에서 변수로 표현식 소개 : **let**
