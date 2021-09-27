@@ -275,7 +275,7 @@ ViewHolder는 목록에 있는 개별 항목의 Layout을 포함하는 View의 �
 - getItemCount() : RecyclerView가 데이터 셋 크기를 가져올 때 호출한다.(이 항목을 이용하여 추가로 표시할게 있는지 확인한다.)
 
 ### 실제 호출 확인
-<img src = "./img/RecyclerView_adapter_호출.png" width="90%" height="90%">
+<img src = "./img/RecyclerView_adapter_호출.PNG" width="90%" height="90%">
 실제 RecyclerView에서 getItemCount()로 목록의 개수를 확인하고 onCreateViewHolder() View를 생성한뒤 onBindViewHolder()로 데이터를 View에 연결해주고 있었다.
 
 ## LiveData
