@@ -244,8 +244,10 @@ val person = Person().apply {
 서버로부터 데이터를 받아오는 작업으로 Networking 기능을 쉽게 사용하는 라이브러리이다.
 
 ### Retrofit을 왜 사용하는가
-예전에는 Okhttp라이브러리와 AsyncTask를 통해 구현하였느나, AsyncTask가 deprecated되어 사용할 수 없게 된다. <br>
-_여담으로 AsyncTask는 context누수나 Callback을 놓치는 다양한 오류가 발생되어 API30에서부터 deprecate되었다._ <br>
+예전에는 Okhttp라이브러리와 AsyncTask를 통해 구현하였느나, AsyncTask가 deprecated되어 사용할 수 없게 된다. <br><br>
+
+_* 여담으로 AsyncTask는 context누수나 Callback을 놓치는 다양한 오류가 발생되어 API30에서부터 deprecate되었다._ <br><br>
+
 Retrofit은 AsyncTask대신 Callback을 이용하여 Network연결을 도와주었다. <br>
 따라서, Network 연결 부분을 자동으로 관리해주는 retrofit이 Android App에서 자주 사용되고 있다.<br>
 또한, retrofit은 성능상으로도 AsyncTask를 사용한 것보다 3~10배 가량 더 좋다. <br>
