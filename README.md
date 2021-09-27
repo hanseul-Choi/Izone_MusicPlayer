@@ -110,7 +110,7 @@ Model : DB저장소 접근 데이터 틀 <br>
 ### MVVM ViewModel
 MVVM에서의 ViewModel역할은 View와 Model사이의 데이터를 관리하는 역할이다. <br>
 MVVM에서의 View는 화면에 표현되는 레이아웃을 관리하는 역할을 하며, ViewModel은 View와 연결한 데이터와 명령을 구성하고 이에 대한 변경을 View에게 알려주는 역할을 한다. <br>
-<img src = "./img/MVVM_ViewModel.png" width="90%" height="90%">
+<img src = "./img/MVVM_ViewModel.png" width="80%" height="80%">
 <br>
 결국, ViewModel은 Model은 알지만 View는 모르고, View는 ViewModel은 알지만 Model은 모르고 있다. <br>
 이런 코드는 결국 서로간의 의존 형태를 지속하기 때문에 Microsoft에서는 DataBinding을 필수로 두고 있다. <br>
@@ -124,7 +124,7 @@ AAC ViewModel은 구글에서 만들었으며, 앱의 configuration에 대응하
 그렇다면? AAC ViewModel로 MVVM ViewModel을 만들어낼 수 없을까? 답은 "가능하다"이다. <br>
 실제로 많은 블로그에서 예시로 AAC ViewModel을 이용해 MVVM패턴을 만들어내고 있다.  <br>
 오히려 AAC ViewModel을 통해 만들게 되면, configuration에 대응도 되고 view의 라이프사이클에 맞추어 데이터 관리 기능도 추가가되는 좋은 효과를 불러올 수 있다. <br>
-<img src = "./img/AAC_ViewModel.png" width="90%" height="90%">
+<img src = "./img/AAC_ViewModel.png" width="70%" height="70%">
 <br><br>
 하지만! 위에서 언급했듯이 MVVM패턴에서 View와 ViewModel은 1:m의 관계를 가지고 있다. 즉, 여러개의 ViewModel이 나올 수 있다. <br>
 그러나, AAC의 ViewModel은 실제로 Activity에 싱글톤으로 생성되어 1:1관계만을 가질 수 밖에 없게 된다. <br>
@@ -275,7 +275,7 @@ ViewHolder는 목록에 있는 개별 항목의 Layout을 포함하는 View의 �
 - getItemCount() : RecyclerView가 데이터 셋 크기를 가져올 때 호출한다.(이 항목을 이용하여 추가로 표시할게 있는지 확인한다.)
 
 ### 실제 호출 확인
-<img src = "./img/RecyclerView_adapter_호출" width="90%" height="90%">
+<img src = "./img/RecyclerView_adapter_호출.png" width="90%" height="90%">
 실제 RecyclerView에서 getItemCount()로 목록의 개수를 확인하고 onCreateViewHolder() View를 생성한뒤 onBindViewHolder()로 데이터를 View에 연결해주고 있었다.
 
 ## LiveData
