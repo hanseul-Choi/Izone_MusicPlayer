@@ -75,8 +75,8 @@ RecyclerView는 scrolling이 가능하고 노래를 선택하면 하단의 minip
 <img src = "./img/spinner.PNG" width="60%" height="60%"> |<img src = "./img/spinnerChanged.png">
 --- | --- | 
 
-_왼쪽 화면은 Spinner를 선택했을때 나오는 메뉴들이고, 오른쪽 화면은 Spinner 메뉴 중 오마이걸을 선택했을 때 나오는 화면이다._
-
+_왼쪽 화면은 Spinner를 선택했을때 나오는 메뉴들이고, 오른쪽 화면은 Spinner 메뉴 중 오마이걸을 선택했을 때 나오는 화면이다._ <br>
+Spinner를 click시 왼쪽과 같이 메뉴들이 나오며 메뉴를 선택하면 아래의 RecyclerView의 데이터들이 업데이트 된다. 
 
 <br><br>
 
@@ -84,13 +84,16 @@ _왼쪽 화면은 Spinner를 선택했을때 나오는 메뉴들이고, 오른�
 
 <img src = "./img/miniplayer.PNG" width="30%" height="30%">
 
-하단 플레이어로 album image, title, singer와 음악 멈춤 및 다음 노래 기능이 존재한다.<br>
+_하단 플레이어를 확인할 수 있다._
+
+하단 플레이어는 앨범 이미지나 title의 정보와 재생 및 멈춤 그리고 다음 음악의 버튼을 보여주고 있다. 하단 플레이어는 Fragment로 구현했으며 노래를 클릭하면 View.Visible을 주어 하단 플레이어가 나타날 수 있게 한다.<br>
+
 <br><br>
 
 ### 추가 기능
-- 모든 음악은 끝나면 다음 노래로 자동으로 넘어간다. -> coroutine을 통해 mediaplayer의 state를 들어 노래가 끝나면 자동으로 다음 노래로 넘긴다.
+- 모든 음악은 끝나면 다음 노래로 자동으로 넘어간다. -> thread를 통해 mediaplayer의 state정보를 듣고 있어 duration과 current duration을 체크해, duration에 도달하면 자동으로 다음 노래로 넘기고 있다.
 - 마지막 음악에서 다음 노래로 넘어가는 경우 첫 음악으로 돌아간다.
-- 음악을 듣다가 spinner로 가수 목록을 변경해도 전 가수의 노래list가 loop된다. 
+- 음악을 듣다가 spinner로 가수 목록을 변경해도 전 가수의 노래 list가 loop되고 있다. (보이는 가수 목록과는 관계 없이 선택했을 때의 가수 음악 리스트에 초점을 맞춘다.) 
 <br><br><br>
 
 # 기술
