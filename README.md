@@ -15,8 +15,9 @@
 1. [MVVM](#MVVM)
 2. [Kotlin](#Kotlin)
 3. [Retrofit](#Retrofit)
-4. RecyclerView
-5. LiveData
+4. [RecyclerView](#RecyclerView)
+5. [LiveData](#LiveData)
+
 <br>
 
 # 프로젝트
@@ -128,7 +129,8 @@ AAC ViewModel은 구글에서 만들었으며, 앱의 configuration에 대응하
 <br><br>
 하지만! 위에서 언급했듯이 MVVM패턴에서 View와 ViewModel은 1:m의 관계를 가지고 있다. 즉, 여러개의 ViewModel이 나올 수 있다. <br>
 그러나, AAC의 ViewModel은 실제로 Activity에 싱글톤으로 생성되어 1:1관계만을 가질 수 밖에 없게 된다. <br>
-결국, MVVM ViewModel에 AAC ViewModel을 적용할 수 있으나 View와 ViewModel이 1:1의 관계만을 갖게되며, 이는 Microsoft에서 제시한 MVVM 패턴의 목적과 맞지 않다고 볼 수 있다.
+결국, MVVM ViewModel에 AAC ViewModel을 적용할 수 있으나 View와 ViewModel이 1:1의 관계만을 갖게되며, 이는 Microsoft에서 제시한 MVVM 패턴의 목적과 맞지 않다고 볼 수 있다.<br>
+
 <br>
 
 ## Kotlin
@@ -239,7 +241,9 @@ val person = Person().apply {
 - 추가 효과 : **also**
 - 객체에 대한 그룹화 함수 호출 : **with**
 
-출처 : [코틀린 scope function 비교 및 상황별 함수 선택](https://ykkdev.tistory.com/4)
+출처 : [코틀린 scope function 비교 및 상황별 함수 선택](https://ykkdev.tistory.com/4)<br>
+
+<br>
 
 ## Retrofit
 서버로부터 데이터를 받아오는 작업으로 Networking 기능을 쉽게 사용하는 라이브러리이다.
@@ -251,6 +255,8 @@ _* 여담으로 AsyncTask는 context누수나 Callback을 놓치는 다양한 �
 Retrofit은 AsyncTask대신 Callback을 이용하여 Network연결을 도와주었다. <br>
 따라서, Network 연결 부분을 자동으로 관리해주는 retrofit이 Android App에서 자주 사용되고 있다.<br>
 또한, retrofit은 성능상으로도 AsyncTask를 사용한 것보다 3~10배 가량 더 좋다. <br>
+
+<br>
 
 ## RecyclerView
 RecyclerView는 대량의 데이터셋을 효율적으로 표시하기 위해 사용한다. 개발자가 각 항목의 모양을 정해주면 RecyclerView는 해당 요소를 동적으로 생성한다. <br>
@@ -276,7 +282,9 @@ ViewHolder는 목록에 있는 개별 항목의 Layout을 포함하는 View의 �
 
 ### 실제 호출 확인
 <img src = "https://github.com/hanseul-Choi/Izone_MusicPlayer/blob/main/img/RecyclerView_adapter_%E1%84%92%E1%85%A9%E1%84%8E%E1%85%AE%E1%86%AF.png" width="40%" height="30%">
-실제 RecyclerView에서 getItemCount()로 목록의 개수를 확인하고 onCreateViewHolder() View를 생성한뒤 onBindViewHolder()로 데이터를 View에 연결해주고 있었다.
+실제 RecyclerView에서 getItemCount()로 목록의 개수를 확인하고 onCreateViewHolder() View를 생성한뒤 onBindViewHolder()로 데이터를 View에 연결해주고 있었다.<br>
+
+<br>
 
 ## LiveData
 LiveData는 관찰이 가능한 클래스이며 일반 클래스와는 달리 수명주기를 인식하고 있다. LiveData를 사용하면 다음과 같은 이점을 가질 수 있다. 
