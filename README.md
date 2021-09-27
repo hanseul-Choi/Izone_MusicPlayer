@@ -60,7 +60,7 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide
 
 ### Music List 
 
-<img src = "./img/main.PNG" width="80%" height="80%"> |<img src = "./img/spinner_change.PNG" width="80%" height="80%">
+<img src = "./img/main.PNG" width="60%" height="60%"> |<img src = "./img/spinner_change.PNG" width="60%" height="60%">
 --- | --- | 
 
 _왼쪽 화면은 초기 화면이고 오른쪽 화면은 scrolling된 화면이다._ <br>
@@ -72,7 +72,7 @@ RecyclerView는 scrolling이 가능하고 노래를 선택하면 하단의 minip
 
 ### Spinner 
 
-<img src = "./img/spinner.PNG" width="80%" height="80%"> |<img src = "./img/spinnerChanged.png">
+<img src = "./img/spinner.PNG" width="60%" height="60%"> |<img src = "./img/spinnerChanged.png">
 --- | --- | 
 
 _왼쪽 화면은 Spinner를 선택했을때 나오는 메뉴들이고, 오른쪽 화면은 Spinner 메뉴 중 오마이걸을 선택했을 때 나오는 화면이다._
@@ -82,7 +82,7 @@ _왼쪽 화면은 Spinner를 선택했을때 나오는 메뉴들이고, 오른�
 
 ### 하단 플레이어
 
-<img src = "./img/miniplayer.PNG" width="40%" height="40%">
+<img src = "./img/miniplayer.PNG" width="20%" height="20%">
 
 하단 플레이어로 album image, title, singer와 음악 멈춤 및 다음 노래 기능이 존재한다.<br>
 <br><br>
