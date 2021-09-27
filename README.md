@@ -63,7 +63,7 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide
 <img src = "./img/main.PNG" width="60%" height="60%"> |<img src = "./img/spinner_change.PNG" width="60%" height="60%">
 --- | --- | 
 
-_왼쪽 화면은 초기 화면이고 오른쪽 화면은 scrolling된 화면이다._ <br>
+_왼쪽 그림은 초기 화면이고 오른쪽 그림은 scrolling된 화면이다._ <br>
 
 초기 화면의 위쪽은 Spinner 메뉴로 구성되어 있다. 또한, 아래 앨범 목록들은 RecyclerView로 구성되어 있으며 LinearLayoutManager의 형태를 띄고 있다. <br>
 RecyclerView는 scrolling이 가능하다.
@@ -75,8 +75,9 @@ RecyclerView는 scrolling이 가능하다.
 <img src = "./img/spinner.PNG" width="60%" height="60%"> |<img src = "./img/spinnerChanged.png">
 --- | --- | 
 
-_왼쪽 화면은 Spinner를 선택했을때 나오는 메뉴들이고, 오른쪽 화면은 Spinner 메뉴 중 오마이걸을 선택했을 때 나오는 화면이다._ <br>
-Spinner를 click시 왼쪽과 같이 메뉴들이 나오며 메뉴를 선택하면 아래의 RecyclerView의 데이터들이 업데이트 된다. 
+_왼쪽 그림은 Spinner를 선택했을때 나오는 메뉴들이고, 오른쪽 그림은 Spinner 메뉴 중 오마이걸을 선택했을 때 나오는 화면이다._ <br>
+
+Spinner를 click하면, 왼쪽 그림과 같이 가수 이름들이 나열되고 나열된 가수 이름 중 하나를 선택하면 아래의 RecyclerView가 가수 정보에 맞추어 데이터들을 업데이트 된다. 
 
 <br><br>
 
@@ -84,9 +85,9 @@ Spinner를 click시 왼쪽과 같이 메뉴들이 나오며 메뉴를 선택하�
 
 <img src = "./img/miniplayer.PNG" width="30%" height="30%">
 
-_하단 플레이어를 확인할 수 있다._
+_하단 플레이어를 확인할 수 있다._ <br>
 
-하단 플레이어는 앨범 이미지나 title의 정보와 재생 및 멈춤 그리고 다음 음악의 버튼을 보여주고 있다. 하단 플레이어는 Fragment로 구현했으며 노래를 클릭하면 View.Visible을 주어 하단 플레이어가 나타날 수 있게 한다.<br>
+하단 플레이어는 앨범 이미지, title의 정보와 재생 및 멈춤 그리고 다음 음악의 버튼을 보여주고 있다. 하단 플레이어는 Fragment로 구현했으며 노래를 클릭하면 View.Visible을 주어 하단 플레이어가 나타날 수 있게 하였다.<br>
 
 <br><br>
 
