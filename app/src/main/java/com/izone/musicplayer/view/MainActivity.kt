@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setAdapter() {
 
-        mMusicRepositoryAdapter = MusicRepositoryAdapter(listOf())
+        mMusicRepositoryAdapter = MusicRepositoryAdapter()
 
         mMusicRepositoryAdapter.setItemListener(object : MusicRepositoryAdapter.OnMusicClickListener {
             override fun onItemClick(position: Int) {
@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        aMBinding.amRvAlbumList.adapter = mMusicRepositoryAdapter
         aMBinding.adapter = mMusicRepositoryAdapter
     }
 

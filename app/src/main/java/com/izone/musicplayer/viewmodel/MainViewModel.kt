@@ -1,5 +1,6 @@
 package com.izone.musicplayer.viewmodel
 
+import android.util.Log
 import android.media.MediaPlayer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -101,6 +102,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
         if(musicThread != null) {
             if(musicThread!!.isAlive) {
                 musicThread?.interrupt()
+                musicThread?.destroy()
             }
         }
     }
@@ -124,7 +126,10 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
                 var curpos = mediaPlayer.currentPosition
                 var duration = mediaPlayer.duration
 
+                Log.d("test", "duration : $duration")
+
                 if (curpos >= duration - 20 && curpos != 0 && duration != 0) {
+                    Log.d("test", "is pos change?")
                     setPosition(musicPosition.value!!.plus(1))
                     break
                 }

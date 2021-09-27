@@ -1,5 +1,6 @@
 package com.izone.musicplayer.view
 
+import android.util.Log
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +45,8 @@ class MiniPlayerFragment : Fragment() {
 
         viewModel.musicPosition.observe(viewLifecycleOwner) {
             pos = it
+
+            Log.d("test", "position observe : $pos")
 
             //position을 건들였을 때는 무조건 play 상태
             fMbinding.fmIvPlay.visibility = View.INVISIBLE
