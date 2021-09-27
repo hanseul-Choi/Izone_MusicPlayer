@@ -252,8 +252,30 @@ Retrofit은 AsyncTask대신 Callback을 이용하여 Network연결을 도와주�
 또한, retrofit은 성능상으로도 AsyncTask를 사용한 것보다 3~10배 가량 더 좋다. <br>
 
 ## RecyclerView
+RecyclerView는 대량의 데이터셋을 효율적으로 표시하기 위해 사용한다. 개발자가 각 항목의 모양을 정해주면 RecyclerView는 해당 요소를 동적으로 생성한다. <br>
+또한, RecyclerView는 이름에서 알 수 있듯이 개별 요소들을 재활용한다. 항목이 벗어나더라도 뷰를 제거하지 않고 뷰를 재사용하여 데이터만 바꾸어주고 있다. <br>
+뷰를 재사용함으로써 앱의 response속도와 앱의 전력 소모를 개선할 수 있다. 
 
+### RecyclerView 주요 클래스
+RecyclerView는 데이터에 해당하는 View가 포함되어 있는 ViewGroup이다. <br>
+목록의 각 개별 요소는 ViewHolder객체로 정의되며, 처음에는 연결된 데이터가 없지만, RecyclerView가 ViewHolder가 생성된 후 View의 데이터를 ViewHolder에 바인딩한다. <br>
+즉, RecyclerView는 View를 요청한 다음 어댑터에서 메소드를 호출하여 View를 View의 데이터에 바인딩하고 있다. <br>
+LayoutManager는 목록의 모양을 결정한다.
+- LinearLayoutmanager : 항목을 1차원 목록으로 정렬
+- GridLayoutManager : 항목을 2차원 그리드로 정렬
+- StaggeredGridLayoutManager : GridLayoutManager와 비슷하나 너비와 높이를 맞추지 않고 어긋나있을 수 있다.
 
+### 어댑터 및 뷰 홀더 구현
+LayoutManager로 레이아웃을 정했으면 Adapter 및 ViewHolder를 구현해야한다. <br>
+ViewHolder는 목록에 있는 개별 항목의 Layout을 포함하는 View의 래퍼이다. Adapter는 필요에 따라 ViewHolder 객체를 만들고 이러한 뷰에 데이터를 설정한다. (이를 바인딩이라고 한다.)<br>
+어댑터를 정의할 때 3가지 메소드를 정의한다.
+- onCreateViewHolder() : RecyclerView에서 ViewHolder를 새로 만들어야 할 때마다 이 메소드를 호출한다. ViewHolder와 연결된 View를 생성하고 초기화하지만 아직 컨텐츠는 채우지 않는다.
+- onBindViewHolder() : RecyclerView에서 ViewHolder를 데이터와 연결할 때 호출한다.
+- getItemCount() : RecyclerView가 데이터 셋 크기를 가져올 때 호출한다.(이 항목을 이용하여 추가로 표시할게 있는지 확인한다.)
+
+### 실제 호출 확인
+// RecyclerView 이미지
+실제 RecyclerView에서 getItemCount()로 목록의 개수를 확인하고 onCreateViewHolder() View를 생성한뒤 onBindViewHolder()로 데이터를 View에 연결해주고 있었다.
 
 ## LiveData
 
