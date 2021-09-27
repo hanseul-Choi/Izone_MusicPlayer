@@ -124,7 +124,7 @@ AAC ViewModel은 구글에서 만들었으며, 앱의 configuration에 대응하
 그렇다면? AAC ViewModel로 MVVM ViewModel을 만들어낼 수 없을까? 답은 "가능하다"이다. <br>
 실제로 많은 블로그에서 예시로 AAC ViewModel을 이용해 MVVM패턴을 만들어내고 있다.  <br>
 오히려 AAC ViewModel을 통해 만들게 되면, configuration에 대응도 되고 view의 라이프사이클에 맞추어 데이터 관리 기능도 추가가되는 좋은 효과를 불러올 수 있다. <br>
-<img src = "./img/AAC_ViewModel.png" width="70%" height="70%">
+<img src = "./img/AAC_ViewModel.png" width="60%" height="70%">
 <br><br>
 하지만! 위에서 언급했듯이 MVVM패턴에서 View와 ViewModel은 1:m의 관계를 가지고 있다. 즉, 여러개의 ViewModel이 나올 수 있다. <br>
 그러나, AAC의 ViewModel은 실제로 Activity에 싱글톤으로 생성되어 1:1관계만을 가질 수 밖에 없게 된다. <br>
