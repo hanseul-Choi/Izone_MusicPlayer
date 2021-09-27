@@ -82,7 +82,7 @@ _왼쪽 화면은 Spinner를 선택했을때 나오는 메뉴들이고, 오른�
 
 ### 하단 플레이어
 
-<img src = "./img/miniplayer.PNG" width="20%" height="20%">
+<img src = "./img/miniplayer.PNG" width="40%" height="40%">
 
 하단 플레이어로 album image, title, singer와 음악 멈춤 및 다음 노래 기능이 존재한다.<br>
 <br><br>
