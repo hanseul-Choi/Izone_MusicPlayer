@@ -66,7 +66,7 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide
 _왼쪽 화면은 초기 화면이고 오른쪽 화면은 scrolling된 화면이다._ <br>
 
 초기 화면의 위쪽은 Spinner 메뉴로 구성되어 있다. 또한, 아래 앨범 목록들은 RecyclerView로 구성되어 있으며 LinearLayoutManager의 형태를 띄고 있다. <br>
-RecyclerView는 scrolling이 가능하고 노래를 선택하면 하단의 miniplayer가 나오게 된다.
+RecyclerView는 scrolling이 가능하다.
 
 <br><br>
 
