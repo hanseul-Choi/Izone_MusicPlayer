@@ -60,7 +60,7 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide
 
 ### Music List 
 
-<img src = "./img/main.PNG" width="80%" height="80%"> |<img src = "./img/scrolling.PNG" width="80%" height="80%">
+<img src = "./img/main.PNG" width="80%" height="80%"> |<img src = "./img/spinner_change.PNG" width="80%" height="80%">
 --- | --- | 
 
 _왼쪽 화면은 초기 화면이고 오른쪽 화면은 scrolling된 화면이다._ <br>
