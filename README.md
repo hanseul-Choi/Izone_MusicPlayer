@@ -72,7 +72,7 @@ RecyclerView는 scrolling이 가능하고 노래를 선택하면 하단의 minip
 
 ### Spinner 
 
-<img src = "./img/spinner.PNG" width="80%" height="80%"> |<img src = "./img/spinner_change.PNG" width="80%" height="80%">
+<img src = "./img/spinner.PNG" width="80%" height="80%"> |<img src = "./img/spinnerChanged.png" width="80%" height="80%">
 --- | --- | 
 
 _왼쪽 화면은 Spinner를 선택했을때 나오는 메뉴들이고, 오른쪽 화면은 Spinner 메뉴 중 오마이걸을 선택했을 때 나오는 화면이다._
