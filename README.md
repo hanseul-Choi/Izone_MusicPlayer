@@ -279,14 +279,34 @@ ViewHolder는 목록에 있는 개별 항목의 Layout을 포함하는 View의 �
 실제 RecyclerView에서 getItemCount()로 목록의 개수를 확인하고 onCreateViewHolder() View를 생성한뒤 onBindViewHolder()로 데이터를 View에 연결해주고 있었다.
 
 ## LiveData
+LiveData는 관찰이 가능한 클래스이며 일반 클래스와는 달리 수명주기를 인식하고 있다. LiveData를 사용하면 다음과 같은 이점을 가질 수 있다. 
+- UI와 데이터 상태 일치 보장 : 일반적으로 LiveData는 기본 데이터가 변경될 때, Observer에게 알린다. 이 점을 이용하면 UI와 데이터 상태의 일치를 보장할 수 있다.
+- 메모리 누수 X : lifecycle과 결합되어 있으므로, lifecycle이 끝나면 자동으로 destroy된다.
+- 중지된 Activity로 인한 비정상 종료 X : 관찰자가 비활성 상태라면 어떤 liveData 알림도 받지 않는다.
+- 수명 주기 자동으로 처리
+- 최신 데이터 유지 : 비활성화에서 활성화가 되면 최신 데이터를 수신한다.
+- configuration 대응 : AAC ViewModel과 결합하여 앱의 변화에 데이터를 유지한다.
+- 리소스 공유
 
+### LiveData 객체
+LiveData를 사용하기 위해서는
+1. LiveData의 인스턴스를 생성한다. (보통 ViewModel에서 작업한다.)
+2. onChanged() 메소드를 정의하는 Observer객체를 만들고, UI 컨트롤러에서 Observer 객체를 생성한다.
+3. observe() 메소드를 이용하여 LiveData의 변경사항을 구독하여 알림을 받는다.
 
+<br>
+
+보통 LiveData는 onCreate()에서 관찰하는 것이 좋다. <br>
+onResume에 불릴 경우 메소드가 중복호출이 되며, 활성 상태가 되는 즉시 데이터를 변경하기 위함이기도 하다. <br><br>
+
+또한, liveData의 업데이트는 공개적으로 사용할 수 있는 메소드가 없기 때문에 MutableLiveData를 이용한다. <br>
+MutableLiveData는 setValue와 postValue를 제공하여 데이터를 업데이트하고 있다. setValue를 부르면 LiveData에 값을 집어넣고 onChanged()를 호출해 Observer객체에게 알려준다. <br>
+마지막으로, setValue는 기본 스레드에서, postValue는 worker 스레드에서 LiveData를 업데이트해야만 한다.
 
 <br><br><br>
 _Contact me :_ &nbsp; 
 [![Gmail Badge](https://img.shields.io/badge/Gmail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:hschoi5542@gmail.com)](mailto:hschoi5542@gmail.com)
 
-<br>
 <br>
 <br>
 
