@@ -34,25 +34,13 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide
 ## MiniPlayer - 구조도
 다음은 제작한 프로젝트의 구조도이며, MVVM구조를 이해하기 위해 그린 그림이다. 
 <br>
-### Network
-
-<img src = "./img/Network구조도.PNG" width="90%" height="90%">
+### databinding + adapter
+<img src = "./img/initdatabinding_adapter.png" width="60%" height="60%">
 <br>
 
-### Spinner
-
-<img src = "./img/Spinner구조.PNG" width="90%" height="90%">
+### spinner + fragment
+<img src = "./img/spinner+fragment.png" width="60%" height="60%">
 <br>
-
-### RecyclerView
-
-<img src = "./img/Recyclerview구조도.PNG" width="90%" height="90%">
-<br>
-
-### Fragment
-
-<img src = "./img/Fragment구조도.PNG" width="90%" height="90%">
-<br><br>
 
 ## MiniPlayer - 기능
 다음은 music player의 기능이다.
