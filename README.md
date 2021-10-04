@@ -35,11 +35,11 @@ Technology : Kotlin, MVVM, Retrofit, RecyclerView, DataBinding, LiveData, Glide
 다음은 제작한 프로젝트의 구조도이며, MVVM구조를 이해하기 위해 그린 그림이다. 
 <br>
 ### databinding + adapter
-<img src = "./img/initdatabinding_adapter.png" width="60%" height="60%">
+<img src = "./img/initdatabinding_adapter.png" width="80%" height="80%">
 <br>
 
 ### spinner + fragment
-<img src = "./img/spinner+fragment.png" width="60%" height="60%">
+<img src = "./img/spinner+fragment.png" width="80%" height="80%">
 <br>
 
 ## MiniPlayer - 기능
