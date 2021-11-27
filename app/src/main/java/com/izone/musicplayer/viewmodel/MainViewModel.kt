@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.izone.musicplayer.model.MusicItems
+import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 import com.izone.musicplayer.repository.MusicRepository
 import retrofit2.Call
 import retrofit2.Callback
@@ -72,8 +73,6 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
             setDataSource(uri)
             prepare()
         }
-
-        playMusic()
     }
 
     fun playMusic() {
@@ -116,7 +115,6 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
     }
 
     inner class MusicThread : Thread() {
-
         override fun run() {
             super.run()
 

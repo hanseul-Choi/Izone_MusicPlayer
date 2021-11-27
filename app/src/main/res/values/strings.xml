@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Izone_MusicPlayer</string>
+    <string name="default_title">title</string>
+    <string name="default_singer">singer</string>
 </resources>
