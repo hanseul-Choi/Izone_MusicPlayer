@@ -19,7 +19,7 @@ import com.izone.musicplayer.viewmodel.MainViewModel
 class MiniPlayerFragment : Fragment() {
 
     lateinit var fMbinding: FragmentMiniplayerBinding
-    private var fireBase_BaseUri = "gs://musicplayer-e17d2.appspot.com/"
+    private var fireBase_BaseUri = "gs://izonemusicplayer-ccd40.appspot.com"
 
     lateinit var list: List<MusicItems>
     private var pos = 0
@@ -55,8 +55,12 @@ class MiniPlayerFragment : Fragment() {
             fMbinding.fmTvTitle.text = list[pos].title
             fMbinding.fmTvSinger.text = list[pos].singer
 
+            Log.d("test", "is in?")
+
             var storage: FirebaseStorage = FirebaseStorage.getInstance(fireBase_BaseUri)
-            var storageRef: StorageReference = storage.getReference()
+            var storageRef: StorageReference = storage.reference
+
+
 
             //set image
             storageRef.child(list[pos].album).downloadUrl.addOnSuccessListener { uri ->
