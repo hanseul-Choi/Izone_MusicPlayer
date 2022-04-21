@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.izone.musicplayer.MPConst.STORAGE_URL
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.FragmentMiniplayerBinding
 import com.izone.musicplayer.model.MusicItems
@@ -19,7 +20,6 @@ import com.izone.musicplayer.viewmodel.MainViewModel
 class MiniPlayerFragment : Fragment() {
 
     lateinit var fMbinding: FragmentMiniplayerBinding
-    private var fireBase_BaseUri = "gs://izonemusicplayer-ccd40.appspot.com"
 
     lateinit var list: List<MusicItems>
     private var pos = 0
@@ -57,7 +57,7 @@ class MiniPlayerFragment : Fragment() {
             fMbinding.fmTvTitle.text = list[pos].title
             fMbinding.fmTvSinger.text = list[pos].singer
 
-            var storage: FirebaseStorage = FirebaseStorage.getInstance(fireBase_BaseUri)
+            var storage: FirebaseStorage = FirebaseStorage.getInstance(STORAGE_URL)
             var storageRef: StorageReference = storage.reference
 
             //set image list[pos].album

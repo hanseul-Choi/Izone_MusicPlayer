@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.izone.musicplayer.MPConst.STORAGE_URL
 import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
 
@@ -12,8 +13,6 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
     RecyclerView.ViewHolder(itemAlbumBinding.root) {
 
     private val iaBinding: ItemAlbumBinding = itemAlbumBinding
-
-    private val fireBaseUri = "gs://izonemusicplayer-ccd40.appspot.com/"
 
     init {
         iaBinding.root.setOnClickListener {
@@ -24,7 +23,7 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
 
     fun bind(model: MusicItems) {
         model.run {
-            var storage: FirebaseStorage = FirebaseStorage.getInstance(fireBaseUri)
+            var storage: FirebaseStorage = FirebaseStorage.getInstance(STORAGE_URL)
             var storageRef: StorageReference = storage.reference
 
             storageRef.child(album).downloadUrl.addOnSuccessListener {
