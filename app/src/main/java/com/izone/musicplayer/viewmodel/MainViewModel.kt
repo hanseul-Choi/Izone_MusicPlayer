@@ -23,6 +23,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
                 response: Response<List<MusicItems>>
             ) {
                 var value = response.body()
+
                 _musicList.postValue(value)
             }
 

@@ -43,6 +43,8 @@ class MiniPlayerFragment : Fragment() {
             list = it.toMutableList()
         }
 
+        Log.d("test", "musicposition? ${viewModel.musicPosition.value}")
+
         viewModel.musicPosition.observe(viewLifecycleOwner) {
             pos = it
 
@@ -55,16 +57,15 @@ class MiniPlayerFragment : Fragment() {
             fMbinding.fmTvTitle.text = list[pos].title
             fMbinding.fmTvSinger.text = list[pos].singer
 
-            Log.d("test", "is in?")
-
             var storage: FirebaseStorage = FirebaseStorage.getInstance(fireBase_BaseUri)
             var storageRef: StorageReference = storage.reference
 
+            //set image list[pos].album
 
-
-            //set image
-            storageRef.child(list[pos].album).downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(this).load(uri).into(fMbinding.fmIvAlbum)
+            storageRef.child(list[pos].album).downloadUrl.addOnCompleteListener { task ->
+                if(task.isSuccessful) {
+                    Glide.with(this).load(task.result).into(fMbinding.fmIvAlbum)
+                }
             }
 
             //set music

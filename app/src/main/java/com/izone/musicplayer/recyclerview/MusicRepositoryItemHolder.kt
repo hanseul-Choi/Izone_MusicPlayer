@@ -13,7 +13,7 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
 
     private val iaBinding: ItemAlbumBinding = itemAlbumBinding
 
-    private val fireBaseUri = "gs://musicplayer-e17d2.appspot.com/"
+    private val fireBaseUri = "gs://izonemusicplayer-ccd40.appspot.com/"
 
     init {
         iaBinding.root.setOnClickListener {
