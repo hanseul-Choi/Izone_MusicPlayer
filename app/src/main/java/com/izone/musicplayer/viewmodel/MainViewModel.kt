@@ -103,7 +103,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
         if(musicThread != null) {
             if(musicThread!!.isAlive) {
                 musicThread?.interrupt()
-                musicThread?.destroy()
+//                musicThread?.stop()
             }
         }
     }
