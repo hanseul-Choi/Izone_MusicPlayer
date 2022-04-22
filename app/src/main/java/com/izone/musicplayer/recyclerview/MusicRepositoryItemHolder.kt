@@ -3,6 +3,7 @@ package com.izone.musicplayer.recyclerview
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.izone.musicplayer.MPConst.STORAGE_URL
@@ -27,7 +28,16 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
             var storageRef: StorageReference = storage.reference
 
             storageRef.child(album).downloadUrl.addOnSuccessListener {
-                Glide.with(itemView).load(it).into(iaBinding.iaIvAlbum)
+                Glide
+                    .with(itemView)
+                    .load(it)
+                    .preload()
+
+                Glide
+                    .with(itemView)
+                    .load(it)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(iaBinding.iaIvAlbum)
             }
 
             iaBinding.iaTvTitle.text = title
