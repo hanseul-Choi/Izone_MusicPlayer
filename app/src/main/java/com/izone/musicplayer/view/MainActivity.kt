@@ -15,6 +15,18 @@ import com.izone.musicplayer.repository.MusicRepository
 import com.izone.musicplayer.viewmodel.MainViewModel
 import com.izone.musicplayer.viewmodel.MainViewModelFactory
 
+/**
+ * list
+- 이미지 랜더링처리 : 느림 + 데이터 많이 먹음
+- 노래 늦게 재생되는 거 수정, 로딩 처리 적용
+- Coroutine 변경
+- 아키텍처 변경, 비지니스는 모두 viewmodel로
+- Compose 변경
+- Navigation 추가
+- UI 및 UX 개선
+- Warning 제거
+ */
+
 class MainActivity : AppCompatActivity() {
 
     //data binding
