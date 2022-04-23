@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
@@ -53,6 +54,14 @@ class MainActivity : AppCompatActivity() {
         aMBinding.viewModel = viewModel
     }
 
+    fun showProgress() {
+        aMBinding.amPbLoading.visibility = View.VISIBLE
+    }
+
+    fun disableProgress() {
+        aMBinding.amPbLoading.visibility = View.GONE
+    }
+
     private fun setAdapter() {
 
         mMusicRepositoryAdapter = MusicRepositoryAdapter()
@@ -67,6 +76,10 @@ class MainActivity : AppCompatActivity() {
 
         aMBinding.amRvAlbumList.adapter = mMusicRepositoryAdapter
         aMBinding.adapter = mMusicRepositoryAdapter
+
+        aMBinding.amRvAlbumList.viewTreeObserver.addOnGlobalLayoutListener {
+
+        }
     }
 
     private fun initSpinnerSet() {
@@ -77,6 +90,8 @@ class MainActivity : AppCompatActivity() {
         aMBinding.amSSingerList.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    showProgress()
+
                     when (p2) {
                         0 -> {
                             //izone
