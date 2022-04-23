@@ -1,11 +1,13 @@
 package com.izone.musicplayer.viewmodel
 
+import android.util.Log
 import android.media.MediaPlayer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 import com.izone.musicplayer.repository.MusicRepository
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,7 +16,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
     private val _musicList = MutableLiveData<List<MusicItems>>()
     val musicList = _musicList
 
-    private var musicThread : MusicThread? = null
+    private val job = CoroutineScope(Dispatchers.Default)
 
     fun requestIzoneRepositories() {
         musicRepository.getIzoneRepository()?.enqueue(object : Callback<List<MusicItems>> {
@@ -22,8 +24,9 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
-                var value = response.body()
-                _musicList.postValue(value)
+                response.body()?.let { value ->
+                    _musicList.postValue(value)
+                }
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
@@ -37,8 +40,9 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
-                var value = response.body()
-                _musicList.postValue(value)
+                response.body()?.let { value ->
+                    _musicList.postValue(value)
+                }
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
@@ -52,8 +56,9 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
-                var value = response.body()
-                _musicList.postValue(value)
+                response.body()?.let { value ->
+                    _musicList.postValue(value)
+                }
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
@@ -80,15 +85,8 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
             start()
         }
 
-        if(musicThread == null) {
-            musicThread = MusicThread()
-            musicThread?.start()
-        } else {
-            if(!musicThread!!.isAlive) {
-                musicThread = MusicThread()
-
-                musicThread?.start()
-            }
+        job.launch {
+            musicStateCheck()
         }
     }
 
@@ -97,11 +95,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
             pause()
         }
 
-        if(musicThread != null) {
-            if(musicThread!!.isAlive) {
-                musicThread?.interrupt()
-            }
-        }
+        if(job.isActive) job.cancel()
     }
 
     fun setPosition(pos: Int) {
@@ -114,18 +108,16 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
         }
     }
 
-    inner class MusicThread : Thread() {
-        override fun run() {
-            super.run()
+    private fun musicStateCheck() {
+        while(mediaPlayer.isPlaying) {
+            val curpos = mediaPlayer.currentPosition
+            val duration = mediaPlayer.duration
 
-            while (mediaPlayer.isPlaying) {
-                var curpos = mediaPlayer.currentPosition
-                var duration = mediaPlayer.duration
+            Log.d("test", "duration is $duration , $curpos")
 
-                if (curpos >= duration - 20 && curpos != 0 && duration != 0) {
-                    setPosition(musicPosition.value!!.plus(1))
-                    break
-                }
+            if(curpos >= duration - 20 && curpos != 0 && duration != 0) {
+                setPosition(musicPosition.value!!.plus(1))
+                break
             }
         }
     }

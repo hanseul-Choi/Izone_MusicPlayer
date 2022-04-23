@@ -3,14 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/82105/Desktop/git_android/Izone_MusicPlayer/app/src/main/res/drawable/miniplayer_background.xml" value="0.16354166666666667" />
-        <entry key="..\:/Users/82105/Desktop/git_android/Izone_MusicPlayer/app/src/main/res/layout/activity_main.xml" value="0.14739583333333334" />
-        <entry key="..\:/Users/82105/Desktop/git_android/Izone_MusicPlayer/app/src/main/res/layout/fragment_miniplayer.xml" value="0.1474726420010422" />
-        <entry key="..\:/Users/82105/Desktop/git_android/Izone_MusicPlayer/app/src/main/res/layout/item_album.xml" value="0.14739583333333334" />
+
+        <entry key="app/src/main/res/drawable/place_img.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-v21/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1265625" />
+        <entry key="app/src/main/res/layout/fragment_miniplayer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_album.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

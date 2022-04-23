@@ -1,62 +1,34 @@
 {
   "project_info": {
-    "project_number": "357559691280",
-    "project_id": "musicplayer-e17d2",
-    "storage_bucket": "musicplayer-e17d2.appspot.com"
+    "project_number": "156420483451",
+    "firebase_url": "https://izonemusicplayer-ccd40-default-rtdb.firebaseio.com",
+    "project_id": "izonemusicplayer-ccd40",
+    "storage_bucket": "izonemusicplayer-ccd40.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:357559691280:android:b0436ca8906922baab4295",
-        "android_client_info": {
-          "package_name": "com.Izone.musicplayer"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "357559691280-86qtcq33bv9120pl967j59q63qhkh52l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDHBX9xgRvszAjC9MFY9Lhuvr6eNwTZBYA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "357559691280-86qtcq33bv9120pl967j59q63qhkh52l.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:357559691280:android:a9769da9249fd601ab4295",
+        "mobilesdk_app_id": "1:156420483451:android:e0eb7f0a4f6bdfc95bf5de",
         "android_client_info": {
           "package_name": "com.izone.musicplayer"
         }
       },
       "oauth_client": [
         {
-          "client_id": "357559691280-86qtcq33bv9120pl967j59q63qhkh52l.apps.googleusercontent.com",
+          "client_id": "156420483451-tkn1sm12adfe3hia3di40ko08gbl1qr2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDHBX9xgRvszAjC9MFY9Lhuvr6eNwTZBYA"
+          "current_key": "AIzaSyCU-y-JrhN0Iso_fmKqiy-n6A-lr5Sddyc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "357559691280-86qtcq33bv9120pl967j59q63qhkh52l.apps.googleusercontent.com",
+              "client_id": "156420483451-tkn1sm12adfe3hia3di40ko08gbl1qr2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

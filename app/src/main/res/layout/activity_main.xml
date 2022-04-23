@@ -18,6 +18,26 @@
         android:layout_height="match_parent"
         tools:context=".view.MainActivity">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/am_cl_progressBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="1dp"
+            android:clickable="true"
+            android:background="@color/background_color"
+            android:focusable="true">
+
+            <ProgressBar
+                android:id="@+id/am_pb_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <Spinner
             android:id="@+id/am_s_singerList"
             android:layout_width="match_parent"

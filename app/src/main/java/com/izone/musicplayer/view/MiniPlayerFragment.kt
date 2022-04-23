@@ -1,5 +1,6 @@
 package com.izone.musicplayer.view
 
+import android.util.Log
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.izone.musicplayer.MPConst.STORAGE_URL
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.databinding.FragmentMiniplayerBinding
@@ -19,7 +21,6 @@ import com.izone.musicplayer.viewmodel.MainViewModel
 class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment() {
 
     lateinit var fMbinding: FragmentMiniplayerBinding
-    private var fireBase_BaseUri = "gs://musicplayer-e17d2.appspot.com/"
 
     lateinit var list: List<MusicItems>
     private var pos = 0
@@ -43,8 +44,12 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
             list = it.toMutableList()
         }
 
+        Log.d("test", "musicposition? ${viewModel.musicPosition.value}")
+
         viewModel.musicPosition.observe(viewLifecycleOwner) {
             pos = it
+
+            Log.d("test", "position observe : $pos")
 
             //position을 건들였을 때는 무조건 play 상태
             fMbinding.fmIvPlay.visibility = View.INVISIBLE
@@ -53,12 +58,15 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
             fMbinding.fmTvTitle.text = list[pos].title
             fMbinding.fmTvSinger.text = list[pos].singer
 
-            var storage: FirebaseStorage = FirebaseStorage.getInstance(fireBase_BaseUri)
-            var storageRef: StorageReference = storage.getReference()
+            var storage: FirebaseStorage = FirebaseStorage.getInstance(STORAGE_URL)
+            var storageRef: StorageReference = storage.reference
 
-            //set image
-            storageRef.child(list[pos].album).downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(this).load(uri).into(fMbinding.fmIvAlbum)
+            //set image list[pos].album
+
+            storageRef.child(list[pos].album).downloadUrl.addOnCompleteListener { task ->
+                if(task.isSuccessful) {
+                    Glide.with(this).load(task.result).into(fMbinding.fmIvAlbum)
+                }
             }
 
             //set music
