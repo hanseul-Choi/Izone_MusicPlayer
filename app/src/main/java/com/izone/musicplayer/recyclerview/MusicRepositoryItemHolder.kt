@@ -25,7 +25,7 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
     private val iaBinding: ItemAlbumBinding = itemAlbumBinding
 
     init {
-        iaBinding.root.setOnClickListener {
+        itemAlbumBinding.root.setOnClickListener {
             Log.d("test","adapterposition : $adapterPosition")
             listener?.onItemClick(adapterPosition)
         }

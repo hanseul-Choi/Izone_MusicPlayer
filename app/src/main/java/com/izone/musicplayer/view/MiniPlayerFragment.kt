@@ -13,11 +13,12 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.izone.musicplayer.MPConst.STORAGE_URL
 import com.izone.musicplayer.R
+import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.databinding.FragmentMiniplayerBinding
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.viewmodel.MainViewModel
 
-class MiniPlayerFragment : Fragment() {
+class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment() {
 
     lateinit var fMbinding: FragmentMiniplayerBinding
 
@@ -71,6 +72,7 @@ class MiniPlayerFragment : Fragment() {
             //set music
             storageRef.child(list[pos].music).downloadUrl.addOnSuccessListener { uri ->
                 viewModel.setMusic(uri.toString())
+                viewModel.playMusic()
             }
         }
     }
@@ -92,6 +94,11 @@ class MiniPlayerFragment : Fragment() {
 
         fMbinding.fmIvNext.setOnClickListener {
             viewModel.setPosition(pos+1)
+        }
+
+        fMbinding.miniplayerClose.setOnClickListener {
+            viewModel.stopMusic()
+            amBinding.amFlMiniplayer.visibility = View.GONE
         }
     }
 }

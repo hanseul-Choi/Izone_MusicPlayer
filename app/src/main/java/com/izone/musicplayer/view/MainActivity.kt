@@ -57,9 +57,9 @@ class MainActivity : AppCompatActivity() {
 
         mMusicRepositoryAdapter.setItemListener(object : MusicRepositoryAdapter.OnMusicClickListener {
             override fun onItemClick(position: Int) {
-                Log.d("test","position is $position")
-                aMBinding.amVSetmini.visibility = View.VISIBLE
                 viewModel.setPosition(position)
+                viewModel.playMusic()
+                aMBinding.amFlMiniplayer.visibility = View.VISIBLE
             }
         })
 
@@ -73,8 +73,10 @@ class MainActivity : AppCompatActivity() {
     private fun initSpinnerSet() {
         //spinner set
         val items = resources.getStringArray(R.array.singer)
+
         aMBinding.amSSingerList.adapter =
             ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, items)
+
         aMBinding.amSSingerList.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -102,7 +104,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setFragment() {
-        supportFragmentManager.beginTransaction().add(R.id.am_fl_miniplayer, MiniPlayerFragment())
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.am_fl_miniplayer, MiniPlayerFragment(amBinding = aMBinding))
             .commit()
     }
 
