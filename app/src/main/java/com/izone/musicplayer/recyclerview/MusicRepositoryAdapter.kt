@@ -36,4 +36,8 @@ class MusicRepositoryAdapter : RecyclerView.Adapter<MusicRepositoryItemHolder>()
     override fun onBindViewHolder(holder: MusicRepositoryItemHolder, position: Int) {
         holder.bind(musicList[position])
     }
+
+    override fun getItemViewType(position: Int): Int { // Scroll시 데이터가 바뀌는 문제 개선
+        return position
+    }
 }
