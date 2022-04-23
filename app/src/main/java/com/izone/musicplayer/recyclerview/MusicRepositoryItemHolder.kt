@@ -7,6 +7,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.izone.musicplayer.MPConst.STORAGE_URL
+import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
 
@@ -28,15 +29,16 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
             var storageRef: StorageReference = storage.reference
 
             storageRef.child(album).downloadUrl.addOnSuccessListener {
-                Glide
-                    .with(itemView)
-                    .load(it)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .preload()
+//                Glide
+//                    .with(itemView)
+//                    .load(it)
+//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                    .preload()
 
                 Glide
                     .with(itemView)
                     .load(it)
+                    .placeholder(R.drawable.place_img)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(iaBinding.iaIvAlbum)
             }
