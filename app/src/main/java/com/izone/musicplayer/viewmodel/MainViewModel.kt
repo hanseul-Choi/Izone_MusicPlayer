@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.repository.MusicRepository
-import com.izone.musicplayer.view.MainActivity
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,7 +15,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
     private val _musicList = MutableLiveData<List<MusicItems>>()
     val musicList = _musicList
 
-    private var musicThread : MusicThread? = null
+    private val job = CoroutineScope(Dispatchers.Default)
 
     fun requestIzoneRepositories() {
         musicRepository.getIzoneRepository()?.enqueue(object : Callback<List<MusicItems>> {
@@ -86,15 +86,8 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
             start()
         }
 
-        if(musicThread == null) {
-            musicThread = MusicThread()
-            musicThread?.start()
-        } else {
-            if(!musicThread!!.isAlive) {
-                musicThread = MusicThread()
-
-                musicThread?.start()
-            }
+        job.launch {
+            musicStateCheck()
         }
     }
 
@@ -103,12 +96,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
             pause()
         }
 
-        if(musicThread != null) {
-            if(musicThread!!.isAlive) {
-                musicThread?.interrupt()
-//                musicThread?.stop()
-            }
-        }
+        if(job.isActive) job.cancel()
     }
 
     fun setPosition(pos: Int) {
@@ -121,22 +109,16 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
         }
     }
 
-    inner class MusicThread : Thread() {
+    private fun musicStateCheck() {
+        while(mediaPlayer.isPlaying) {
+            val curpos = mediaPlayer.currentPosition
+            val duration = mediaPlayer.duration
 
-        override fun run() {
-            super.run()
+            Log.d("test", "duration is $duration , $curpos")
 
-            while (mediaPlayer.isPlaying) {
-                var curpos = mediaPlayer.currentPosition
-                var duration = mediaPlayer.duration
-
-                Log.d("test", "duration : $duration")
-
-                if (curpos >= duration - 20 && curpos != 0 && duration != 0) {
-                    Log.d("test", "is pos change?")
-                    setPosition(musicPosition.value!!.plus(1))
-                    break
-                }
+            if(curpos >= duration - 20 && curpos != 0 && duration != 0) {
+                setPosition(musicPosition.value!!.plus(1))
+                break
             }
         }
     }
