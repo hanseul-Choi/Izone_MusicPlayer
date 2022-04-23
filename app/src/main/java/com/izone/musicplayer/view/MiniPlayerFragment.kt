@@ -41,7 +41,6 @@ class MiniPlayerFragment : Fragment() {
     private fun setFragmentViewModelListener() {
         viewModel.musicList.observe(requireActivity()) {
             list = it.toMutableList()
-            (activity as MainActivity).disableProgress()
         }
 
         Log.d("test", "musicposition? ${viewModel.musicPosition.value}")

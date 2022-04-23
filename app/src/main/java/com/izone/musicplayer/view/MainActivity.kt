@@ -54,17 +54,9 @@ class MainActivity : AppCompatActivity() {
         aMBinding.viewModel = viewModel
     }
 
-    fun showProgress() {
-        aMBinding.amPbLoading.visibility = View.VISIBLE
-    }
-
-    fun disableProgress() {
-        aMBinding.amPbLoading.visibility = View.GONE
-    }
-
     private fun setAdapter() {
 
-        mMusicRepositoryAdapter = MusicRepositoryAdapter()
+        mMusicRepositoryAdapter = MusicRepositoryAdapter(this)
 
         mMusicRepositoryAdapter.setItemListener(object : MusicRepositoryAdapter.OnMusicClickListener {
             override fun onItemClick(position: Int) {
@@ -78,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         aMBinding.adapter = mMusicRepositoryAdapter
 
         aMBinding.amRvAlbumList.viewTreeObserver.addOnGlobalLayoutListener {
-            showProgress()
         }
     }
 
@@ -116,5 +107,14 @@ class MainActivity : AppCompatActivity() {
     private fun setFragment() {
         supportFragmentManager.beginTransaction().add(R.id.am_fl_miniplayer, MiniPlayerFragment())
             .commit()
+    }
+
+
+    fun showProgress() {
+        aMBinding.amClProgressBarLayout.visibility = View.VISIBLE
+    }
+
+    fun disableProgress() {
+        aMBinding.amClProgressBarLayout.visibility = View.GONE
     }
 }

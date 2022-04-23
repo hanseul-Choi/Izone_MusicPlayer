@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
+import com.izone.musicplayer.view.MainActivity
 
-class MusicRepositoryAdapter : RecyclerView.Adapter<MusicRepositoryItemHolder>() {
+class MusicRepositoryAdapter(private val activity: MainActivity) : RecyclerView.Adapter<MusicRepositoryItemHolder>() {
     init {
         setHasStableIds(true) // 이미 생성된 객체의 ID를 불러서 재사용
     }
@@ -30,7 +31,7 @@ class MusicRepositoryAdapter : RecyclerView.Adapter<MusicRepositoryItemHolder>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicRepositoryItemHolder {
         val binding = ItemAlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return MusicRepositoryItemHolder(listener, binding)
+        return MusicRepositoryItemHolder(listener, binding, activity)
     }
 
     override fun onBindViewHolder(holder: MusicRepositoryItemHolder, position: Int) {

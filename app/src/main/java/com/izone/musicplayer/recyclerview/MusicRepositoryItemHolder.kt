@@ -15,8 +15,11 @@ import com.izone.musicplayer.MPConst.STORAGE_URL
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
+import com.izone.musicplayer.view.MainActivity
 
-class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickListener?, itemAlbumBinding: ItemAlbumBinding) :
+class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickListener?,
+                                itemAlbumBinding: ItemAlbumBinding,
+                                private val activity: MainActivity) :
     RecyclerView.ViewHolder(itemAlbumBinding.root) {
 
     private val iaBinding: ItemAlbumBinding = itemAlbumBinding
@@ -32,9 +35,14 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
         model.run {
             var storage: FirebaseStorage = FirebaseStorage.getInstance(STORAGE_URL)
             var storageRef: StorageReference = storage.reference
+            val start = System.currentTimeMillis()
+
+            // show ProgressBar작업
 
             storageRef.child(album).downloadUrl.addOnSuccessListener {
-                val start = System.currentTimeMillis()
+                // 여기다가 ProgressBar dismiss를 하면 리스트만큼 불릴텐데? -> ViewModel LiveData를 활용
+                activity.disableProgress()
+
                 Glide
                     .with(itemView)
                     .asBitmap()
@@ -61,6 +69,8 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
                                 "Glide",
                                 "Delay: " + (end - start).toString() + " ms"
                             )
+                            iaBinding.iaTvTitle.text = title
+                            iaBinding.iaTvSubTitle.text = singer
                             return false
                         }
                     })
@@ -69,9 +79,6 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(iaBinding.iaIvAlbum)
             }
-
-            iaBinding.iaTvTitle.text = title
-            iaBinding.iaTvSubTitle.text = singer
         }
     }
 }

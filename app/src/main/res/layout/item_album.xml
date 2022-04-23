@@ -31,7 +31,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Title"
                 android:textColor="#000000"
                 android:textSize="25dp"
                 android:textStyle="bold" />
@@ -40,7 +39,6 @@
                 android:id="@+id/ia_tv_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sub Title"
                 android:textColor="#000000" />
         </LinearLayout>
 
