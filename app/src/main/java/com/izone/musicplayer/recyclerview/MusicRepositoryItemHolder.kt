@@ -1,9 +1,14 @@
 package com.izone.musicplayer.recyclerview
 
+import android.graphics.Bitmap
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.izone.musicplayer.MPConst.STORAGE_URL
@@ -29,14 +34,36 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
             var storageRef: StorageReference = storage.reference
 
             storageRef.child(album).downloadUrl.addOnSuccessListener {
-//                Glide
-//                    .with(itemView)
-//                    .load(it)
-//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                    .preload()
-
+                val start = System.currentTimeMillis()
                 Glide
                     .with(itemView)
+                    .asBitmap()
+                    .override(80, 80)
+                    .listener(object: RequestListener<Bitmap> {
+                        override fun onLoadFailed(
+                            e: GlideException?,
+                            model: Any?,
+                            target: Target<Bitmap>?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            return false
+                        }
+
+                        override fun onResourceReady(
+                            resource: Bitmap?,
+                            model: Any?,
+                            target: Target<Bitmap>?,
+                            dataSource: DataSource?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            val end = System.currentTimeMillis()
+                            Log.e(
+                                "Glide",
+                                "Delay: " + (end - start).toString() + " ms"
+                            )
+                            return false
+                        }
+                    })
                     .load(it)
                     .placeholder(R.drawable.place_img)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
