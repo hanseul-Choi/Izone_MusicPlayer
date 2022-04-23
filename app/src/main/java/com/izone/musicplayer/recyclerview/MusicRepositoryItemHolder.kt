@@ -46,7 +46,6 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
                 Glide
                     .with(itemView)
                     .asBitmap()
-                    .override(80, 80)
                     .listener(object: RequestListener<Bitmap> {
                         override fun onLoadFailed(
                             e: GlideException?,

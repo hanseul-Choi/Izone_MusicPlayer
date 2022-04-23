@@ -18,7 +18,6 @@ import com.izone.musicplayer.viewmodel.MainViewModelFactory
 
 /**
  * list
-- 노래 늦게 재생되는 거 수정, 로딩 처리 적용
 - Coroutine 변경
 - 아키텍처 변경, 비지니스는 모두 viewmodel로
 - Compose 변경
