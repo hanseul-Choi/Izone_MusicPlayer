@@ -22,9 +22,9 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
-                var value = response.body()
-
-                _musicList.postValue(value)
+                response.body()?.let { value ->
+                    _musicList.postValue(value)
+                }
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
@@ -38,8 +38,9 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
-                var value = response.body()
-                _musicList.postValue(value)
+                response.body()?.let { value ->
+                    _musicList.postValue(value)
+                }
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
@@ -53,8 +54,9 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
                 call: Call<List<MusicItems>>,
                 response: Response<List<MusicItems>>
             ) {
-                var value = response.body()
-                _musicList.postValue(value)
+                response.body()?.let { value ->
+                    _musicList.postValue(value)
+                }
             }
 
             override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
