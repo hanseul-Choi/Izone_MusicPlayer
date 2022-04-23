@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
 
-class MusicRepositoryAdapter() : RecyclerView.Adapter<MusicRepositoryItemHolder>() {
+class MusicRepositoryAdapter : RecyclerView.Adapter<MusicRepositoryItemHolder>() {
+    init {
+        setHasStableIds(true) // 이미 생성된 객체의 ID를 불러서 재사용
+    }
+
     interface OnMusicClickListener {
         fun onItemClick(position: Int)
     }
