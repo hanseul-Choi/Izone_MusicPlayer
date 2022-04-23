@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         aMBinding.adapter = mMusicRepositoryAdapter
 
         aMBinding.amRvAlbumList.viewTreeObserver.addOnGlobalLayoutListener {
-
+            showProgress()
         }
     }
 
