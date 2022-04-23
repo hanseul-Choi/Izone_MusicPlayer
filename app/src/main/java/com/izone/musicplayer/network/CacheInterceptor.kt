@@ -22,7 +22,7 @@ object CacheInterceptor {
             chain
                 .request()
                 .newBuilder()
-                .header("Cache-Control", "public, only-if-cached, max-stale=${MPConst.OFFLINE_CACHE_AGE}")
+                .header("Cache-Control","public, only-if-cached, max-stale=${MPConst.OFFLINE_CACHE_AGE}")
                 .removeHeader("Pragma")
                 .build()
         }
