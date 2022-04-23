@@ -18,7 +18,6 @@ import com.izone.musicplayer.viewmodel.MainViewModelFactory
 
 /**
  * list
-- Coroutine 변경
 - 아키텍처 변경, 비지니스는 모두 viewmodel로
 - Compose 변경
 - Navigation 추가
