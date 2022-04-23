@@ -17,7 +17,7 @@ import com.izone.musicplayer.viewmodel.MainViewModelFactory
 
 /**
  * list
-- 이미지 랜더링처리 : 느림 + 데이터 많이 먹음
+- 네트워크 캐싱 처리
 - 노래 늦게 재생되는 거 수정, 로딩 처리 적용
 - Coroutine 변경
 - 아키텍처 변경, 비지니스는 모두 viewmodel로
