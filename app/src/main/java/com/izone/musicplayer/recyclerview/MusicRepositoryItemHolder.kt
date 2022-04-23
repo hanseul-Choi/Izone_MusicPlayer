@@ -31,6 +31,7 @@ class MusicRepositoryItemHolder(listener: MusicRepositoryAdapter.OnMusicClickLis
                 Glide
                     .with(itemView)
                     .load(it)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .preload()
 
                 Glide
