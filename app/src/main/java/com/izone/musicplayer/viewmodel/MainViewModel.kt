@@ -5,7 +5,7 @@ import android.media.MediaPlayer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.izone.musicplayer.model.MusicItems
-import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
+//import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 import com.izone.musicplayer.repository.MusicRepository
 import kotlinx.coroutines.*
 import retrofit2.Call
