@@ -18,52 +18,59 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
 
     private val job = CoroutineScope(Dispatchers.Default)
 
+    private var retrofitJob: Job? = null
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Log.e("error", "error : ${throwable.localizedMessage}")
+    }
+
     fun requestIzoneRepositories() {
-        musicRepository.getIzoneRepository()?.enqueue(object : Callback<List<MusicItems>> {
-            override fun onResponse(
-                call: Call<List<MusicItems>>,
-                response: Response<List<MusicItems>>
-            ) {
-                response.body()?.let { value ->
-                    _musicList.postValue(value)
+//        musicRepository.getIzoneRepository()?.enqueue(object : Callback<List<MusicItems>> {
+//            override fun onResponse(
+//                call: Call<List<MusicItems>>,
+//                response: Response<List<MusicItems>>
+//            ) {
+//                response.body()?.let { value ->
+//                    _musicList.postValue(value)
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
+//            }
+//        })
+
+        retrofitJob = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = musicRepository.getIzoneRepository()
+
+            response?.let { res ->
+                if(res.isSuccessful) {
+                    _musicList.postValue(response.body())
                 }
             }
-
-            override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
-            }
-        })
+        }
     }
 
     fun requestBtsRepositories() {
-        musicRepository.getBtsRepository()?.enqueue(object : Callback<List<MusicItems>> {
-            override fun onResponse(
-                call: Call<List<MusicItems>>,
-                response: Response<List<MusicItems>>
-            ) {
-                response.body()?.let { value ->
-                    _musicList.postValue(value)
+        retrofitJob = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = musicRepository.getBtsRepository()
+
+            response?.let { res ->
+                if(res.isSuccessful) {
+                    _musicList.postValue(response.body())
                 }
             }
-
-            override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
-            }
-        })
+        }
     }
 
     fun requestOhmygirlRepositories() {
-        musicRepository.getOhmygirlRepository()?.enqueue(object : Callback<List<MusicItems>> {
-            override fun onResponse(
-                call: Call<List<MusicItems>>,
-                response: Response<List<MusicItems>>
-            ) {
-                response.body()?.let { value ->
-                    _musicList.postValue(value)
+        retrofitJob = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = musicRepository.getOhmygirlRepository()
+
+            response?.let { res ->
+                if(res.isSuccessful) {
+                    _musicList.postValue(response.body())
                 }
             }
-
-            override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
-            }
-        })
+        }
     }
 
     private val mediaPlayer = MediaPlayer()
