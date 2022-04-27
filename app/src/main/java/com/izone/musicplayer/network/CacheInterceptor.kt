@@ -37,6 +37,6 @@ object CacheInterceptor {
             .Builder()
             .addInterceptor(offlineInterceptor)
             .addInterceptor(onlineInterceptor)
-            .cache(cache)
+//            .cache(cache)
             .build()
 }
