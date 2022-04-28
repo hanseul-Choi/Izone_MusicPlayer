@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity() {
     //viewModel & Adpater
     private val viewModelFactory: MainViewModelFactory = MainViewModelFactory(MusicRepository())
     private val viewModel: MainViewModel by viewModels { viewModelFactory }
+
 //    lateinit var mMusicRepositoryAdapter: MusicRepositoryAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,15 +49,8 @@ class MainActivity : AppCompatActivity() {
 //        setFragment()
 
         setContent {
-            MainScreen()
+            MainScreen(viewModel = viewModel)
         }
-    }
-
-    // compose
-    @Preview(showBackground = true)
-    @Composable
-    fun MainPreview() {
-        MainScreen()
     }
 
 //    private fun initDataBinding() {

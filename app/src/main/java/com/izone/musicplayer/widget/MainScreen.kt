@@ -2,7 +2,6 @@ package com.izone.musicplayer.widget
 
 import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,20 +11,23 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.izone.musicplayer.R
+import com.izone.musicplayer.model.MusicItems
+import com.izone.musicplayer.repository.MusicRepository
+import com.izone.musicplayer.viewmodel.MainViewModel
 
 @Composable
-fun MainScreen() {
-    val itemList = listOf("IZONE", "OhMyGirl", "BTS")
-    var expanded by remember { mutableStateOf(false) }
+fun MainScreen(viewModel: MainViewModel) {
+
+    // dropDownList value
+    val itemList = listOf("IZONE", "OhMyGirl", "BTS") // Todo : Scalability
     var title by remember { mutableStateOf("IZONE") }
+    var expanded by remember { mutableStateOf(false) }
 
     Column() {
         Box(
@@ -64,6 +66,18 @@ fun MainScreen() {
                     DropDownList(title = item) {
                         title = item
                         expanded = false
+
+                        when (item) {
+                            "IZONE" -> {
+                                viewModel.requestIzoneRepositories()
+                            }
+                            "OhMyGirl" -> {
+                                viewModel.requestOhmygirlRepositories()
+                            }
+                            "BTS" -> {
+                                viewModel.requestBtsRepositories()
+                            }
+                        }
                     }
                     Divider()
                 }
@@ -71,7 +85,7 @@ fun MainScreen() {
 
         }
 
-        MusicItems()
+        MusicItems(viewModel.musicList.value)
     }
 }
 
@@ -92,7 +106,7 @@ fun DropDownList(title: String, clickEvent: () -> Unit) {
 @Preview(showBackground = true, widthDp = 300, heightDp = 500)
 @Composable
 fun MainPreview() {
-    MainScreen()
+    MainScreen(MainViewModel(MusicRepository()))
 }
 
 @Composable
@@ -123,7 +137,10 @@ fun MusicItem() {
 }
 
 @Composable
-fun MusicItems() {
+fun MusicItems(musicList: List<MusicItems>?) {
+
+    Log.d("musicList", "List is $musicList")
+
     LazyColumn {
         items(10) {
             MusicItem()

@@ -13,8 +13,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() {
-    private val _musicList = MutableLiveData<List<MusicItems>>()
-    val musicList = _musicList
+    var musicList = MutableLiveData<List<MusicItems>>()
+        private set
 
     private val job = CoroutineScope(Dispatchers.Default)
 
@@ -43,7 +43,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
 
             response?.let { res ->
                 if(res.isSuccessful) {
-                    _musicList.postValue(response.body())
+                    musicList.postValue(response.body())
                 }
             }
         }
@@ -55,7 +55,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
 
             response?.let { res ->
                 if(res.isSuccessful) {
-                    _musicList.postValue(response.body())
+                    musicList.postValue(response.body())
                 }
             }
         }
@@ -67,7 +67,7 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
 
             response?.let { res ->
                 if(res.isSuccessful) {
-                    _musicList.postValue(response.body())
+                    musicList.postValue(response.body())
                 }
             }
         }
