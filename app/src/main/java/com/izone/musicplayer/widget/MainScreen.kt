@@ -27,10 +27,13 @@ fun MainScreen() {
     var expanded by remember { mutableStateOf(false) }
     var title by remember { mutableStateOf("IZONE") }
 
-    Box(modifier = Modifier
-        .fillMaxSize(),
-        contentAlignment = Alignment.TopCenter) {
-        Column {
+    Column() {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentAlignment = Alignment.TopStart
+        ) {
+
             Row(
                 modifier = Modifier
                     .clickable {
@@ -39,7 +42,7 @@ fun MainScreen() {
                     .fillMaxWidth()
                     .padding(start = 15.dp, end = 15.dp, top = 15.dp, bottom = 10.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
-            ){
+            ) {
                 Text(
                     text = title,
                     textAlign = TextAlign.Center,
@@ -66,17 +69,17 @@ fun MainScreen() {
                 }
             }
 
-            Divider()
-
-            MusicItems()
         }
+
+        MusicItems()
     }
 }
 
 @Composable
 fun DropDownList(title: String, clickEvent: () -> Unit) {
     DropdownMenuItem(
-        onClick = clickEvent) {
+        onClick = clickEvent
+    ) {
         Text(
             text = title,
             modifier = Modifier.fillMaxWidth(),
@@ -106,7 +109,8 @@ fun MusicItem() {
             Image(
                 painter = painterResource(id = R.drawable.yena2),
                 contentDescription = "album image",
-                modifier = Modifier.padding(15.dp))
+                modifier = Modifier.padding(15.dp)
+            )
 
             Column(
                 modifier = Modifier.padding(10.dp)
@@ -121,7 +125,7 @@ fun MusicItem() {
 @Composable
 fun MusicItems() {
     LazyColumn {
-        items(5) {
+        items(10) {
             MusicItem()
         }
     }

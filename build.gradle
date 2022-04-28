@@ -11,6 +11,7 @@ buildscript {
         retrofit_version = "2.6.2"
         glide_version = "4.11.0"
         coroutine_version = "1.5.2"
+        navigation_version = "2.4.2"
     }
 
     repositories {
@@ -23,6 +24,9 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.10'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        // navigation safe-args
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
     }
 }
 
