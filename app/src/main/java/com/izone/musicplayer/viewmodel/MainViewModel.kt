@@ -120,8 +120,6 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
             val curpos = mediaPlayer.currentPosition
             val duration = mediaPlayer.duration
 
-            Log.d("test", "duration is $duration , $curpos")
-
             if(curpos >= duration - 20 && curpos != 0 && duration != 0) {
                 setPosition(musicPosition.value!!.plus(1))
                 break

@@ -9,6 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -16,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.izone.musicplayer.MPApplication
 import com.izone.musicplayer.R
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.repository.MusicRepository
@@ -28,6 +30,9 @@ fun MainScreen(viewModel: MainViewModel) {
     val itemList = listOf("IZONE", "OhMyGirl", "BTS") // Todo : Scalability
     var title by remember { mutableStateOf("IZONE") }
     var expanded by remember { mutableStateOf(false) }
+
+    // viewmodel state
+    val observeList by viewModel.musicList.observeAsState(null)
 
     Column() {
         Box(
@@ -64,6 +69,9 @@ fun MainScreen(viewModel: MainViewModel) {
             ) {
                 itemList.forEach { item ->
                     DropDownList(title = item) {
+
+                        Log.d("test", "click $item")
+
                         title = item
                         expanded = false
 
@@ -85,7 +93,7 @@ fun MainScreen(viewModel: MainViewModel) {
 
         }
 
-        MusicItems(viewModel.musicList.value)
+        MusicItems(observeList)
     }
 }
 
@@ -110,7 +118,7 @@ fun MainPreview() {
 }
 
 @Composable
-fun MusicItem() {
+fun MusicItem(music: MusicItems) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -129,8 +137,8 @@ fun MusicItem() {
             Column(
                 modifier = Modifier.padding(10.dp)
             ) {
-                Text(text = "Title")
-                Text(text = "Singer")
+                Text(text = music.title)
+                Text(text = music.singer)
             }
         }
     }
@@ -142,8 +150,8 @@ fun MusicItems(musicList: List<MusicItems>?) {
     Log.d("musicList", "List is $musicList")
 
     LazyColumn {
-        items(10) {
-            MusicItem()
+        items(musicList?.size ?: 0) {
+            MusicItem(musicList!![it])
         }
     }
 }

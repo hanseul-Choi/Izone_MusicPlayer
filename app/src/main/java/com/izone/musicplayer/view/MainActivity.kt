@@ -43,6 +43,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        viewModel.requestIzoneRepositories()
 //        initDataBinding()
 //        initSpinnerSet()
 //        setAdapter()
