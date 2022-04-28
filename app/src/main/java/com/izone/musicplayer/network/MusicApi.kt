@@ -2,21 +2,22 @@ package com.izone.musicplayer.network
 
 import com.izone.musicplayer.model.MusicItems
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 
 interface MusicApi {
     @GET("music/izone.json")
-    fun getIzone(
+    suspend fun getIzone(
 
-    ): Call<List<MusicItems>>
+    ): Response<List<MusicItems>>
 
     @GET("music/bts.json")
-    fun getBts(
+    suspend fun getBts(
 
-    ): Call<List<MusicItems>>
+    ): Response<List<MusicItems>>
 
     @GET("music/ohmygirl.json")
-    fun getOhmygirl(
+    suspend fun getOhmygirl(
 
-    ): Call<List<MusicItems>>
+    ): Response<List<MusicItems>>
 }
