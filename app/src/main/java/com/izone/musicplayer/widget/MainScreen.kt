@@ -17,7 +17,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.izone.musicplayer.MPApplication
 import com.izone.musicplayer.R
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.repository.MusicRepository
@@ -32,7 +31,7 @@ fun MainScreen(viewModel: MainViewModel) {
     var expanded by remember { mutableStateOf(false) }
 
     // viewmodel state
-    val observeList by viewModel.musicList.observeAsState(null)
+    val observeList = viewModel.musicList.observeAsState().value
 
     Column() {
         Box(
@@ -147,7 +146,7 @@ fun MusicItem(music: MusicItems) {
 @Composable
 fun MusicItems(musicList: List<MusicItems>?) {
 
-    Log.d("musicList", "List is $musicList")
+    Log.d("musicList", "List is ${musicList.hashCode()}")
 
     LazyColumn {
         items(musicList?.size ?: 0) {
