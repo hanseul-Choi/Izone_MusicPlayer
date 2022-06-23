@@ -2,8 +2,10 @@ package com.izone.musicplayer.viewmodel
 
 import android.util.Log
 import android.media.MediaPlayer
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 import com.izone.musicplayer.repository.MusicRepository
@@ -14,59 +16,34 @@ import retrofit2.Response
 
 class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() {
     private val _musicList = MutableLiveData<List<MusicItems>>()
-    val musicList = _musicList
+    val musicList: LiveData<List<MusicItems>> = _musicList
 
     private val job = CoroutineScope(Dispatchers.Default)
 
     fun requestIzoneRepositories() {
-        musicRepository.getIzoneRepository()?.enqueue(object : Callback<List<MusicItems>> {
-            override fun onResponse(
-                call: Call<List<MusicItems>>,
-                response: Response<List<MusicItems>>
-            ) {
-                response.body()?.let { value ->
-                    _musicList.postValue(value)
-                }
-            }
-
-            override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
-            }
-        })
+        viewModelScope.launch {
+            val musicItems = musicRepository.getIzoneRepository()
+            _musicList.value = musicItems
+        }
     }
 
     fun requestBtsRepositories() {
-        musicRepository.getBtsRepository()?.enqueue(object : Callback<List<MusicItems>> {
-            override fun onResponse(
-                call: Call<List<MusicItems>>,
-                response: Response<List<MusicItems>>
-            ) {
-                response.body()?.let { value ->
-                    _musicList.postValue(value)
-                }
-            }
-
-            override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
-            }
-        })
+        viewModelScope.launch {
+            val musicItems = musicRepository.getBtsRepository()
+            _musicList.value = musicItems
+        }
     }
 
     fun requestOhmygirlRepositories() {
-        musicRepository.getOhmygirlRepository()?.enqueue(object : Callback<List<MusicItems>> {
-            override fun onResponse(
-                call: Call<List<MusicItems>>,
-                response: Response<List<MusicItems>>
-            ) {
-                response.body()?.let { value ->
-                    _musicList.postValue(value)
-                }
-            }
-
-            override fun onFailure(call: Call<List<MusicItems>>, t: Throwable) {
-            }
-        })
+        viewModelScope.launch {
+            val musicItems = musicRepository.getOhmygirlRepository()
+            _musicList.value = musicItems
+        }
     }
 
-    private val mediaPlayer = MediaPlayer()
+    private val mediaPlayer by lazy {
+        MediaPlayer()
+    }
 
     // player pos
     private val _musicPosition = MutableLiveData<Int>()

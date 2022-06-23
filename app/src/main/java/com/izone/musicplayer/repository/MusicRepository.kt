@@ -1,11 +1,9 @@
 package com.izone.musicplayer.repository
 
-import com.izone.musicplayer.network.MusicService
-
-class MusicRepository {
-    private val musicClient = MusicService.client
-
-    fun getIzoneRepository() = musicClient?.getIzone()
-    fun getBtsRepository() = musicClient?.getBts()
-    fun getOhmygirlRepository() = musicClient?.getOhmygirl()
+class MusicRepository(
+    private val musicRemoteData: MusicRemoteDataSource
+) {
+    suspend fun getIzoneRepository() = musicRemoteData.getIzone()
+    suspend fun getBtsRepository() = musicRemoteData.getBts()
+    suspend fun getOhmygirlRepository() = musicRemoteData.getOhmygirl()
 }

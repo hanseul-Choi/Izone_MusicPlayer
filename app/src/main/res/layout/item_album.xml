@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.izone.musicplayer.viewmodel.MainViewModel" />
+        <variable
+            name="musicItems"
+            type="com.izone.musicplayer.model.MusicItems" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +18,7 @@
             android:id="@+id/ia_iv_album"
             android:layout_width="100dp"
             android:layout_height="110dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -20,7 +28,7 @@
             android:id="@+id/ia_ll_text_set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/ia_iv_album"
             app:layout_constraintLeft_toRightOf="@+id/ia_iv_album"
@@ -32,14 +40,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:textColor="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:text="@{musicItems.title}"/>
 
             <TextView
                 android:id="@+id/ia_tv_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:text="@{musicItems.singer}"/>
         </LinearLayout>
 
         <View

@@ -2,9 +2,7 @@ package com.izone.musicplayer.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
@@ -14,7 +12,7 @@ import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 import com.izone.musicplayer.repository.MusicRepository
 import com.izone.musicplayer.viewmodel.MainViewModel
-import com.izone.musicplayer.viewmodel.MainViewModelFactory
+import com.izone.musicplayer.viewmodel.ViewModelFactory
 
 /**
  * list
@@ -31,9 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var aMBinding: ActivityMainBinding
 
     //viewModel & Adpater
-    private val viewModelFactory: MainViewModelFactory = MainViewModelFactory(MusicRepository())
-    private val viewModel: MainViewModel by viewModels { viewModelFactory }
-    lateinit var mMusicRepositoryAdapter: MusicRepositoryAdapter
+    private val viewModel: MainViewModel by viewModels { ViewModelFactory(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,21 +48,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-
-        mMusicRepositoryAdapter = MusicRepositoryAdapter(this)
-
-        mMusicRepositoryAdapter.setItemListener(object : MusicRepositoryAdapter.OnMusicClickListener {
-            override fun onItemClick(position: Int) {
-                viewModel.setPosition(position)
-                viewModel.playMusic()
-                aMBinding.amFlMiniplayer.visibility = View.VISIBLE
-            }
-        })
-
+        val mMusicRepositoryAdapter = MusicRepositoryAdapter(viewModel)
         aMBinding.amRvAlbumList.adapter = mMusicRepositoryAdapter
-        aMBinding.adapter = mMusicRepositoryAdapter
 
-        aMBinding.amRvAlbumList.viewTreeObserver.addOnGlobalLayoutListener {
+        viewModel.musicList.observe(this) {
+            mMusicRepositoryAdapter.submitList(it)
+            mMusicRepositoryAdapter.notifyDataSetChanged()
         }
     }
 
