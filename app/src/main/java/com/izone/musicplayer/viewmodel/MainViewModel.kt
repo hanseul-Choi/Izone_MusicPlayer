@@ -7,12 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.izone.musicplayer.model.MusicItems
-import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
-import com.izone.musicplayer.repository.MusicRepository
+import com.izone.musicplayer.repository.music.MusicRepository
 import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() {
     private val _musicList = MutableLiveData<List<MusicItems>>()

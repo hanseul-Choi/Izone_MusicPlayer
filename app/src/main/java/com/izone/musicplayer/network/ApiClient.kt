@@ -1,14 +1,16 @@
 package com.izone.musicplayer.network
 
+import android.net.Uri
+import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.izone.musicplayer.MPConst
 import com.izone.musicplayer.model.MusicItems
-import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-interface MusicApi {
+interface ApiClient {
     @GET("music/izone.json")
     suspend fun getIzone(): List<MusicItems>
 
@@ -19,13 +21,12 @@ interface MusicApi {
     suspend fun getOhmygirl(): List<MusicItems>
 
     companion object {
-        fun create(): MusicApi {
-
+        fun create(): ApiClient {
             return Retrofit.Builder()
                 .baseUrl(MPConst.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(MusicApi::class.java)
+                .create(ApiClient::class.java)
         }
     }
 }

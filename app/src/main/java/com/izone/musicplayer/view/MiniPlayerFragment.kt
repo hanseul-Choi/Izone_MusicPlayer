@@ -8,15 +8,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.bumptech.glide.Glide
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.izone.musicplayer.MPConst.STORAGE_URL
+import androidx.fragment.app.viewModels
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.databinding.FragmentMiniplayerBinding
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.viewmodel.MainViewModel
+import com.izone.musicplayer.viewmodel.MiniPlayerViewModel
+import com.izone.musicplayer.viewmodel.ViewModelFactory
 
 class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment() {
 
@@ -24,7 +23,14 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
 
     lateinit var list: List<MusicItems>
     private var pos = 0
-    private val viewModel : MainViewModel by activityViewModels()
+    private val viewModel: MiniPlayerViewModel by viewModels {
+        ViewModelFactory(requireContext())
+    }
+    private val mainViewModel : MainViewModel by activityViewModels()
+
+    init {
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,14 +45,29 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
         return fMbinding.root
     }
 
-    private fun setFragmentViewModelListener() {
-        viewModel.musicList.observe(requireActivity()) {
-            list = it.toMutableList()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.musicUri.observe(viewLifecycleOwner) {
+            Log.d("test","music uri is $it")
         }
 
-        Log.d("test", "musicposition? ${viewModel.musicPosition.value}")
+        viewModel.albumImageUri.observe(viewLifecycleOwner) {
+            Log.d("test","album uri is $it")
+        }
+    }
 
-        viewModel.musicPosition.observe(viewLifecycleOwner) {
+    private fun setFragmentViewModelListener() {
+        mainViewModel.musicList.observe(requireActivity()) {
+            list = it.toMutableList()
+
+            viewModel.getAlbumImageUri(list[0].album)
+            viewModel.getMusicItem(list[0].music)
+        }
+
+        Log.d("test", "musicposition? ${mainViewModel.musicPosition.value}")
+
+        mainViewModel.musicPosition.observe(viewLifecycleOwner) {
             pos = it
 
             Log.d("test", "position observe : $pos")
@@ -57,23 +78,6 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
 
             fMbinding.fmTvTitle.text = list[pos].title
             fMbinding.fmTvSinger.text = list[pos].singer
-
-            var storage: FirebaseStorage = FirebaseStorage.getInstance(STORAGE_URL)
-            var storageRef: StorageReference = storage.reference
-
-            //set image list[pos].album
-
-            storageRef.child(list[pos].album).downloadUrl.addOnCompleteListener { task ->
-                if(task.isSuccessful) {
-                    Glide.with(this).load(task.result).into(fMbinding.fmIvAlbum)
-                }
-            }
-
-            //set music
-            storageRef.child(list[pos].music).downloadUrl.addOnSuccessListener { uri ->
-                viewModel.setMusic(uri.toString())
-                viewModel.playMusic()
-            }
         }
     }
 
@@ -82,22 +86,22 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
             fMbinding.fmIvPlay.visibility = View.INVISIBLE
             fMbinding.fmIvStop.visibility = View.VISIBLE
 
-            viewModel.playMusic()
+            mainViewModel.playMusic()
         }
 
         fMbinding.fmIvStop.setOnClickListener {
             fMbinding.fmIvPlay.visibility = View.VISIBLE
             fMbinding.fmIvStop.visibility = View.INVISIBLE
 
-            viewModel.stopMusic()
+            mainViewModel.stopMusic()
         }
 
         fMbinding.fmIvNext.setOnClickListener {
-            viewModel.setPosition(pos+1)
+            mainViewModel.setPosition(pos+1)
         }
 
         fMbinding.miniplayerClose.setOnClickListener {
-            viewModel.stopMusic()
+            mainViewModel.stopMusic()
             amBinding.amFlMiniplayer.visibility = View.GONE
         }
     }

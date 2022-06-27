@@ -1,16 +1,26 @@
 package com.izone.musicplayer
 
-import com.izone.musicplayer.network.MusicApi
+import com.izone.musicplayer.network.ApiClient
+import com.izone.musicplayer.network.StorageApiClient
 
 object ServiceLocator {
-    private var musicApi: MusicApi? = null
+    private var apiClient: ApiClient? = null
 
-    fun provideMusicApi(): MusicApi {
-        return musicApi ?: kotlin.run {
-            MusicApi.create().also {
-                musicApi = it
+    fun provideMusicApi(): ApiClient {
+        return apiClient ?: kotlin.run {
+            ApiClient.create().also {
+                apiClient = it
             }
         }
     }
 
+    private var storageApiClient: StorageApiClient? = null
+
+    fun provideStorageApi(): StorageApiClient {
+        return storageApiClient ?: kotlin.run {
+            StorageApiClient().also {
+                storageApiClient = it
+            }
+        }
+    }
 }

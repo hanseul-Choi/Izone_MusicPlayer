@@ -1,4 +1,4 @@
-package com.izone.musicplayer.repository
+package com.izone.musicplayer.repository.music
 
 import com.izone.musicplayer.model.MusicItems
 

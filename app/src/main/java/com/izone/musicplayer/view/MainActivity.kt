@@ -10,17 +10,13 @@ import androidx.databinding.DataBindingUtil
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
-import com.izone.musicplayer.repository.MusicRepository
 import com.izone.musicplayer.viewmodel.MainViewModel
 import com.izone.musicplayer.viewmodel.ViewModelFactory
 
 /**
  * list
-- 아키텍처 변경, 비지니스는 모두 viewmodel로
-- Compose 변경
-- Navigation 추가
-- UI 및 UX 개선
-- Warning 제거
+ * 이미지 네트워크 처리 방식 수정
+ * 이미지 받아오는 작업
  */
 
 class MainActivity : AppCompatActivity() {
