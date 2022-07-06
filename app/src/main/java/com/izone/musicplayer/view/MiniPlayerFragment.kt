@@ -51,17 +51,11 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
         viewModel.musicUri.observe(viewLifecycleOwner) {
             Log.d("test","music uri is $it")
         }
-
-        viewModel.albumImageUri.observe(viewLifecycleOwner) {
-            Log.d("test","album uri is $it")
-        }
     }
 
     private fun setFragmentViewModelListener() {
         mainViewModel.musicList.observe(requireActivity()) {
             list = it.toMutableList()
-
-            viewModel.getAlbumImageUri(list[0].album)
             viewModel.getMusicItem(list[0].music)
         }
 

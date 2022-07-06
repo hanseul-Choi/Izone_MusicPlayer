@@ -63,8 +63,6 @@ class MainActivity : AppCompatActivity() {
         aMBinding.amSSingerList.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    showProgress()
-
                     when (p2) {
                         0 -> {
                             //izone
@@ -91,14 +89,5 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.am_fl_miniplayer, MiniPlayerFragment(amBinding = aMBinding))
             .commit()
-    }
-
-
-    fun showProgress() {
-        aMBinding.amClProgressBarLayout.visibility = View.VISIBLE
-    }
-
-    fun disableProgress() {
-        aMBinding.amClProgressBarLayout.visibility = View.GONE
     }
 }
