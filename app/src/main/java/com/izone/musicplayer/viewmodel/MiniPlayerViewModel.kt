@@ -15,9 +15,6 @@ class MiniPlayerViewModel(private val storageRepository: StorageRepository) : Vi
     // 따라서 List로 받는게 좋아보임! -> 시간이 많이 걸리지 않을까?
     // Map형식으로 받고 데이터가 있을 때는 firebase에 접근 안하는게 효율적이지 않을까?
 
-    private val _albumImageUri = MutableLiveData<Uri>()
-    val albumImageUri: LiveData<Uri> = _albumImageUri
-
     private val _musicUri = MutableLiveData<Uri>()
     val musicUri: LiveData<Uri> = _musicUri
 
@@ -26,18 +23,6 @@ class MiniPlayerViewModel(private val storageRepository: StorageRepository) : Vi
         storageRepository.getMusicItem(musicUri, object : StorageListener {
             override fun onSuccess(uri: Uri) {
                 Log.d("test", "music uri is $uri")
-            }
-
-            override fun onFailed(e: Exception) {
-                Log.e("error", e.message ?: "error is occurred")
-            }
-        })
-    }
-
-    fun getAlbumImageUri(albumUri: String) {
-        storageRepository.getAlbumImageItem(albumUri, object : StorageListener {
-            override fun onSuccess(uri: Uri) {
-                Log.d("test", "album uri is $uri")
             }
 
             override fun onFailed(e: Exception) {

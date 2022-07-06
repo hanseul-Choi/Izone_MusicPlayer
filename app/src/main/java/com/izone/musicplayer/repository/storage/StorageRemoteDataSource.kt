@@ -6,8 +6,4 @@ class StorageRemoteDataSource(private val storageApiClient: StorageApiClient): S
     override fun getMusicItem(musicUri: String, listener: StorageListener) {
         storageApiClient.getMusicUri(musicUri, listener)
     }
-
-    override fun getAlbumImageItem(albumUri: String, listener: StorageListener) {
-        storageApiClient.getAlbumUri(albumUri, listener)
-    }
 }
