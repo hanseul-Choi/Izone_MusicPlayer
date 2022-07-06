@@ -64,6 +64,7 @@ dependencies {
     implementation "com.google.firebase:firebase-storage:$firebase_storage_version"
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
+    implementation "com.firebaseui:firebase-ui-storage:$firebase_ui_version"
 
     //retrofit
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"

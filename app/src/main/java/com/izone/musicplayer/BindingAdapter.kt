@@ -1,10 +1,9 @@
 package com.izone.musicplayer
 
-import android.util.Log
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.izone.musicplayer.model.MusicItems
-import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
+import com.bumptech.glide.Glide
+import com.izone.musicplayer.network.StorageApiClient.Companion.storageRef
 
 //@BindingAdapter("bind:item", "bind:listener")
 //fun bindItem(recyclerView : RecyclerView, musicList: List<MusicItems>?, itemListener: MusicRepositoryAdapter.OnMusicClickListener) {
@@ -16,3 +15,10 @@ import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 //        adapter?.notifyDataSetChanged()
 //    }
 //}
+
+@BindingAdapter("bind:storageImg")
+fun bindStorageItem(imageView: ImageView, childLoc: String) {
+    Glide.with(imageView)
+        .load(storageRef.child(childLoc))
+        .into(imageView)
+}
