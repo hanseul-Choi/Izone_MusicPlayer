@@ -2,15 +2,24 @@ package com.izone.musicplayer.viewmodel
 
 import android.util.Log
 import android.media.MediaPlayer
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.izone.musicplayer.Event
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.repository.music.MusicRepository
+import com.izone.musicplayer.repository.storage.StorageListener
+import com.izone.musicplayer.repository.storage.StorageRepository
 import kotlinx.coroutines.*
+import java.lang.Exception
 
-class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() {
+class MainViewModel(
+    private val musicRepository: MusicRepository,
+    private val storageRepository: StorageRepository)
+    : ViewModel() {
+
     private val _musicList = MutableLiveData<List<MusicItems>>()
     val musicList: LiveData<List<MusicItems>> = _musicList
 
@@ -45,11 +54,28 @@ class MainViewModel(private val musicRepository: MusicRepository) : ViewModel() 
     private val _musicPosition = MutableLiveData<Int>()
     val musicPosition = _musicPosition
 
+    // music value
+    private val _musicEvent = MutableLiveData<Event<String>>()
+    val musicEvent: LiveData<Event<String>> = _musicEvent
+
+    fun settingMusicItem(music: String) {
+        storageRepository.getMusicItem(music, object : StorageListener {
+            override fun onSuccess(uri: Uri) {
+                _musicEvent.value = Event(uri.toString())
+            }
+
+            override fun onFailed(e: Exception) {
+
+            }
+        })
+    }
+
     fun setMusic(uri: String) {
         mediaPlayer.apply {
             reset()
             setDataSource(uri)
             prepare()
+            start()
         }
     }
 

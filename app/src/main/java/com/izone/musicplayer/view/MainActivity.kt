@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import com.izone.musicplayer.Event
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         initSpinnerSet()
         setAdapter()
         setFragment()
+        setEvent()
     }
 
     private fun initDataBinding() {
@@ -89,5 +91,11 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.am_fl_miniplayer, MiniPlayerFragment(amBinding = aMBinding))
             .commit()
+    }
+
+    private fun setEvent() {
+        viewModel.musicEvent.observe(this, Event.EventObserver {
+            viewModel.setMusic(it)
+        })
     }
 }

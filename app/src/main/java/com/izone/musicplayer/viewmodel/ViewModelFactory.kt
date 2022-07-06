@@ -14,8 +14,9 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
-                val repository = MusicRepository(MusicRemoteDataSource(ServiceLocator.provideMusicApi()))
-                MainViewModel(repository) as T
+                val musicRepository = MusicRepository(MusicRemoteDataSource(ServiceLocator.provideMusicApi()))
+                val storageRepository = StorageRepository(StorageRemoteDataSource(ServiceLocator.provideStorageApi()))
+                MainViewModel(musicRepository, storageRepository) as T
             }
             modelClass.isAssignableFrom(MiniPlayerViewModel::class.java) -> {
                 val repository = StorageRepository(StorageRemoteDataSource(ServiceLocator.provideStorageApi()))
