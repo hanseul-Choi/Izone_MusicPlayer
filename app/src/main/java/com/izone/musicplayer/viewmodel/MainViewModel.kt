@@ -153,4 +153,10 @@ class MainViewModel(
         _showPlayer.value = false
         stopMusic()
     }
+
+    fun initMusicView() {
+        stopMusic()
+        closePlayer()
+        _musicPosition.value = 0
+    }
 }

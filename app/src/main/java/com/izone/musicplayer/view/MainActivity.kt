@@ -67,14 +67,20 @@ class MainActivity : AppCompatActivity() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     when (p2) {
                         0 -> {
+                            viewModel.initMusicView()
+
                             //izone
                             viewModel.requestIzoneRepositories()
                         }
                         1 -> {
+                            viewModel.initMusicView()
+
                             //omg
                             viewModel.requestOhmygirlRepositories()
                         }
                         2 -> {
+                            viewModel.initMusicView()
+
                             //bts
                             viewModel.requestBtsRepositories()
                         }
