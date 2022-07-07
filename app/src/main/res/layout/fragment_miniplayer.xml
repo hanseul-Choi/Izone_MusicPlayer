@@ -17,17 +17,6 @@
         android:background="@drawable/miniplayer_background">
 
         <ImageView
-            android:id="@+id/miniplayer_close"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/ico_closeplayer"
-            android:contentDescription="@string/closeBtnDescription"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
             android:id="@+id/fm_iv_album"
             android:layout_width="90dp"
             android:layout_height="100dp"
@@ -71,12 +60,23 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/fm_iv_close"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ico_close_player"
+            android:contentDescription="@string/closeBtnDescription"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
             android:id="@+id/fm_iv_next"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="15dp"
             android:contentDescription="@string/nextButtonImageDescription"
-            android:src="@drawable/ico_nextaudio_small"
+            android:src="@drawable/ico_next_audio_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -88,7 +88,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:contentDescription="@string/playButtonImageDescription"
-            android:src="@drawable/ico_playaudio_small"
+            android:src="@drawable/ico_play_audio_small"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fm_iv_next"
@@ -101,7 +101,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:contentDescription="@string/stopButtonImageDescription"
-            android:src="@drawable/ico_pauseaudio_small"
+            android:src="@drawable/ico_pause_audio_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fm_iv_next"
             app:layout_constraintTop_toTopOf="parent" />
