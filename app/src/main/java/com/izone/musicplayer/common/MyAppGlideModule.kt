@@ -1,4 +1,4 @@
-package com.izone.musicplayer
+package com.izone.musicplayer.common
 
 import android.content.Context
 import com.bumptech.glide.Glide

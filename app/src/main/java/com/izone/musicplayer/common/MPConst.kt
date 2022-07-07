@@ -1,4 +1,4 @@
-package com.izone.musicplayer
+package com.izone.musicplayer.common
 
 object MPConst {
     const val BASE_URL = "https://izonemusicplayer-ccd40-default-rtdb.firebaseio.com/"

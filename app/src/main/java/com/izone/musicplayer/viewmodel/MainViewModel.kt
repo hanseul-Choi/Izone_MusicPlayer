@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.izone.musicplayer.Event
+import com.izone.musicplayer.common.Event
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.repository.music.MusicRepository
 import com.izone.musicplayer.repository.storage.StorageListener

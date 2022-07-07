@@ -1,4 +1,4 @@
-package com.izone.musicplayer
+package com.izone.musicplayer.common
 
 import androidx.lifecycle.Observer
 

@@ -1,10 +1,6 @@
 package com.izone.musicplayer.network
 
-import android.net.Uri
-import com.bumptech.glide.Glide
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.izone.musicplayer.MPConst
+import com.izone.musicplayer.common.MPConst
 import com.izone.musicplayer.model.MusicItems
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

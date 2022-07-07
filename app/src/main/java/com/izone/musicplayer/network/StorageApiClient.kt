@@ -2,7 +2,7 @@ package com.izone.musicplayer.network
 
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.izone.musicplayer.MPConst
+import com.izone.musicplayer.common.MPConst
 import com.izone.musicplayer.repository.storage.StorageListener
 
 class StorageApiClient {

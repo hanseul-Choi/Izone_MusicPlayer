@@ -3,7 +3,7 @@ package com.izone.musicplayer.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.izone.musicplayer.ServiceLocator
+import com.izone.musicplayer.common.ServiceLocator
 import com.izone.musicplayer.repository.music.MusicRemoteDataSource
 import com.izone.musicplayer.repository.music.MusicRepository
 import com.izone.musicplayer.repository.storage.StorageRemoteDataSource

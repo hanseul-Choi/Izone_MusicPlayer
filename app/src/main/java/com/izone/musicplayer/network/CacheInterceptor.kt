@@ -1,8 +1,8 @@
 package com.izone.musicplayer.network
 
 import com.izone.musicplayer.MPApplication
-import com.izone.musicplayer.MPConst
-import com.izone.musicplayer.MPUtil
+import com.izone.musicplayer.common.MPConst
+import com.izone.musicplayer.common.MPUtil
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
