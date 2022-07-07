@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setEvent() {
+        // music item click event
         viewModel.musicEvent.observe(this, Event.EventObserver {
             viewModel.setMusic(it)
         })

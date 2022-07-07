@@ -58,7 +58,13 @@ class MainViewModel(
     private val _musicEvent = MutableLiveData<Event<String>>()
     val musicEvent: LiveData<Event<String>> = _musicEvent
 
-    fun settingMusicItem(music: String) {
+    private val _showPlayer = MutableLiveData<Boolean>()
+    val showPlayer: LiveData<Boolean> = _showPlayer
+
+    // music item 클릭시 동작할 메소드
+    fun clickMusicItem(music: String) {
+        _showPlayer.value = true
+
         storageRepository.getMusicItem(music, object : StorageListener {
             override fun onSuccess(uri: Uri) {
                 _musicEvent.value = Event(uri.toString())

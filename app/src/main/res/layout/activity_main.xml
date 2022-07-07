@@ -7,6 +7,8 @@
         <variable
             name="viewModel"
             type="com.izone.musicplayer.viewmodel.MainViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,8 +36,8 @@
         <FrameLayout
             android:id="@+id/am_fl_miniplayer"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.showPlayer ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
