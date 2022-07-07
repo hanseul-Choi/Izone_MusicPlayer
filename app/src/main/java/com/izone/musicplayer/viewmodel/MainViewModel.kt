@@ -52,7 +52,7 @@ class MainViewModel(
 
     // player pos
     private val _musicPosition = MutableLiveData<Int>()
-    val musicPosition = _musicPosition
+    val musicPosition: LiveData<Int> = _musicPosition
 
     // music value
     private val _musicEvent = MutableLiveData<Event<String>>()
@@ -62,8 +62,10 @@ class MainViewModel(
     val showPlayer: LiveData<Boolean> = _showPlayer
 
     // music item 클릭시 동작할 메소드
-    fun clickMusicItem(music: String) {
+    fun clickMusicItem(music: String, pos: Int) {
+        stopMusic()
         _showPlayer.value = true
+        _musicPosition.value = pos
 
         storageRepository.getMusicItem(music, object : StorageListener {
             override fun onSuccess(uri: Uri) {

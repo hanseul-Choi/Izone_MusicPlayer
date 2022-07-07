@@ -18,8 +18,10 @@ import com.izone.musicplayer.network.StorageApiClient.Companion.storageRef
 //}
 
 @BindingAdapter("bind:storageImg")
-fun bindStorageItem(imageView: ImageView, childLoc: String) {
-    Glide.with(imageView)
-        .load(FirebaseStorage.getInstance().getReference(childLoc))
-        .into(imageView)
+fun bindStorageItem(imageView: ImageView, childLoc: String?) {
+    childLoc?.let {
+        Glide.with(imageView)
+            .load(FirebaseStorage.getInstance().getReference(childLoc))
+            .into(imageView)
+    }
 }

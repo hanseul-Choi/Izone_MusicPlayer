@@ -42,6 +42,9 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
         setFragmentViewModelListener()
         setButtonClickListener()
 
+        fMbinding.lifecycleOwner = viewLifecycleOwner
+        fMbinding.viewModel = mainViewModel
+
         return fMbinding.root
     }
 
@@ -58,8 +61,6 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
             list = it.toMutableList()
             viewModel.getMusicItem(list[0].music)
         }
-
-        Log.d("test", "musicposition? ${mainViewModel.musicPosition.value}")
 
         mainViewModel.musicPosition.observe(viewLifecycleOwner) {
             pos = it

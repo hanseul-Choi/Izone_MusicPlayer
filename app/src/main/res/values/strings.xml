@@ -2,4 +2,9 @@
     <string name="app_name">Izone_MusicPlayer</string>
     <string name="default_title">title</string>
     <string name="default_singer">singer</string>
+    <string name="closeBtnDescription">close button image</string>
+    <string name="albumImageDescription">album image</string>
+    <string name="nextButtonImageDescription">next button image</string>
+    <string name="playButtonImageDescription">play button image</string>
+    <string name="stopButtonImageDescription">stop button image</string>
 </resources>

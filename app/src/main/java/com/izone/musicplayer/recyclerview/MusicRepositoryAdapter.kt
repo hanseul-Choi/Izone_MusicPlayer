@@ -19,13 +19,14 @@ class MusicRepositoryAdapter(private val viewModel: MainViewModel)
     }
 
     override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position)
     }
 
     inner class MusicViewHolder(private val binding: ItemAlbumBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(musicItems: MusicItems) {
+        fun bind(musicItems: MusicItems, position: Int) {
             binding.viewModel = viewModel
             binding.musicItems = musicItems
+            binding.position = position
             binding.executePendingBindings()
         }
     }
