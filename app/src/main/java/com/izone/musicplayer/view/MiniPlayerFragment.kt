@@ -93,7 +93,7 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
             mainViewModel.setPosition(pos+1)
         }
 
-        fMbinding.miniplayerClose.setOnClickListener {
+        fMbinding.fmIvClose.setOnClickListener {
             mainViewModel.stopMusic()
             amBinding.amFlMiniplayer.visibility = View.GONE
         }
