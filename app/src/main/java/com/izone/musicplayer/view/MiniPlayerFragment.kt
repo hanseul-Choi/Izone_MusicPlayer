@@ -40,7 +40,7 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
         fMbinding = DataBindingUtil.inflate(inflater, R.layout.fragment_miniplayer, container,false)
 
         setFragmentViewModelListener()
-        setButtonClickListener()
+//        setButtonClickListener()
 
         fMbinding.lifecycleOwner = viewLifecycleOwner
         fMbinding.viewModel = mainViewModel
@@ -65,14 +65,12 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
         mainViewModel.musicPosition.observe(viewLifecycleOwner) {
             pos = it
 
-            Log.d("test", "position observe : $pos")
-
             //position을 건들였을 때는 무조건 play 상태
-            fMbinding.fmIvPlay.visibility = View.INVISIBLE
-            fMbinding.fmIvStop.visibility = View.VISIBLE
-
-            fMbinding.fmTvTitle.text = list[pos].title
-            fMbinding.fmTvSinger.text = list[pos].singer
+//            fMbinding.fmIvPlay.visibility = View.INVISIBLE
+//            fMbinding.fmIvStop.visibility = View.VISIBLE
+//
+//            fMbinding.fmTvTitle.text = list[pos].title
+//            fMbinding.fmTvSinger.text = list[pos].singer
         }
     }
 

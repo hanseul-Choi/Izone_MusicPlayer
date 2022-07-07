@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MiniPlayer">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="MiniPlayer.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="MiniPlayer.SubTitle">
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>
