@@ -17,7 +17,7 @@ import com.izone.musicplayer.viewmodel.MainViewModel
 import com.izone.musicplayer.viewmodel.MiniPlayerViewModel
 import com.izone.musicplayer.viewmodel.ViewModelFactory
 
-class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment() {
+class MiniPlayerFragment : Fragment() {
 
     lateinit var fMbinding: FragmentMiniplayerBinding
 
@@ -28,19 +28,14 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
     }
     private val mainViewModel : MainViewModel by activityViewModels()
 
-    init {
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fMbinding = DataBindingUtil.inflate(inflater, R.layout.fragment_miniplayer, container,false)
 
         setFragmentViewModelListener()
-//        setButtonClickListener()
 
         fMbinding.lifecycleOwner = viewLifecycleOwner
         fMbinding.viewModel = mainViewModel
@@ -64,38 +59,6 @@ class MiniPlayerFragment(private val amBinding: ActivityMainBinding) : Fragment(
 
         mainViewModel.musicPosition.observe(viewLifecycleOwner) {
             pos = it
-
-            //position을 건들였을 때는 무조건 play 상태
-//            fMbinding.fmIvPlay.visibility = View.INVISIBLE
-//            fMbinding.fmIvStop.visibility = View.VISIBLE
-//
-//            fMbinding.fmTvTitle.text = list[pos].title
-//            fMbinding.fmTvSinger.text = list[pos].singer
-        }
-    }
-
-    private fun setButtonClickListener() {
-        fMbinding.fmIvPlay.setOnClickListener {
-            fMbinding.fmIvPlay.visibility = View.INVISIBLE
-            fMbinding.fmIvStop.visibility = View.VISIBLE
-
-            mainViewModel.playMusic()
-        }
-
-        fMbinding.fmIvStop.setOnClickListener {
-            fMbinding.fmIvPlay.visibility = View.VISIBLE
-            fMbinding.fmIvStop.visibility = View.INVISIBLE
-
-            mainViewModel.stopMusic()
-        }
-
-        fMbinding.fmIvNext.setOnClickListener {
-            mainViewModel.setPosition(pos+1)
-        }
-
-        fMbinding.fmIvClose.setOnClickListener {
-            mainViewModel.stopMusic()
-            amBinding.amFlMiniplayer.visibility = View.GONE
         }
     }
 }

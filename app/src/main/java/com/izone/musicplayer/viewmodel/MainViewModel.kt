@@ -15,6 +15,8 @@ import com.izone.musicplayer.repository.storage.StorageRepository
 import kotlinx.coroutines.*
 import java.lang.Exception
 
+// Todo : spinner 값 변경했을 때, miniplayer가 이전 정보를 가지고 있어야함
+
 class MainViewModel(
     private val musicRepository: MusicRepository,
     private val storageRepository: StorageRepository

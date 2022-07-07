@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
     private fun setFragment() {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.am_fl_miniplayer, MiniPlayerFragment(amBinding = aMBinding))
+            .add(R.id.am_fl_miniplayer, MiniPlayerFragment())
             .commit()
     }
 
