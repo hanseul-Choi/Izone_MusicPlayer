@@ -3,34 +3,42 @@ package com.izone.musicplayer.recyclerview
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.izone.musicplayer.R
+import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
+import com.izone.musicplayer.viewmodel.MainViewModel
 
-class MusicRepositoryAdapter(private var repositories: List<MusicItems>) : RecyclerView.Adapter<MusicRepositoryItemHolder>() {
-    interface OnMusicClickListener {
-        fun onItemClick(position: Int)
+class MusicRepositoryAdapter(private val viewModel: MainViewModel) :
+    ListAdapter<MusicItems, MusicRepositoryAdapter.MusicViewHolder>(MusicDiffCallback()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
+        val binding = ItemAlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MusicViewHolder(binding)
     }
 
-    var listener: OnMusicClickListener? = null
-
-    override fun getItemCount(): Int = repositories.size
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicRepositoryItemHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_album, parent, false)
-
-        return MusicRepositoryItemHolder(view, listener)
+    override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
+        holder.bind(getItem(position), position)
     }
 
-    override fun onBindViewHolder(holder: MusicRepositoryItemHolder, position: Int) {
-        holder.bind(repositories[position])
+    inner class MusicViewHolder(private val binding: ItemAlbumBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(musicItems: MusicItems, position: Int) {
+            binding.viewModel = viewModel
+            binding.musicItems = musicItems
+            binding.position = position
+            binding.executePendingBindings()
+        }
+    }
+}
+
+class MusicDiffCallback : DiffUtil.ItemCallback<MusicItems>() {
+    override fun areItemsTheSame(oldItem: MusicItems, newItem: MusicItems): Boolean {
+        return oldItem.title == newItem.title
     }
 
-    //update
-    fun update(updated: List<MusicItems>) {
-        val diff = MusicRepositoryDiffCallback(repositories, updated)
-        val diffResult = DiffUtil.calculateDiff(diff)
-        repositories = updated
-        diffResult.dispatchUpdatesTo(this)
+    override fun areContentsTheSame(oldItem: MusicItems, newItem: MusicItems): Boolean {
+        return oldItem == newItem
     }
+
 }
