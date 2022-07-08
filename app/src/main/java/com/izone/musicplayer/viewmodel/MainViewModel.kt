@@ -1,8 +1,8 @@
 package com.izone.musicplayer.viewmodel
 
-import android.util.Log
 import android.media.MediaPlayer
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +13,6 @@ import com.izone.musicplayer.repository.music.MusicRepository
 import com.izone.musicplayer.repository.storage.StorageListener
 import com.izone.musicplayer.repository.storage.StorageRepository
 import kotlinx.coroutines.*
-import java.lang.Exception
 
 // Todo : spinner 값 변경했을 때, miniplayer가 이전 정보를 가지고 있어야함
 
@@ -26,6 +25,7 @@ class MainViewModel(
     private val _musicList = MutableLiveData<List<MusicItems>>()
     val musicList: LiveData<List<MusicItems>> = _musicList
 
+
     // music player data
     private val job = CoroutineScope(Dispatchers.Default)
 
@@ -36,6 +36,7 @@ class MainViewModel(
     private val _musicPosition = MutableLiveData<Int>()
     val musicPosition: LiveData<Int> = _musicPosition
 
+
     // click event data
     private val _musicEvent = MutableLiveData<Event<String>>()
     val musicEvent: LiveData<Event<String>> = _musicEvent
@@ -45,6 +46,7 @@ class MainViewModel(
 
     private val _isMusicPlay = MutableLiveData<Boolean>()
     val isMusicPlay: LiveData<Boolean> = _isMusicPlay
+
 
     init {
         _isMusicPlay.value = false
@@ -99,7 +101,7 @@ class MainViewModel(
 
     fun playMusic() {
         _isMusicPlay.value = true
-        Log.d("music","play music")
+        Log.d("music", "play music")
         mediaPlayer.apply {
             start()
         }
@@ -112,7 +114,7 @@ class MainViewModel(
     fun stopMusic() {
         _isMusicPlay.value = false
 
-        Log.d("music","stop music")
+        Log.d("music", "stop music")
         mediaPlayer.apply {
             pause()
         }
@@ -121,7 +123,7 @@ class MainViewModel(
     }
 
     fun setPosition(pos: Int) {
-        if(!musicList.value.isNullOrEmpty()) {
+        if (!musicList.value.isNullOrEmpty()) {
             if (pos >= musicList.value!!.size) {
                 _musicPosition.postValue(0)
                 clickMusicItem(musicList.value!![0].music, 0)

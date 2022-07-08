@@ -1,6 +1,5 @@
 package com.izone.musicplayer.view
 
-import android.util.Log
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.izone.musicplayer.R
-import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.databinding.FragmentMiniplayerBinding
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.viewmodel.MainViewModel
@@ -41,14 +39,6 @@ class MiniPlayerFragment : Fragment() {
         fMbinding.viewModel = mainViewModel
 
         return fMbinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel.musicUri.observe(viewLifecycleOwner) {
-            Log.d("test","music uri is $it")
-        }
     }
 
     private fun setFragmentViewModelListener() {

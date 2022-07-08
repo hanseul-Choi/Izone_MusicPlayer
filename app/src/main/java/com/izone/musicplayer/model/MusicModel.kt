@@ -2,7 +2,7 @@ package com.izone.musicplayer.model
 
 import com.google.gson.annotations.SerializedName
 
-data class MusicItems (
+data class MusicItems(
     @SerializedName("album")
     val album: String,
 

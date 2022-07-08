@@ -1,14 +1,14 @@
 package com.izone.musicplayer.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.izone.musicplayer.common.Event
 import com.izone.musicplayer.R
+import com.izone.musicplayer.common.Event
 import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 import com.izone.musicplayer.viewmodel.MainViewModel

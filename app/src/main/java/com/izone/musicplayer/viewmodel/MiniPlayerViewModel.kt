@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.izone.musicplayer.repository.storage.StorageListener
 import com.izone.musicplayer.repository.storage.StorageRepository
-import java.lang.Exception
 
 class MiniPlayerViewModel(private val storageRepository: StorageRepository) : ViewModel() {
 

@@ -18,11 +18,14 @@ object CacheInterceptor {
     }
 
     private val offlineInterceptor = Interceptor { chain ->
-        if(!MPUtil.hasNetwork(MPApplication.context)) {
+        if (!MPUtil.hasNetwork(MPApplication.context)) {
             chain
                 .request()
                 .newBuilder()
-                .header("Cache-Control","public, only-if-cached, max-stale=${MPConst.OFFLINE_CACHE_AGE}")
+                .header(
+                    "Cache-Control",
+                    "public, only-if-cached, max-stale=${MPConst.OFFLINE_CACHE_AGE}"
+                )
                 .removeHeader("Pragma")
                 .build()
         }
