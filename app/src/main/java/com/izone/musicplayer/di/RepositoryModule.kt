@@ -1,0 +1,42 @@
+package com.izone.musicplayer.di
+
+import com.izone.musicplayer.common.MPConst
+import com.izone.musicplayer.network.ApiClient
+import com.izone.musicplayer.network.StorageApiClient
+import com.izone.musicplayer.repository.music.MusicDataSource
+import com.izone.musicplayer.repository.music.MusicRemoteDataSource
+import com.izone.musicplayer.repository.storage.StorageDataSource
+import com.izone.musicplayer.repository.storage.StorageRemoteDataSource
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+object RepositoryModule {
+
+    @Provides
+    fun provideStorageDataSource(storageApiClient: StorageApiClient) : StorageDataSource {
+        return StorageRemoteDataSource(storageApiClient)
+    }
+
+
+    @Provides
+    fun provideMusicDataSource(apiClient: ApiClient) : MusicDataSource {
+        return MusicRemoteDataSource(apiClient)
+    }
+
+    @Singleton
+    @Provides
+    fun provideApiClient() : ApiClient {
+        return Retrofit.Builder()
+            .baseUrl(MPConst.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ApiClient::class.java)
+    }
+}

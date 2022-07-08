@@ -12,11 +12,13 @@ import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.repository.music.MusicRepository
 import com.izone.musicplayer.repository.storage.StorageListener
 import com.izone.musicplayer.repository.storage.StorageRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
-// Todo : spinner 값 변경했을 때, miniplayer가 이전 정보를 가지고 있어야함
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor (
     private val musicRepository: MusicRepository,
     private val storageRepository: StorageRepository
 ) : ViewModel() {

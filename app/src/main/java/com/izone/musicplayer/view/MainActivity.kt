@@ -13,6 +13,8 @@ import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
 import com.izone.musicplayer.viewmodel.MainViewModel
 import com.izone.musicplayer.viewmodel.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * list
@@ -20,13 +22,17 @@ import com.izone.musicplayer.viewmodel.ViewModelFactory
  * 이미지 받아오는 작업
  */
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     //data binding
     private lateinit var aMBinding: ActivityMainBinding
 
     //viewModel & Adpater
-    private val viewModel: MainViewModel by viewModels { ViewModelFactory(this) }
+    private val viewModel: MainViewModel by viewModels()
+
+//    @Inject
+//    lateinit var musicAdapter: MusicRepositoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +52,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-        val mMusicRepositoryAdapter = MusicRepositoryAdapter(viewModel)
-        aMBinding.amRvAlbumList.adapter = mMusicRepositoryAdapter
+        val musicAdapter = MusicRepositoryAdapter(viewModel)
+        aMBinding.amRvAlbumList.adapter = musicAdapter
 
         viewModel.musicList.observe(this) {
-            mMusicRepositoryAdapter.submitList(it)
-            mMusicRepositoryAdapter.notifyDataSetChanged()
+            musicAdapter.submitList(it)
+            musicAdapter.notifyDataSetChanged()
         }
     }
 

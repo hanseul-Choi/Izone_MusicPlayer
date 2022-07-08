@@ -14,7 +14,9 @@ import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.viewmodel.MainViewModel
 import com.izone.musicplayer.viewmodel.MiniPlayerViewModel
 import com.izone.musicplayer.viewmodel.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MiniPlayerFragment : Fragment() {
 
     lateinit var fMbinding: FragmentMiniplayerBinding

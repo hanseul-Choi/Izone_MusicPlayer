@@ -1,6 +1,8 @@
 package com.izone.musicplayer.repository.music
 
-class MusicRepository(
+import javax.inject.Inject
+
+class MusicRepository @Inject constructor(
     private val musicRemoteData: MusicRemoteDataSource
 ) {
     suspend fun getIzoneRepository() = musicRemoteData.getIzone()
