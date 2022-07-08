@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.izone.musicplayer.viewmodel.MainViewModel" />
+
+        <variable
+            name="musicItems"
+            type="com.izone.musicplayer.model.MusicItems" />
+
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="130dp">
+        android:layout_height="130dp"
+        android:onClick="@{() -> viewModel.clickMusicItem(musicItems.music, position)}">
 
         <ImageView
             android:id="@+id/ia_iv_album"
             android:layout_width="100dp"
             android:layout_height="110dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="8dp"
+            android:contentDescription="@string/albumImageDescription"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            bind:storageImg="@{musicItems.album}"
+            tools:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
             android:id="@+id/ia_ll_text_set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/ia_iv_album"
             app:layout_constraintLeft_toRightOf="@+id/ia_iv_album"
@@ -28,18 +48,20 @@
 
             <TextView
                 android:id="@+id/ia_tv_title"
+                style="@style/MiniPlayer.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textColor="#000000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                android:text="@{musicItems.title}"
+                tools:text="@string/default_title" />
 
             <TextView
                 android:id="@+id/ia_tv_sub_title"
+                style="@style/MiniPlayer.SubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000" />
+                android:text="@{musicItems.singer}"
+                tools:text="@string/default_singer" />
         </LinearLayout>
 
         <View

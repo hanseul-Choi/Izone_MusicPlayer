@@ -1,28 +1,23 @@
 package com.izone.musicplayer.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.izone.musicplayer.R
+import com.izone.musicplayer.common.Event
 import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
-import com.izone.musicplayer.repository.MusicRepository
 import com.izone.musicplayer.viewmodel.MainViewModel
-import com.izone.musicplayer.viewmodel.MainViewModelFactory
+import com.izone.musicplayer.viewmodel.ViewModelFactory
 
 /**
  * list
-- 아키텍처 변경, 비지니스는 모두 viewmodel로
-- Compose 변경
-- Navigation 추가
-- UI 및 UX 개선
-- Warning 제거
+ * 이미지 네트워크 처리 방식 수정
+ * 이미지 받아오는 작업
  */
 
 class MainActivity : AppCompatActivity() {
@@ -31,9 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var aMBinding: ActivityMainBinding
 
     //viewModel & Adpater
-    private val viewModelFactory: MainViewModelFactory = MainViewModelFactory(MusicRepository())
-    private val viewModel: MainViewModel by viewModels { viewModelFactory }
-    lateinit var mMusicRepositoryAdapter: MusicRepositoryAdapter
+    private val viewModel: MainViewModel by viewModels { ViewModelFactory(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         initSpinnerSet()
         setAdapter()
         setFragment()
+        setEvent()
     }
 
     private fun initDataBinding() {
@@ -52,21 +46,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-
-        mMusicRepositoryAdapter = MusicRepositoryAdapter(this)
-
-        mMusicRepositoryAdapter.setItemListener(object : MusicRepositoryAdapter.OnMusicClickListener {
-            override fun onItemClick(position: Int) {
-                viewModel.setPosition(position)
-                viewModel.playMusic()
-                aMBinding.amFlMiniplayer.visibility = View.VISIBLE
-            }
-        })
-
+        val mMusicRepositoryAdapter = MusicRepositoryAdapter(viewModel)
         aMBinding.amRvAlbumList.adapter = mMusicRepositoryAdapter
-        aMBinding.adapter = mMusicRepositoryAdapter
 
-        aMBinding.amRvAlbumList.viewTreeObserver.addOnGlobalLayoutListener {
+        viewModel.musicList.observe(this) {
+            mMusicRepositoryAdapter.submitList(it)
+            mMusicRepositoryAdapter.notifyDataSetChanged()
         }
     }
 
@@ -80,18 +65,22 @@ class MainActivity : AppCompatActivity() {
         aMBinding.amSSingerList.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    showProgress()
-
                     when (p2) {
                         0 -> {
+                            viewModel.initMusicView()
+
                             //izone
                             viewModel.requestIzoneRepositories()
                         }
                         1 -> {
+                            viewModel.initMusicView()
+
                             //omg
                             viewModel.requestOhmygirlRepositories()
                         }
                         2 -> {
+                            viewModel.initMusicView()
+
                             //bts
                             viewModel.requestBtsRepositories()
                         }
@@ -106,16 +95,14 @@ class MainActivity : AppCompatActivity() {
     private fun setFragment() {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.am_fl_miniplayer, MiniPlayerFragment(amBinding = aMBinding))
+            .add(R.id.am_fl_miniplayer, MiniPlayerFragment())
             .commit()
     }
 
-
-    fun showProgress() {
-        aMBinding.amClProgressBarLayout.visibility = View.VISIBLE
-    }
-
-    fun disableProgress() {
-        aMBinding.amClProgressBarLayout.visibility = View.GONE
+    private fun setEvent() {
+        // music item click event
+        viewModel.musicEvent.observe(this, Event.EventObserver {
+            viewModel.setMusic(it)
+        })
     }
 }

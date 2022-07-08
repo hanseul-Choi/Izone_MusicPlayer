@@ -2,43 +2,43 @@ package com.izone.musicplayer.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
-import com.izone.musicplayer.view.MainActivity
+import com.izone.musicplayer.viewmodel.MainViewModel
 
-class MusicRepositoryAdapter(private val activity: MainActivity) : RecyclerView.Adapter<MusicRepositoryItemHolder>() {
-    init {
-        setHasStableIds(true) // 이미 생성된 객체의 ID를 불러서 재사용
-    }
+class MusicRepositoryAdapter(private val viewModel: MainViewModel) :
+    ListAdapter<MusicItems, MusicRepositoryAdapter.MusicViewHolder>(MusicDiffCallback()) {
 
-    interface OnMusicClickListener {
-        fun onItemClick(position: Int)
-    }
-
-    var listener: OnMusicClickListener? = null
-    var musicList: List<MusicItems> = listOf()
-
-    fun checkMusicList(changedMusicList: List<MusicItems>) {
-        musicList = changedMusicList
-    }
-
-    fun setItemListener(itemListener: OnMusicClickListener) {
-        listener = itemListener
-    }
-
-    override fun getItemCount(): Int = musicList.size
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicRepositoryItemHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
         val binding = ItemAlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
-        return MusicRepositoryItemHolder(listener, binding, activity)
+        return MusicViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MusicRepositoryItemHolder, position: Int) {
-        holder.bind(musicList[position])
+    override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
+        holder.bind(getItem(position), position)
     }
 
-    override fun getItemViewType(position: Int): Int { // Scroll시 데이터가 바뀌는 문제 개선
-        return position
+    inner class MusicViewHolder(private val binding: ItemAlbumBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(musicItems: MusicItems, position: Int) {
+            binding.viewModel = viewModel
+            binding.musicItems = musicItems
+            binding.position = position
+            binding.executePendingBindings()
+        }
     }
+}
+
+class MusicDiffCallback : DiffUtil.ItemCallback<MusicItems>() {
+    override fun areItemsTheSame(oldItem: MusicItems, newItem: MusicItems): Boolean {
+        return oldItem.title == newItem.title
+    }
+
+    override fun areContentsTheSame(oldItem: MusicItems, newItem: MusicItems): Boolean {
+        return oldItem == newItem
+    }
+
 }

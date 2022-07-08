@@ -1,8 +1,8 @@
 package com.izone.musicplayer.network
 
 import com.izone.musicplayer.MPApplication
-import com.izone.musicplayer.MPConst
-import com.izone.musicplayer.MPUtil
+import com.izone.musicplayer.common.MPConst
+import com.izone.musicplayer.common.MPUtil
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -18,11 +18,14 @@ object CacheInterceptor {
     }
 
     private val offlineInterceptor = Interceptor { chain ->
-        if(!MPUtil.hasNetwork(MPApplication.context)) {
+        if (!MPUtil.hasNetwork(MPApplication.context)) {
             chain
                 .request()
                 .newBuilder()
-                .header("Cache-Control","public, only-if-cached, max-stale=${MPConst.OFFLINE_CACHE_AGE}")
+                .header(
+                    "Cache-Control",
+                    "public, only-if-cached, max-stale=${MPConst.OFFLINE_CACHE_AGE}"
+                )
                 .removeHeader("Pragma")
                 .build()
         }
