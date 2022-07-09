@@ -4,11 +4,10 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.izone.musicplayer.common.MPConst
 import com.izone.musicplayer.repository.storage.StorageListener
-import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class StorageApiClient @Inject constructor() {
+class StorageApiClient {
     fun getMusicUri(music: String, listener: StorageListener) {
 
         storageRef.child(music).downloadUrl.addOnCompleteListener { task ->
@@ -24,5 +23,16 @@ class StorageApiClient @Inject constructor() {
     companion object {
         private val storage: FirebaseStorage = FirebaseStorage.getInstance(MPConst.STORAGE_URL)
         val storageRef: StorageReference = storage.reference
+
+        // Singleton Constructor
+        @Volatile private var instance: StorageApiClient? = null
+
+        @JvmStatic fun getInstance(): StorageApiClient {
+            return instance ?: synchronized(this) {
+                instance ?: StorageApiClient().also {
+                    instance = it
+                }
+            }
+        }
     }
 }

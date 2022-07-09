@@ -29,14 +29,4 @@ object RepositoryModule {
     fun provideMusicDataSource(apiClient: ApiClient) : MusicDataSource {
         return MusicRemoteDataSource(apiClient)
     }
-
-    @Singleton
-    @Provides
-    fun provideApiClient() : ApiClient {
-        return Retrofit.Builder()
-            .baseUrl(MPConst.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(ApiClient::class.java)
-    }
 }
