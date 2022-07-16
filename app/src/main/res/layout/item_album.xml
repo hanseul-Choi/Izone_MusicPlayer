@@ -20,8 +20,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:onClick="@{() -> viewModel.clickMusicItem(musicItems.music, position)}">
+        android:layout_height="130dp">
 
         <ImageView
             android:id="@+id/ia_iv_album"

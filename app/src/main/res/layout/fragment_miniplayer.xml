@@ -27,7 +27,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:storageImg="@{viewModel.musicList.get(viewModel.musicPosition).album}"
             tools:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
@@ -51,7 +50,6 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@{viewModel.musicList.get(viewModel.musicPosition).title}"
                 tools:text="@string/default_title" />
 
             <TextView
@@ -63,7 +61,6 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@{viewModel.musicList.get(viewModel.musicPosition).singer}"
                 tools:text="@string/default_singer" />
         </LinearLayout>
 
@@ -75,7 +72,6 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/ico_close_player"
             android:contentDescription="@string/closeBtnDescription"
-            android:onClick="@{() -> viewModel.closePlayer()}"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,7 +82,6 @@
             android:layout_marginEnd="15dp"
             android:contentDescription="@string/nextButtonImageDescription"
             android:src="@drawable/ico_next_audio_small"
-            android:onClick="@{() -> viewModel.setPosition(viewModel.musicPosition + 1)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -98,9 +93,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:contentDescription="@string/playButtonImageDescription"
-            android:onClick="@{() -> viewModel.playMusic()}"
             android:src="@drawable/ico_play_audio_small"
-            android:visibility="@{viewModel.isMusicPlay ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fm_iv_next"
             app:layout_constraintTop_toTopOf="parent" />
@@ -112,9 +105,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:contentDescription="@string/stopButtonImageDescription"
-            android:onClick="@{() -> viewModel.stopMusic()}"
             android:src="@drawable/ico_pause_audio_small"
-            android:visibility="@{viewModel.isMusicPlay ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fm_iv_next"
             app:layout_constraintTop_toTopOf="parent" />

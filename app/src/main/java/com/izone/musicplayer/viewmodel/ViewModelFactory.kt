@@ -17,7 +17,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
                     MusicRepository(MusicRemoteDataSource(ServiceLocator.provideMusicApi()))
                 val storageRepository =
                     StorageRepository(StorageRemoteDataSource(ServiceLocator.provideStorageApi()))
-                MainViewModel(musicRepository, storageRepository) as T
+                MainViewModel(musicRepository) as T
             }
             modelClass.isAssignableFrom(MiniPlayerViewModel::class.java) -> {
                 val repository =

@@ -1,5 +1,7 @@
 package com.izone.musicplayer.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -7,14 +9,15 @@ import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.izone.musicplayer.R
-import com.izone.musicplayer.common.Event
 import com.izone.musicplayer.databinding.ActivityMainBinding
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
+import com.izone.musicplayer.service.MusicService
+import com.izone.musicplayer.service.MusicServiceConnection
 import com.izone.musicplayer.viewmodel.MainViewModel
-import com.izone.musicplayer.viewmodel.ViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 /**
  * list
@@ -28,20 +31,41 @@ class MainActivity : AppCompatActivity() {
     //data binding
     private lateinit var aMBinding: ActivityMainBinding
 
-    //viewModel & Adpater
+    //viewModel & Adapter
     private val viewModel: MainViewModel by viewModels()
-
-//    @Inject
-//    lateinit var musicAdapter: MusicRepositoryAdapter
+    private val musicAdapter by lazy {
+        MusicRepositoryAdapter(viewModel)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initDataBinding()
-        initSpinnerSet()
         setAdapter()
+        initSpinnerSet()
         setFragment()
-        setEvent()
+//        setEvent()
+    }
+
+    private fun startMusicService() {
+        Intent(this, MusicService::class.java).also { intent ->
+            bindService(intent, MusicServiceConnection, Context.BIND_AUTO_CREATE)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        startMusicService()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        if(MusicServiceConnection.mBounds) {
+            unbindService(MusicServiceConnection)
+            MusicServiceConnection.mBounds = false
+        }
     }
 
     private fun initDataBinding() {
@@ -52,13 +76,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-        val musicAdapter = MusicRepositoryAdapter(viewModel)
         aMBinding.amRvAlbumList.adapter = musicAdapter
-
-        viewModel.musicList.observe(this) {
-            musicAdapter.submitList(it)
-            musicAdapter.notifyDataSetChanged()
-        }
     }
 
     private fun initSpinnerSet() {
@@ -71,26 +89,32 @@ class MainActivity : AppCompatActivity() {
         aMBinding.amSSingerList.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    when (p2) {
-                        0 -> {
-                            viewModel.initMusicView()
-
-                            //izone
-                            viewModel.requestIzoneRepositories()
+//                    if(MusicServiceConnection.mBounds) { // service가 bound 될때만 동작
+                        when (p2) {
+                            0 -> {
+                                //izone
+                                lifecycleScope.launch {
+                                    MusicServiceConnection.musicService.musicList.value = viewModel.requestIzoneRepositories()
+                                    musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                                }
+                            }
+                            1 -> {
+                                //omg
+                                lifecycleScope.launch {
+                                    MusicServiceConnection.musicService.musicList.value = viewModel.requestOhmygirlRepositories()
+                                    musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                                }
+                            }
+                            2 -> {
+                                //bts
+                                lifecycleScope.launch {
+                                    MusicServiceConnection.musicService.musicList.value = viewModel.requestBtsRepositories()
+                                    musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                                }
+                            }
                         }
-                        1 -> {
-                            viewModel.initMusicView()
-
-                            //omg
-                            viewModel.requestOhmygirlRepositories()
-                        }
-                        2 -> {
-                            viewModel.initMusicView()
-
-                            //bts
-                            viewModel.requestBtsRepositories()
-                        }
-                    }
+                        musicAdapter.notifyDataSetChanged()
+//                    }
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -105,10 +129,10 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    private fun setEvent() {
-        // music item click event
-        viewModel.musicEvent.observe(this, Event.EventObserver {
-            viewModel.setMusic(it)
-        })
-    }
+//    private fun setEvent() {
+//        // music item click event
+//        viewModel.musicEvent.observe(this, Event.EventObserver {
+//            viewModel.setMusic(it)
+//        })
+//    }
 }

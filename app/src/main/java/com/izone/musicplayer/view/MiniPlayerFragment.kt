@@ -35,22 +35,22 @@ class MiniPlayerFragment : Fragment() {
     ): View {
         fMbinding = DataBindingUtil.inflate(inflater, R.layout.fragment_miniplayer, container,false)
 
-        setFragmentViewModelListener()
-
-        fMbinding.lifecycleOwner = viewLifecycleOwner
-        fMbinding.viewModel = mainViewModel
+//        setFragmentViewModelListener()
+//
+//        fMbinding.lifecycleOwner = viewLifecycleOwner
+//        fMbinding.viewModel = mainViewModel
 
         return fMbinding.root
     }
 
-    private fun setFragmentViewModelListener() {
-        mainViewModel.musicList.observe(requireActivity()) {
-            list = it.toMutableList()
-            viewModel.getMusicItem(list[0].music)
-        }
-
-        mainViewModel.musicPosition.observe(viewLifecycleOwner) {
-            pos = it
-        }
-    }
+//    private fun setFragmentViewModelListener() {
+//        mainViewModel.musicList.observe(requireActivity()) {
+//            list = it.toMutableList()
+//            viewModel.getMusicItem(list[0].music)
+//        }
+//
+//        mainViewModel.musicPosition.observe(viewLifecycleOwner) {
+//            pos = it
+//        }
+//    }
 }
