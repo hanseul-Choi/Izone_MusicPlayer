@@ -6,12 +6,22 @@ import android.os.IBinder
 
 object MusicServiceConnection : ServiceConnection {
     var musicService = MusicService()
+
     // bind 여부 확인하여 Service에 접근할 수 있게 하기 위함
     var mBounds = false
+
+    lateinit var serviceBindListener: ServiceBindListener
+
+    // first init check
+    private var isFirstConnect = true
 
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
         val binder = service as MusicService.MusicBinder
         musicService = binder.getService()
+        if(isFirstConnect) {
+            serviceBindListener.serviceBind()
+            isFirstConnect = false
+        }
         mBounds = true
     }
 

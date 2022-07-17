@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
+import com.izone.musicplayer.repository.music.MusicControlDao
 import com.izone.musicplayer.viewmodel.MainViewModel
 
-class MusicRepositoryAdapter(private val viewModel: MainViewModel) :
-    ListAdapter<MusicItems, MusicRepositoryAdapter.MusicViewHolder>(MusicDiffCallback()) {
+class MusicRepositoryAdapter(
+    private val viewModel: MainViewModel
+) : ListAdapter<MusicItems, MusicRepositoryAdapter.MusicViewHolder>(MusicDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
         val binding = ItemAlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)

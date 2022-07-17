@@ -3,6 +3,7 @@ package com.izone.musicplayer.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,12 +13,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ActivityMainBinding
+import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
+import com.izone.musicplayer.repository.music.MusicControlDao
 import com.izone.musicplayer.service.MusicService
 import com.izone.musicplayer.service.MusicServiceConnection
+import com.izone.musicplayer.service.ServiceBindListener
 import com.izone.musicplayer.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * list
@@ -75,8 +80,22 @@ class MainActivity : AppCompatActivity() {
         aMBinding.viewModel = viewModel
     }
 
+    private val serviceBindListener by lazy {
+        object : ServiceBindListener {
+            override fun serviceBind() {
+                lifecycleScope.launch {
+                    MusicServiceConnection.musicService.musicList.value = viewModel.requestIzoneRepositories()
+                    musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                    musicAdapter.notifyDataSetChanged()
+                }
+            }
+        }
+    }
+
     private fun setAdapter() {
         aMBinding.amRvAlbumList.adapter = musicAdapter
+
+        MusicServiceConnection.serviceBindListener = serviceBindListener
     }
 
     private fun initSpinnerSet() {
@@ -96,6 +115,7 @@ class MainActivity : AppCompatActivity() {
                                 lifecycleScope.launch {
                                     MusicServiceConnection.musicService.musicList.value = viewModel.requestIzoneRepositories()
                                     musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                                    musicAdapter.notifyDataSetChanged()
                                 }
                             }
                             1 -> {
@@ -103,6 +123,7 @@ class MainActivity : AppCompatActivity() {
                                 lifecycleScope.launch {
                                     MusicServiceConnection.musicService.musicList.value = viewModel.requestOhmygirlRepositories()
                                     musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                                    musicAdapter.notifyDataSetChanged()
                                 }
                             }
                             2 -> {
@@ -110,10 +131,10 @@ class MainActivity : AppCompatActivity() {
                                 lifecycleScope.launch {
                                     MusicServiceConnection.musicService.musicList.value = viewModel.requestBtsRepositories()
                                     musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                                    musicAdapter.notifyDataSetChanged()
                                 }
                             }
                         }
-                        musicAdapter.notifyDataSetChanged()
 //                    }
                 }
 

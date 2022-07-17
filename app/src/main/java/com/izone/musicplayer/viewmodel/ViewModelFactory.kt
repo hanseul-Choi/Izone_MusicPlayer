@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.izone.musicplayer.common.ServiceLocator
+import com.izone.musicplayer.repository.music.MusicControlDaoImpl
 import com.izone.musicplayer.repository.music.MusicRemoteDataSource
 import com.izone.musicplayer.repository.music.MusicRepository
 import com.izone.musicplayer.repository.storage.StorageRemoteDataSource
@@ -15,9 +16,8 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 val musicRepository =
                     MusicRepository(MusicRemoteDataSource(ServiceLocator.provideMusicApi()))
-                val storageRepository =
-                    StorageRepository(StorageRemoteDataSource(ServiceLocator.provideStorageApi()))
-                MainViewModel(musicRepository) as T
+
+                MainViewModel(musicRepository, MusicControlDaoImpl()) as T
             }
             modelClass.isAssignableFrom(MiniPlayerViewModel::class.java) -> {
                 val repository =

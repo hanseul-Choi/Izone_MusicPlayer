@@ -7,7 +7,7 @@ import com.google.firebase.storage.FirebaseStorage
 
 @BindingAdapter("bind:storageImg")
 fun bindStorageItem(imageView: ImageView, childLoc: String?) {
-    childLoc?.let {
+    if(!childLoc.isNullOrEmpty()) {
         Glide.with(imageView)
             .load(FirebaseStorage.getInstance().getReference(childLoc))
             .into(imageView)

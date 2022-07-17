@@ -20,8 +20,9 @@ import javax.inject.Singleton
 object RepositoryModule {
 
     @Provides
-    fun provideStorageDataSource(storageApiClient: StorageApiClient) : StorageDataSource {
-        return StorageRemoteDataSource(storageApiClient)
+    @Singleton
+    fun provideStorageDataSource() : StorageDataSource {
+        return StorageRemoteDataSource(StorageApiClient.getInstance())
     }
 
 

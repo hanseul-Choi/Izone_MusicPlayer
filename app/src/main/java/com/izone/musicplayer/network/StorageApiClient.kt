@@ -4,10 +4,11 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.izone.musicplayer.common.MPConst
 import com.izone.musicplayer.repository.storage.StorageListener
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class StorageApiClient {
+class StorageApiClient @Inject constructor() {
     fun getMusicUri(music: String, listener: StorageListener) {
 
         storageRef.child(music).downloadUrl.addOnCompleteListener { task ->
