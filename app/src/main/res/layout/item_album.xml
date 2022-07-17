@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="130dp"
 
-        android:onClick="@{() -> viewModel.onMusicItemClick(musicItems.music)}">
+        android:onClick="@{() -> viewModel.onMusicItemClick(musicItems.music, position)}">
 
         <ImageView
             android:id="@+id/ia_iv_album"

@@ -16,5 +16,7 @@ class MiniPlayerViewModel @Inject constructor(
     private val musicControlDao: MusicControlDao
     ) : ViewModel() {
 
+    private val _curMusic = MutableLiveData<MusicItems>()
+    val curMusic : LiveData<MusicItems> = _curMusic
 
 }

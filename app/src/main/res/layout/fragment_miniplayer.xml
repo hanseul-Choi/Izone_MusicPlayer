@@ -16,8 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="@drawable/miniplayer_background"
-        android:visibility="@{mainviewmodel.isShowMiniPlayer ? View.VISIBLE : View.GONE}"
-        >
+        android:visibility="@{mainviewmodel.isShowMiniPlayer ? View.VISIBLE : View.GONE}">
 
         <ImageView
             android:id="@+id/fm_iv_album"
@@ -28,6 +27,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            bind:storageImg="@{mainviewmodel.curMusic.album}"
             tools:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
@@ -51,7 +51,8 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                tools:text="@string/default_title" />
+                tools:text="@string/default_title"
+                android:text="@{mainviewmodel.curMusic.title}"/>
 
             <TextView
                 android:id="@+id/fm_tv_singer"
@@ -62,7 +63,8 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                tools:text="@string/default_singer" />
+                tools:text="@string/default_singer"
+                android:text="@{mainviewmodel.curMusic.singer}"/>
         </LinearLayout>
 
         <ImageView

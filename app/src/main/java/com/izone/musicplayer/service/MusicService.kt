@@ -31,13 +31,13 @@ class MusicService : Service() {
         MusicBinder()
     }
 
-    override fun onBind(intent: Intent?): IBinder {
+    override fun onBind(intent: Intent): IBinder {
         return musicBinder
     }
 
     // music list data
     val musicList = MutableLiveData<List<MusicItems>>()
-    var musicPosition = 0
+    var musicPosition = MutableLiveData<Int>()
 
     private val mediaPlayer by lazy {
         MediaPlayer()
@@ -105,20 +105,20 @@ class MusicService : Service() {
             Log.d("test", "duration is $duration , $curPos")
 
             if (curPos >= duration - 20 && curPos != 0 && duration != 0) {
-                checkPosition(musicPosition+1)
+                checkPosition(musicPosition.value?.plus(1) ?: 0)
                 break
             }
         }
     }
 
     // position 확인 작업
-    private fun checkPosition(pos: Int) {
+    fun checkPosition(pos: Int) {
         if (!musicList.value.isNullOrEmpty()) {
             if (pos >= musicList.value!!.size) {
-                musicPosition = 0
+                musicPosition.value = 0
             } else {
-                if (musicPosition != pos) {
-                    musicPosition = pos
+                if (musicPosition.value != pos) {
+                    musicPosition.value = pos
                 }
             }
         }

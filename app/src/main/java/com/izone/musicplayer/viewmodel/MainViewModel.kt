@@ -24,6 +24,9 @@ class MainViewModel @Inject constructor (
     private val _isShowMiniPlayer = MutableLiveData<Boolean>()
     val isShowMiniPlayer: LiveData<Boolean> = _isShowMiniPlayer
 
+    private val _curMusic = MutableLiveData<MusicItems>()
+    val curMusic: LiveData<MusicItems> = _curMusic
+
     suspend fun requestIzoneRepositories() : List<MusicItems> {
         musicItems = withContext(viewModelScope.coroutineContext) {
             musicRepository.getIzoneRepository()
@@ -49,9 +52,11 @@ class MainViewModel @Inject constructor (
         return musicItems
     }
 
-    fun onMusicItemClick(uri: String) {
+    fun onMusicItemClick(uri: String, pos: Int) {
         musicControlDao.setMusic(uri)
         musicControlDao.playMusic()
+
+        _curMusic.value = musicItems[pos]
 
         // miniplayer가 보여지는지 확인해야 할 것 같음
         openMiniPlayer()
