@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
 
-        if(MusicServiceConnection.mBounds) {
+        if (MusicServiceConnection.mBounds) {
             unbindService(MusicServiceConnection)
             MusicServiceConnection.mBounds = false
         }
@@ -84,7 +84,8 @@ class MainActivity : AppCompatActivity() {
         object : ServiceBindListener {
             override fun firstServiceBind() {
                 lifecycleScope.launch {
-                    MusicServiceConnection.musicService.musicList.value = viewModel.requestIzoneRepositories()
+                    MusicServiceConnection.musicService.musicList.value =
+                        viewModel.requestIzoneRepositories()
                     musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
                     musicAdapter.notifyDataSetChanged()
                 }
@@ -108,34 +109,37 @@ class MainActivity : AppCompatActivity() {
         aMBinding.amSSingerList.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-//                    if(MusicServiceConnection.mBounds) { // service가 bound 될때만 동작
-                        when (p2) {
-                            0 -> {
-                                //izone
-                                lifecycleScope.launch {
-                                    MusicServiceConnection.musicService.musicList.value = viewModel.requestIzoneRepositories()
-                                    musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
-                                    musicAdapter.notifyDataSetChanged()
-                                }
-                            }
-                            1 -> {
-                                //omg
-                                lifecycleScope.launch {
-                                    MusicServiceConnection.musicService.musicList.value = viewModel.requestOhmygirlRepositories()
-                                    musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
-                                    musicAdapter.notifyDataSetChanged()
-                                }
-                            }
-                            2 -> {
-                                //bts
-                                lifecycleScope.launch {
-                                    MusicServiceConnection.musicService.musicList.value = viewModel.requestBtsRepositories()
-                                    musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
-                                    musicAdapter.notifyDataSetChanged()
-                                }
+                    when (p2) {
+                        0 -> {
+                            //izone
+                            lifecycleScope.launch {
+                                MusicServiceConnection.musicService.musicList.value =
+                                    viewModel.requestIzoneRepositories()
+                                musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                                musicAdapter.notifyDataSetChanged()
                             }
                         }
-//                    }
+                        1 -> {
+                            //omg
+                            lifecycleScope.launch {
+                                MusicServiceConnection.musicService.musicList.value =
+                                    viewModel.requestOhmygirlRepositories()
+                                musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                                musicAdapter.notifyDataSetChanged()
+                            }
+                        }
+                        2 -> {
+                            //bts
+                            lifecycleScope.launch {
+                                MusicServiceConnection.musicService.musicList.value =
+                                    viewModel.requestBtsRepositories()
+                                musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
+                                musicAdapter.notifyDataSetChanged()
+                            }
+                        }
+                    }
+
+                    viewModel.closeMiniPlayer()
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {

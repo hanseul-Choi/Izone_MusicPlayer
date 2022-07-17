@@ -10,22 +10,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.FragmentMiniplayerBinding
-import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.viewmodel.MainViewModel
 import com.izone.musicplayer.viewmodel.MiniPlayerViewModel
-import com.izone.musicplayer.viewmodel.ViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MiniPlayerFragment : Fragment() {
 
     lateinit var fMbinding: FragmentMiniplayerBinding
-
-    lateinit var list: List<MusicItems>
-    private var pos = 0
-    private val viewModel: MiniPlayerViewModel by viewModels {
-        ViewModelFactory(requireContext())
-    }
+    private val viewModel: MiniPlayerViewModel by viewModels()
     private val mainViewModel : MainViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -35,22 +28,9 @@ class MiniPlayerFragment : Fragment() {
     ): View {
         fMbinding = DataBindingUtil.inflate(inflater, R.layout.fragment_miniplayer, container,false)
 
-//        setFragmentViewModelListener()
-//
-//        fMbinding.lifecycleOwner = viewLifecycleOwner
-//        fMbinding.viewModel = mainViewModel
+        fMbinding.lifecycleOwner = viewLifecycleOwner
+        fMbinding.mainviewmodel = mainViewModel
 
         return fMbinding.root
     }
-
-//    private fun setFragmentViewModelListener() {
-//        mainViewModel.musicList.observe(requireActivity()) {
-//            list = it.toMutableList()
-//            viewModel.getMusicItem(list[0].music)
-//        }
-//
-//        mainViewModel.musicPosition.observe(viewLifecycleOwner) {
-//            pos = it
-//        }
-//    }
 }

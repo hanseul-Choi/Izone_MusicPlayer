@@ -87,6 +87,16 @@ class MusicService : Service() {
         if (job.isActive) job.cancel()
     }
 
+    // close music
+    fun closeMusic() {
+        if(mediaPlayer.isPlaying) {
+            mediaPlayer.apply {
+                pause()
+                reset()
+            }
+        }
+    }
+
     private fun checkMusicState() {
         while(mediaPlayer.isPlaying) {
             val curPos = mediaPlayer.currentPosition

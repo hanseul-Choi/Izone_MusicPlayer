@@ -5,9 +5,8 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
-
         <variable
-            name="viewModel"
+            name="mainviewmodel"
             type="com.izone.musicplayer.viewmodel.MainViewModel" />
 
         <import type="android.view.View" />
@@ -16,7 +15,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/miniplayer_background">
+        android:background="@drawable/miniplayer_background"
+        android:visibility="@{mainviewmodel.isShowMiniPlayer ? View.VISIBLE : View.GONE}"
+        >
 
         <ImageView
             android:id="@+id/fm_iv_album"
