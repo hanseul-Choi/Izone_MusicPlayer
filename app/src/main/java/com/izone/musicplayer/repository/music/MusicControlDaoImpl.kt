@@ -1,6 +1,6 @@
 package com.izone.musicplayer.repository.music
 
-import com.izone.musicplayer.service.MusicServiceConnection
+import com.izone.musicplayer.service.bind.MusicServiceConnection
 import javax.inject.Inject
 
 class MusicControlDaoImpl @Inject constructor() : MusicControlDao {

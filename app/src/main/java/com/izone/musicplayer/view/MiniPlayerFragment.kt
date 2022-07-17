@@ -10,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.FragmentMiniplayerBinding
-import com.izone.musicplayer.service.MusicServiceConnection
 import com.izone.musicplayer.viewmodel.MainViewModel
 import com.izone.musicplayer.viewmodel.MiniPlayerViewModel
 import dagger.hilt.android.AndroidEntryPoint

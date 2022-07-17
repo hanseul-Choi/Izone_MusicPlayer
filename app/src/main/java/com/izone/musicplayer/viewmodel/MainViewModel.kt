@@ -1,5 +1,7 @@
 package com.izone.musicplayer.viewmodel
 
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,9 +9,11 @@ import androidx.lifecycle.viewModelScope
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.repository.music.MusicControlDao
 import com.izone.musicplayer.repository.music.MusicRepository
-import com.izone.musicplayer.service.MusicServiceConnection
+import com.izone.musicplayer.service.MusicService
+import com.izone.musicplayer.service.bind.MusicServiceConnection
+import com.izone.musicplayer.view.MainActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import dagger.hilt.android.qualifiers.ActivityContext
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -94,5 +98,9 @@ class MainViewModel @Inject constructor (
     fun stopButtonClick() {
         musicControlDao.stopMusic()
         _isPlay.value = false
+    }
+
+    fun startForegroundService() {
+//        val intent = Intent(, MusicService::class.java)
     }
 }

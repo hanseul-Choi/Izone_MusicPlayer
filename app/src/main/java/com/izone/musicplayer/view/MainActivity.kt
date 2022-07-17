@@ -3,7 +3,6 @@ package com.izone.musicplayer.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,16 +12,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.izone.musicplayer.R
 import com.izone.musicplayer.databinding.ActivityMainBinding
-import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.recyclerview.MusicRepositoryAdapter
-import com.izone.musicplayer.repository.music.MusicControlDao
 import com.izone.musicplayer.service.MusicService
-import com.izone.musicplayer.service.MusicServiceConnection
-import com.izone.musicplayer.service.ServiceBindListener
+import com.izone.musicplayer.service.bind.MusicServiceConnection
+import com.izone.musicplayer.service.bind.ServiceBindListener
 import com.izone.musicplayer.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * list
@@ -49,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         setAdapter()
         initSpinnerSet()
         setFragment()
-//        setEvent()
     }
 
     private fun startMusicService() {
@@ -153,11 +148,4 @@ class MainActivity : AppCompatActivity() {
             .add(R.id.am_fl_miniplayer, MiniPlayerFragment())
             .commit()
     }
-
-//    private fun setEvent() {
-//        // music item click event
-//        viewModel.musicEvent.observe(this, Event.EventObserver {
-//            viewModel.setMusic(it)
-//        })
-//    }
 }

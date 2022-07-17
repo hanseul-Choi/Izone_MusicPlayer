@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.izone.musicplayer.databinding.ItemAlbumBinding
 import com.izone.musicplayer.model.MusicItems
-import com.izone.musicplayer.repository.music.MusicControlDao
-import com.izone.musicplayer.service.MusicServiceConnection
 import com.izone.musicplayer.viewmodel.MainViewModel
 
 class MusicRepositoryAdapter(

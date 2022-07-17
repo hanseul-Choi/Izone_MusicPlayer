@@ -11,6 +11,8 @@ import androidx.lifecycle.MutableLiveData
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.repository.storage.StorageListener
 import com.izone.musicplayer.repository.storage.StorageRepository
+import com.izone.musicplayer.service.foreground.MusicNotification
+import com.izone.musicplayer.service.foreground.ServiceActionConst
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -31,10 +33,6 @@ class MusicService : Service() {
         MusicBinder()
     }
 
-    override fun onBind(intent: Intent): IBinder {
-        return musicBinder
-    }
-
     // music list data
     val musicList = MutableLiveData<List<MusicItems>>()
     var musicPosition = MutableLiveData<Int>(0)
@@ -45,6 +43,33 @@ class MusicService : Service() {
 
     // music player data
     private val job = CoroutineScope(Dispatchers.Default)
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        when(intent?.action) {
+            ServiceActionConst.START_FOREGROUND -> {
+                startForegroundService()
+            }
+            ServiceActionConst.STOP_FOREGROUND -> {
+                stopForegroundService()
+            }
+        }
+
+        return START_STICKY
+    }
+
+    private fun startForegroundService() {
+        val notification = MusicNotification.createNotification(this)
+        startForeground(ServiceActionConst.MUSIC_NOTIFICATION_ID, notification)
+    }
+
+    private fun stopForegroundService() {
+        stopForeground(true)
+        stopSelf()
+    }
+
+    override fun onBind(intent: Intent): IBinder {
+        return musicBinder
+    }
 
     // setting music data
     fun setMusic(uriString: String) {

@@ -1,4 +1,4 @@
-package com.izone.musicplayer.service
+package com.izone.musicplayer.service.bind
 
 interface ServiceBindListener {
     fun firstServiceBind()

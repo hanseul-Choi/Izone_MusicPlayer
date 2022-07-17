@@ -1,8 +1,9 @@
-package com.izone.musicplayer.service
+package com.izone.musicplayer.service.bind
 
 import android.content.ComponentName
 import android.content.ServiceConnection
 import android.os.IBinder
+import com.izone.musicplayer.service.MusicService
 
 object MusicServiceConnection : ServiceConnection {
     var musicService = MusicService()
