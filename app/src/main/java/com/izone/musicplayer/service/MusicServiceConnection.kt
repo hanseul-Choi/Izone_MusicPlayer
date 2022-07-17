@@ -19,7 +19,7 @@ object MusicServiceConnection : ServiceConnection {
         val binder = service as MusicService.MusicBinder
         musicService = binder.getService()
         if(isFirstConnect) {
-            serviceBindListener.serviceBind()
+            serviceBindListener.firstServiceBind()
             isFirstConnect = false
         }
         mBounds = true

@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
     private val serviceBindListener by lazy {
         object : ServiceBindListener {
-            override fun serviceBind() {
+            override fun firstServiceBind() {
                 lifecycleScope.launch {
                     MusicServiceConnection.musicService.musicList.value = viewModel.requestIzoneRepositories()
                     musicAdapter.submitList(MusicServiceConnection.musicService.musicList.value)
