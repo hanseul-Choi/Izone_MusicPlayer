@@ -37,7 +37,7 @@ class MusicService : Service() {
 
     // music list data
     val musicList = MutableLiveData<List<MusicItems>>()
-    var musicPosition = MutableLiveData<Int>()
+    var musicPosition = MutableLiveData<Int>(0)
 
     private val mediaPlayer by lazy {
         MediaPlayer()
@@ -87,6 +87,20 @@ class MusicService : Service() {
         if (job.isActive) job.cancel()
     }
 
+    fun nextMusic() {
+        closeMusic()
+
+        musicPosition.value?.plus(1)?.let {
+            checkPosition(it)
+        }
+
+        musicList.value?.let{ musics ->
+            musicPosition.value?.let {
+                setMusic(musics[it].music)
+            }
+        }
+    }
+
     // close music
     fun closeMusic() {
         if(mediaPlayer.isPlaying) {
@@ -105,7 +119,7 @@ class MusicService : Service() {
             Log.d("test", "duration is $duration , $curPos")
 
             if (curPos >= duration - 20 && curPos != 0 && duration != 0) {
-                checkPosition(musicPosition.value?.plus(1) ?: 0)
+                nextMusic()
                 break
             }
         }

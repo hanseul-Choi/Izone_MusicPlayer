@@ -27,6 +27,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
             bind:storageImg="@{mainviewmodel.curMusic.album}"
             tools:src="@drawable/ic_launcher_background" />
 
@@ -75,6 +76,7 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/ico_close_player"
             android:contentDescription="@string/closeBtnDescription"
+            android:onClick="@{() -> mainviewmodel.closeMiniPlayer()}"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,6 +87,7 @@
             android:layout_marginEnd="15dp"
             android:contentDescription="@string/nextButtonImageDescription"
             android:src="@drawable/ico_next_audio_small"
+            android:onClick="@{() -> mainviewmodel.nextButtonClick()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -97,6 +100,8 @@
             android:layout_marginRight="10dp"
             android:contentDescription="@string/playButtonImageDescription"
             android:src="@drawable/ico_play_audio_small"
+            android:onClick="@{() -> mainviewmodel.playButtonClick()}"
+            android:visibility="@{mainviewmodel.isPlay ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fm_iv_next"
             app:layout_constraintTop_toTopOf="parent" />
@@ -109,6 +114,8 @@
             android:layout_marginRight="10dp"
             android:contentDescription="@string/stopButtonImageDescription"
             android:src="@drawable/ico_pause_audio_small"
+            android:onClick="@{() -> mainviewmodel.stopButtonClick()}"
+            android:visibility="@{mainviewmodel.isPlay ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fm_iv_next"
             app:layout_constraintTop_toTopOf="parent" />
