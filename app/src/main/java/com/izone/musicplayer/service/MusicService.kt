@@ -44,6 +44,8 @@ class MusicService : Service() {
     // music player data
     private val job = CoroutineScope(Dispatchers.Default)
 
+    var isForegroundServiceWork = false
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when(intent?.action) {
             ServiceActionConst.START_FOREGROUND -> {
@@ -58,11 +60,13 @@ class MusicService : Service() {
     }
 
     private fun startForegroundService() {
+        isForegroundServiceWork = true
         val notification = MusicNotification.createNotification(this)
         startForeground(ServiceActionConst.MUSIC_NOTIFICATION_ID, notification)
     }
 
     private fun stopForegroundService() {
+        isForegroundServiceWork = false
         stopForeground(true)
         stopSelf()
     }

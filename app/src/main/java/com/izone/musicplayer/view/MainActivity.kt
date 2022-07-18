@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
 
-        if (MusicServiceConnection.mBounds) {
+        if(MusicServiceConnection.mBounds) {
             unbindService(MusicServiceConnection)
             MusicServiceConnection.mBounds = false
         }

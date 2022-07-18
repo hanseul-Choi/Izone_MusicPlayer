@@ -6,11 +6,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.izone.musicplayer.MPApplication
 import com.izone.musicplayer.model.MusicItems
 import com.izone.musicplayer.repository.music.MusicControlDao
 import com.izone.musicplayer.repository.music.MusicRepository
 import com.izone.musicplayer.service.MusicService
 import com.izone.musicplayer.service.bind.MusicServiceConnection
+import com.izone.musicplayer.service.foreground.MusicNotification
+import com.izone.musicplayer.service.foreground.ServiceActionConst
 import com.izone.musicplayer.view.MainActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ActivityContext
@@ -69,12 +72,20 @@ class MainViewModel @Inject constructor (
         // miniplayer가 보여지는지 확인해야 할 것 같음
         openMiniPlayer()
         _isPlay.value = true
+
+        if(!MusicServiceConnection.musicService.isForegroundServiceWork) {
+            startForegroundService()
+        }
     }
 
     fun closeMiniPlayer() {
         _isShowMiniPlayer.value = false
         MusicServiceConnection.musicService.closeMusic()
         _isPlay.value = false
+
+        if(!MusicServiceConnection.musicService.isForegroundServiceWork) {
+            stopForegroundService()
+        }
     }
 
     fun openMiniPlayer() {
@@ -101,6 +112,14 @@ class MainViewModel @Inject constructor (
     }
 
     fun startForegroundService() {
-//        val intent = Intent(, MusicService::class.java)
+        val intent = Intent(MPApplication.context, MusicService::class.java)
+        intent.action = ServiceActionConst.START_FOREGROUND
+        MPApplication.context.startService(intent)
+    }
+
+    fun stopForegroundService() {
+        val intent = Intent(MPApplication.context, MusicService::class.java)
+        intent.action = ServiceActionConst.STOP_FOREGROUND
+        MPApplication.context.stopService(intent)
     }
 }
