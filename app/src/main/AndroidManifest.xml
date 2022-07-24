@@ -16,7 +16,8 @@
         android:theme="@style/Theme.Izone_MusicPlayer"
         android:name=".MPApplication">
         <activity android:name="com.izone.musicplayer.view.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

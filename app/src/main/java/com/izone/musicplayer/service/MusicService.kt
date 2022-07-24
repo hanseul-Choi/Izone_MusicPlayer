@@ -52,6 +52,15 @@ class MusicService : Service() {
             ServiceActionConst.STOP_FOREGROUND -> {
                 stopForegroundService()
             }
+            ServiceActionConst.PREV -> {
+
+            }
+            ServiceActionConst.PLAY -> {
+                playMusic()
+            }
+            ServiceActionConst.NEXT -> {
+                nextMusic()
+            }
         }
 
         return START_STICKY
