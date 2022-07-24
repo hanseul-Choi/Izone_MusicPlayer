@@ -47,12 +47,6 @@ class MainActivity : AppCompatActivity() {
         setFragment()
     }
 
-    private fun startMusicService() {
-        Intent(this, MusicService::class.java).also { intent ->
-            bindService(intent, MusicServiceConnection, Context.BIND_AUTO_CREATE)
-        }
-    }
-
     override fun onStart() {
         super.onStart()
 
@@ -62,10 +56,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
 
-        if(MusicServiceConnection.mBounds) {
-            unbindService(MusicServiceConnection)
-            MusicServiceConnection.mBounds = false
-        }
+        unBindMusicSerivce()
     }
 
     private fun initDataBinding() {
@@ -147,5 +138,30 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.am_fl_miniplayer, MiniPlayerFragment())
             .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        // when app's died, destroy foreground service
+        if(MusicServiceConnection.musicService.isForegroundServiceWork) {
+            viewModel.stopForegroundService()
+            MusicServiceConnection.musicService.closeMusic()
+        }
+
+        unBindMusicSerivce()
+    }
+
+    private fun startMusicService() {
+        Intent(this, MusicService::class.java).also { intent ->
+            bindService(intent, MusicServiceConnection, Context.BIND_AUTO_CREATE)
+        }
+    }
+
+    private fun unBindMusicSerivce() {
+        if(MusicServiceConnection.mBounds) {
+            unbindService(MusicServiceConnection)
+            MusicServiceConnection.mBounds = false
+        }
     }
 }

@@ -83,7 +83,7 @@ class MainViewModel @Inject constructor (
         MusicServiceConnection.musicService.closeMusic()
         _isPlay.value = false
 
-        if(!MusicServiceConnection.musicService.isForegroundServiceWork) {
+        if(MusicServiceConnection.musicService.isForegroundServiceWork) {
             stopForegroundService()
         }
     }

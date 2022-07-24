@@ -17,8 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
-// BindService를 이용하여 Activity와 통신하여 MediaPlayer를 동작시키자 (onBind + onStartCommand)
-
 @AndroidEntryPoint
 class MusicService : Service() {
 
@@ -165,5 +163,13 @@ class MusicService : Service() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        if(job.isActive) {
+            job.cancel()
+        }
+
+        super.onDestroy()
     }
 }
